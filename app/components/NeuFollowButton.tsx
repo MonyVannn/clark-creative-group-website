@@ -48,14 +48,14 @@ export default function NeuFollowButton({
   };
 
   return (
-    <div className="h-14 w-1/2 bg-[#1E1F1C]">
+    <div className="h-14 w-2/3 bg-[#1E1F1C]/90">
       <motion.button
         ref={ref}
         style={{ transform }}
         onMouseMove={handleMove}
         onMouseLeave={handleReset}
         onMouseDown={handleReset}
-        className="group flex h-full w-full items-center cursor-pointer justify-between border-2 border-[#1E1F1C] bg-[#FEFAE0] px-3 sm:px-6 font-mono text-[clamp(0.6rem,1vw,1.25rem)] font-semibold uppercase tracking-widest text-[#1E1F1C]"
+        className="group flex h-full w-full items-center cursor-pointer justify-between border-2 border-[#1E1F1C]/80 bg-[#FEFAE0] px-3 sm:px-6 font-mono text-[clamp(0.6rem,1vw,1.25rem)] font-semibold uppercase tracking-widest text-[#1E1F1C]/80"
       >
         <Copy>{label}</Copy>
         <Arrow />
