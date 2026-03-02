@@ -7,8 +7,8 @@ import FloatingNav from "./FloatingNav";
 export default function HeroSectionV2() {
   const gridStyle: React.CSSProperties = {
     backgroundImage: [
-      "linear-gradient(to right, rgba(0,0,0,0.08) 1px, transparent 1px)",
-      "linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px)",
+      "linear-gradient(to right, rgba(188, 108, 37, 0.2) 1px, transparent 1px)",
+      "linear-gradient(to bottom, rgba(188, 108, 37, 0.2) 1px, transparent 1px)",
     ].join(", "),
     backgroundSize: "24px 24px",
   };
@@ -19,14 +19,14 @@ export default function HeroSectionV2() {
       style={{ fontFamily: "var(--font-geist-sans)" }}
     >
       <FloatingNav />
-      <div className="w-full h-full grid grid-rows-5 border-[#D2A161] border-2">
+      <div className="w-full h-full grid grid-rows-5 border-[#BC6C25] border-2">
         {/* Rows 1-2: Grid area */}
         <div className="w-full row-span-2" style={gridStyle} />
 
         {/* Row 3: Labels */}
         <div style={gridStyle}>
           {/* Divider */}
-          <div className="h-[24px] w-full bg-[#D2A161]" />
+          <div className="h-[24px] w-full bg-[#BC6C25]" />
           <div className="grid grid-cols-2 sm:grid-cols-4 w-full h-full items-center gap-y-3 sm:gap-y-0 px-2 sm:px-0">
             {[
               ["DESIGN", "YOUR SPACE"],
@@ -52,7 +52,7 @@ export default function HeroSectionV2() {
         </div>
 
         {/* Row 4: Primary branding */}
-        <div className="w-full border-t border-b border-[#D2A161]">
+        <div className="w-full border-t border-b border-[#BC6C25]">
           <div className="relative h-full">
             <ScreenFitText
               text="CLARK CREATIVE GROUP"
