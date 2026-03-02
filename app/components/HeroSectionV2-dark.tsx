@@ -28,9 +28,9 @@ export default function HeroSectionV2() {
         </div>
 
         {/* Row 3: Labels */}
-        <div style={gridStyle}>
+        <div style={gridStyle} className="relative">
           {/* Divider */}
-          <div className="h-[18px] w-full bg-[#FFC878]" />
+          <div className="absolute top-0 left-0 h-[18px] w-full bg-[#2D3748]" />
           <div className="grid grid-cols-2 sm:grid-cols-4 w-full h-full items-center gap-y-3 sm:gap-y-0 px-2 sm:px-0">
             {[
               ["DESIGN", "YOUR SPACE"],
@@ -50,7 +50,7 @@ export default function HeroSectionV2() {
             ))}
             {/* CTA button — hidden on the smallest screens, shown sm+ */}
             <div className="hidden sm:flex items-center justify-center px-3">
-              <NeuFollowButton label="GET IN TOUCH" />
+              <NeuFollowButton label="GET IN TOUCH" variant="dark" />
             </div>
           </div>
         </div>

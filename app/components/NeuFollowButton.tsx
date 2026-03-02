@@ -17,10 +17,12 @@ const SPRING_OPTIONS = {
 
 interface NeuFollowButtonProps {
   label?: string;
+  variant?: "light" | "dark";
 }
 
 export default function NeuFollowButton({
   label = "GET IN TOUCH",
+  variant = "light",
 }: NeuFollowButtonProps) {
   const ref = useRef<HTMLButtonElement | null>(null);
 
@@ -47,18 +49,24 @@ export default function NeuFollowButton({
     y.set(0);
   };
 
+  const isDark = variant === "dark";
+
   return (
-    <div className="h-14 w-2/3 bg-[#1E1F1C]/90">
+    <div className={`h-14 w-2/3 ${isDark ? "bg-[#FFC878]/10" : "bg-[#1E1F1C]/90"}`}>
       <motion.button
         ref={ref}
         style={{ transform }}
         onMouseMove={handleMove}
         onMouseLeave={handleReset}
         onMouseDown={handleReset}
-        className="group flex h-full w-full items-center cursor-pointer justify-between border-2 border-[#1E1F1C]/80 bg-[#FEFAE0] px-3 sm:px-6 font-mono text-[clamp(0.6rem,1vw,1.25rem)] font-semibold uppercase tracking-widest text-[#1E1F1C]/80"
+        className={`group flex h-full w-full items-center cursor-pointer justify-between border-2 px-3 sm:px-6 font-mono text-[clamp(0.6rem,1vw,1.25rem)] font-semibold uppercase tracking-widest transition-colors duration-300 ${
+          isDark
+            ? "border-[#2D3748] bg-[#050B18] text-[#FFC878]"
+            : "border-[#1E1F1C]/80 bg-[#FEFAE0] text-[#1E1F1C]/80"
+        }`}
       >
         <Copy>{label}</Copy>
-        <Arrow />
+        <Arrow isDark={isDark} />
       </motion.button>
     </div>
   );
@@ -77,10 +85,14 @@ function Copy({ children }: { children: string }) {
   );
 }
 
-function Arrow() {
+function Arrow({ isDark }: { isDark: boolean }) {
   return (
     <div className="pointer-events-none flex h-5 w-5 overflow-hidden text-xl">
-      <FiArrowRight className="shrink-0 -translate-x-full text-[#D2A161] transition-transform duration-300 group-hover:translate-x-0" />
+      <FiArrowRight
+        className={`shrink-0 -translate-x-full transition-transform duration-300 group-hover:translate-x-0 ${
+          isDark ? "text-[#FFC878]" : "text-[#D2A161]"
+        }`}
+      />
       <FiArrowRight className="shrink-0 -translate-x-full transition-transform duration-300 group-hover:translate-x-0" />
     </div>
   );
