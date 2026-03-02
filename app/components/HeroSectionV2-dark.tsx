@@ -39,7 +39,7 @@ export default function HeroSectionV2() {
             ].map(([line1, line2], i) => (
               <div key={i} className="px-3 sm:mx-auto font-medium z-50">
                 <p
-                  className="font-mono text-[clamp(0.6rem,1.2vw,1.75rem)] tracking-[0.15em] leading-snug text-[#FFC878] uppercase transition-colors duration-300"
+                  className="font-mono text-[clamp(0.6rem,1.2vw,1.75rem)] tracking-[0.15em] leading-snug text-[#F5F5F5] uppercase transition-colors duration-300"
                   style={{ fontFamily: "var(--font-geist-mono)" }}
                 >
                   {line1}
