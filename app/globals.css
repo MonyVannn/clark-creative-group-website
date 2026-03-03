@@ -44,6 +44,35 @@ body {
   max-width: 1280px;
 }
 
+/* Preloader animation - line mask for SplitText */
+.preloader .line {
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.preloader-revealer {
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .preloader-revealer {
+    width: 200%;
+  }
+  .preloader,
+  .preloader-copy {
+    flex-direction: column;
+  }
+  .preloader-copy-col {
+    align-items: center;
+  }
+  .preloader-copy p {
+    width: 100%;
+  }
+  .preloader-counter {
+    align-items: center;
+  }
+}
+
 @utility container {
   width: 100%;
   margin-inline: auto;

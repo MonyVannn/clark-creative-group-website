@@ -27,7 +27,7 @@ export default function PreloaderGate({
 
   return (
     <>
-      {isLoading && <Preloader onComplete={handleComplete} />}
+      <Preloader onComplete={handleComplete} />
       {children}
     </>
   );
