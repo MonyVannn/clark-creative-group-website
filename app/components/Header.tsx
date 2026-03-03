@@ -43,7 +43,7 @@ function NavLink({
 
 export default function Header() {
   return (
-    <header className=" bg-[#f2f2f2] py-5">
+    <header className="sticky top-0 z-50 bg-[#f2f2f2] py-5 backdrop-blur-md">
       <div className="md:px-12 lg:px-16 flex items-center justify-between">
         {/* Brand */}
         <div className="shrink-0">

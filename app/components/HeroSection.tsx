@@ -3,13 +3,38 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useCallback, useRef } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import Spline from "@splinetool/react-spline";
 import AnimatedCopy from "./AnimatedCopy";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MOUSE_MOVE_STRENGTH = 25;
+const GRID_COLS = 5;
+const GRID_ROWS = 4;
+const EDGE_BLACK_PROBABILITY = 0.4; // ~40% of edge cells become black
+const GRID_SEED = 42; // Fixed seed for deterministic SSR/client parity
+
+function createSeededRandom(seed: number) {
+  return () => {
+    seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+    return seed / 0x7fffffff;
+  };
+}
+
+function getEdgeBlackCells(): Set<number> {
+  const black = new Set<number>();
+  const total = GRID_COLS * GRID_ROWS;
+  const random = createSeededRandom(GRID_SEED);
+  for (let i = 0; i < total; i++) {
+    const col = i % GRID_COLS;
+    const row = Math.floor(i / GRID_COLS);
+    const isEdge =
+      row === 0 || row === GRID_ROWS - 1 || col === 0 || col === GRID_COLS - 1;
+    if (isEdge && random() < EDGE_BLACK_PROBABILITY) black.add(i);
+  }
+  return black;
+}
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,6 +43,8 @@ export default function HeroSection() {
   const mouseTweenRef = useRef<gsap.core.Tween | null>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const largeGridRef = useRef<HTMLDivElement>(null);
+
+  const edgeBlackCells = useMemo(() => getEdgeBlackCells(), []);
 
   useGSAP(
     () => {
@@ -40,10 +67,10 @@ export default function HeroSection() {
   useGSAP(
     () => {
       gsap.to(splineRef.current, {
-        left: "85.67%",
-        top: "140%",
-        width: "1000px",
-        height: "1000px",
+        left: "90%",
+        top: "130%",
+        width: "800px",
+        height: "800px",
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -95,7 +122,7 @@ export default function HeroSection() {
       {/* Spline 3D background */}
       <div
         ref={splineRef}
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-1 w-[700px] h-[700px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-50 w-[700px] h-[700px]"
       >
         <div ref={splineMouseRef} className="h-full w-full">
           <Spline
@@ -106,7 +133,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content container */}
-      <div className="relative z-10 flex h-full flex-col">
+      <div className="relative z-10 h-screen">
         {/* Copy row - absolute for consistent position across screen sizes */}
         <div className="absolute left-0 right-0 top-[clamp(6rem,12vh,12rem)] z-20 flex w-full flex-col px-6 md:flex-row md:items-end md:justify-between md:gap-12 lg:px-12">
           {/* Heading column */}
@@ -148,6 +175,25 @@ export default function HeroSection() {
               </button>
             </div>
           </div>
+        </div>
+        <div
+          ref={largeGridRef}
+          className="absolute bottom-52 left-0 z-1 grid h-[600px] w-full grid-cols-5 grid-rows-4 border border-[#191919]"
+        >
+          {Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => {
+            const col = i % GRID_COLS;
+            const row = Math.floor(i / GRID_COLS);
+            const isLastCol = col === GRID_COLS - 1;
+            const isLastRow = row === GRID_ROWS - 1;
+            const isBlack = edgeBlackCells.has(i);
+
+            return (
+              <div
+                key={i}
+                className={`w-full border-[#191919] ${!isLastCol ? "border-r" : ""} ${!isLastRow ? "border-b" : ""} ${isBlack ? "bg-[#191919]" : ""}`}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
