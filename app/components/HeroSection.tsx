@@ -179,10 +179,10 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-        {/* Rectangle Grid */}
+        {/* Rectangle Grid - scales with viewport via aspect-ratio */}
         <div
           ref={largeGridRef}
-          className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#191919] h-[clamp(350px,50vh,600px)] bottom-[clamp(8rem,15vh,13rem)] xl:h-[clamp(400px,45vh,500px)] xl:bottom-[clamp(6rem,12vh,10rem)] 2xl:h-[clamp(350px,50vh,600px)] 2xl:bottom-[clamp(8rem,15vh,13rem)]"
+          className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#191919] aspect-[5/4] h-auto max-h-[min(55vh,520px)] min-h-[clamp(200px,35vw,280px)] bottom-[clamp(6rem,12vh,13rem)] sm:min-h-[clamp(240px,40vw,320px)] md:max-h-[min(50vh,480px)] lg:min-h-[clamp(260px,38vw,340px)] xl:bottom-[clamp(2rem,6vh,6rem)] xl:max-h-[min(48vh,460px)] 2xl:bottom-[clamp(8rem,15vh,13rem)] 2xl:max-h-[min(52vh,540px)]"
         >
           {Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => {
             const col = i % GRID_COLS;
