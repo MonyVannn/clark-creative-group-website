@@ -23,9 +23,6 @@ export default function Home() {
         />
         <div className="relative z-10 px-8 md:px-4 lg:px-16">
           <HeroSection />
-          <div className="-mt-40 py-12">
-            <DoubleScrollingLogos />
-          </div>
           <CoreOverview />
         </div>
       </div>

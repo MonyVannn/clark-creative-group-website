@@ -69,8 +69,8 @@ export default function HeroSection() {
       gsap.to(splineRef.current, {
         left: "90%",
         top: "130%",
-        width: "min(800px, 80vw)",
-        height: "min(800px, 80vh)",
+        width: "800px",
+        height: "800px",
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -135,7 +135,7 @@ export default function HeroSection() {
       {/* Content container - fills viewport for whole-screen hero */}
       <div className="relative z-10 h-dvh">
         {/* Copy row - absolute for consistent position across screen sizes */}
-        <div className="absolute left-0 right-0 top-[clamp(6rem,12vh,12rem)] z-20 flex w-full flex-col px-6 md:flex-row md:items-end md:justify-between md:gap-12 lg:px-12 xl:top-[clamp(5rem,10vh,10rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12">
+        <div className="absolute left-0 right-0 top-[clamp(6rem,12vh,12rem)] z-20 flex w-full flex-col px-6 md:flex-row md:items-end md:justify-between md:gap-12 lg:px-12 xl:top-[clamp(2rem,6vh,6rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12">
           {/* Heading column */}
           <div className="mb-12 md:mb-0 md:min-w-0 md:flex-1">
             <h1 className="font-satoshi text-5xl font-medium leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
@@ -160,7 +160,10 @@ export default function HeroSection() {
               Turn your vision into reality through structured systems and
               expert clarity.
             </AnimatedCopy>
-            <div ref={buttonsRef} className="flex flex-wrap flex-col gap-4 xl:gap-3">
+            <div
+              ref={buttonsRef}
+              className="flex flex-wrap flex-col gap-4 xl:gap-3"
+            >
               <button
                 type="button"
                 className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
@@ -176,6 +179,7 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+        {/* Rectangle Grid */}
         <div
           ref={largeGridRef}
           className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#191919] h-[clamp(350px,50vh,600px)] bottom-[clamp(8rem,15vh,13rem)] xl:h-[clamp(400px,45vh,500px)] xl:bottom-[clamp(6rem,12vh,10rem)] 2xl:h-[clamp(350px,50vh,600px)] 2xl:bottom-[clamp(8rem,15vh,13rem)]"
