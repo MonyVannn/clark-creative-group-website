@@ -2,10 +2,11 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import DoubleScrollingLogos from "./components/DoubleScrollingLogos";
 import CoreOverview from "./components/CoreOverview";
+import PreloaderGate from "./components/PreloaderGate";
 
 export default function Home() {
   return (
-    <>
+    <PreloaderGate>
       {/* Header */}
       <Header />
       <div className="relative min-h-screen bg-[#f2f2f2] ">
@@ -28,6 +29,6 @@ export default function Home() {
           <CoreOverview />
         </div>
       </div>
-    </>
+    </PreloaderGate>
   );
 }

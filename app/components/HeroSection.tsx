@@ -69,8 +69,8 @@ export default function HeroSection() {
       gsap.to(splineRef.current, {
         left: "90%",
         top: "130%",
-        width: "800px",
-        height: "800px",
+        width: "min(800px, 80vw)",
+        height: "min(800px, 80vh)",
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -115,14 +115,14 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-visible"
+      className="relative min-h-dvh overflow-visible"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Spline 3D background */}
+      {/* Spline 3D background - viewport-scaled, smaller at xl for 1440x900 */}
       <div
         ref={splineRef}
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-50 w-[700px] h-[700px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(700px,65vh)] h-[min(700px,65vh)] xl:w-[min(550px,55vh)] xl:h-[min(550px,55vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(700px,65vh)]"
       >
         <div ref={splineMouseRef} className="h-full w-full">
           <Spline
@@ -132,13 +132,13 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Content container */}
-      <div className="relative z-10 h-screen">
+      {/* Content container - fills viewport for whole-screen hero */}
+      <div className="relative z-10 h-dvh">
         {/* Copy row - absolute for consistent position across screen sizes */}
-        <div className="absolute left-0 right-0 top-[clamp(6rem,12vh,12rem)] z-20 flex w-full flex-col px-6 md:flex-row md:items-end md:justify-between md:gap-12 lg:px-12">
+        <div className="absolute left-0 right-0 top-[clamp(6rem,12vh,12rem)] z-20 flex w-full flex-col px-6 md:flex-row md:items-end md:justify-between md:gap-12 lg:px-12 xl:top-[clamp(5rem,10vh,10rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12">
           {/* Heading column */}
           <div className="mb-12 md:mb-0 md:min-w-0 md:flex-1">
-            <h1 className="font-satoshi text-5xl font-medium leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl">
+            <h1 className="font-satoshi text-5xl font-medium leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
                 Bridge the Gap
               </AnimatedCopy>
@@ -152,24 +152,24 @@ export default function HeroSection() {
           </div>
 
           {/* Description + buttons column */}
-          <div className="flex flex-col gap-6 md:w-80 md:shrink-0 md:gap-8">
+          <div className="flex flex-col gap-6 md:w-80 md:shrink-0 md:gap-8 xl:w-72 xl:gap-6 2xl:w-80 2xl:gap-8">
             <AnimatedCopy
               as="p"
-              className="font-satoshi text-xs font-medium uppercase leading-relaxed tracking-tight text-[#191919] md:text-left md:text-xl"
+              className="font-satoshi text-xs font-medium uppercase leading-relaxed tracking-tight text-[#191919] md:text-left md:text-xl xl:text-lg 2xl:text-xl"
             >
               Turn your vision into reality through structured systems and
               expert clarity.
             </AnimatedCopy>
-            <div ref={buttonsRef} className="flex flex-wrap flex-col gap-4">
+            <div ref={buttonsRef} className="flex flex-wrap flex-col gap-4 xl:gap-3">
               <button
                 type="button"
-                className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer"
+                className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
               >
                 START RIGHT NOW
               </button>
               <button
                 type="button"
-                className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer"
+                className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
               >
                 EXPLORE OUR SERVICES
               </button>
@@ -178,7 +178,7 @@ export default function HeroSection() {
         </div>
         <div
           ref={largeGridRef}
-          className="absolute bottom-52 left-0 z-1 grid h-[600px] w-full grid-cols-5 grid-rows-4 border border-[#191919]"
+          className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#191919] h-[clamp(350px,50vh,600px)] bottom-[clamp(8rem,15vh,13rem)] xl:h-[clamp(400px,45vh,500px)] xl:bottom-[clamp(6rem,12vh,10rem)] 2xl:h-[clamp(350px,50vh,600px)] 2xl:bottom-[clamp(8rem,15vh,13rem)]"
         >
           {Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => {
             const col = i % GRID_COLS;
