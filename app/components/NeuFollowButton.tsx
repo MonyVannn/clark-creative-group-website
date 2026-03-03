@@ -61,7 +61,7 @@ export default function NeuFollowButton({
         onMouseMove={handleMove}
         onMouseLeave={handleReset}
         onMouseDown={handleReset}
-        className={`group flex h-full w-full items-center cursor-pointer justify-between border-2 px-3 sm:px-6 font-mono text-[clamp(0.6rem,1vw,1.25rem)] font-semibold uppercase tracking-widest transition-colors duration-300 ${
+        className={`group flex h-full w-full items-center cursor-pointer justify-between border-2 px-3 sm:px-6 font-mono text-[clamp(0.6rem,1rem,1.25rem)] font-semibold uppercase tracking-widest transition-colors duration-300 ${
           isDark
             ? "border-[#2D3748] bg-[#050B18] text-[#F5F5F5]"
             : "border-[#1E1F1C]/80 bg-[#FEFAE0] text-[#1E1F1C]/80"

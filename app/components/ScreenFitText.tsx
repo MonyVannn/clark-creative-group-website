@@ -54,7 +54,7 @@ export default function ScreenFitText({ text, className = "" }: ScreenFitTextPro
       }
     }
 
-    text.style.fontSize = max + "px";
+    text.style.fontSize = max / 16 + "rem";
   };
 
   const applyLineClip = () => {

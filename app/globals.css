@@ -10,8 +10,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-cream: #FDF8E1;
-  --color-terracotta: #D38852;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,6 +31,17 @@ body {
 
 @utility font-satoshi {
   font-family: var(--font-satoshi);
+}
+
+@utility font-newtitle {
+  font-family: var(--font-newtitle);
+}
+
+@utility container-wide {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  max-width: 1280px;
 }
 
 @utility container {

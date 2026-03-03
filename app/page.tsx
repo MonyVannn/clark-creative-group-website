@@ -1,25 +1,31 @@
-import GradientBlinds from "./components/GradientBlinds";
+import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import Beams from "./components/Beam";
+import DoubleScrollingLogos from "./components/DoubleScrollingLogos";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
-      <div className="absolute inset-0">
-        <Beams
-          beamWidth={3}
-          beamHeight={30}
-          beamNumber={20}
-          lightColor="#BC6C25"
-          beamColor="#151515"
-          backgroundColor="#000"
-          speed={5.5}
-          noiseIntensity={1.75}
-          scale={0.2}
-          rotation={30}
+    <>
+      {/* Header */}
+      <Header />
+      <div className="relative min-h-screen bg-[#f2f2f2] ">
+        {/* Grid area - white visible outside via parent padding */}
+        <div
+          className="pointer-events-none absolute inset-8 md:inset-y-2 md:inset-x-16 z-0"
+          style={{
+            backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px)
+          `,
+            backgroundSize: "18px 20px",
+          }}
         />
+        <div className="relative z-10 px-8 md:px-4 lg:px-16">
+          <HeroSection />
+          <div className="-mt-80 h-screen">
+            <DoubleScrollingLogos />
+          </div>
+        </div>
       </div>
-      <HeroSection />
-    </div>
+    </>
   );
 }

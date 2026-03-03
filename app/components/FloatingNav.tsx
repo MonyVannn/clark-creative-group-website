@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function FloatingNav() {
   return (
-    <nav className="fixed  top-8 flex w-fit items-center gap-6 rounded-lg border border-[#DDA15E] bg-[#DDA15E] p-2 text-sm text-[#FEFAE0] z-50">
+    <nav className="fixed  top-8 flex w-fit items-center gap-6 rounded-lg border border-[#DDA15E] bg-[#DDA15E] p-2 text-sm text-[#FEFAE0] z-60">
       <Logo />
       <NavLink href="#">Home</NavLink>
       <NavLink href="#">About</NavLink>

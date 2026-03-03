@@ -23,6 +23,11 @@ const satoshi = localFont({
   variable: "--font-satoshi",
 });
 
+const newTitle = localFont({
+  src: "../public/fonts/NewTitle_Complete/Fonts/WEB/fonts/NewTitle-Variable.woff2",
+  variable: "--font-newtitle",
+});
+
 export const metadata: Metadata = {
   title: "Clark Creative Group",
   description: "Personal Website for CCG",
