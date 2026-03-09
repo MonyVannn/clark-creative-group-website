@@ -1,7 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Preloader from "./Preloader";
+
+export const PreloaderContext = createContext<{ isReady: boolean }>({
+  isReady: true,
+});
 
 export default function PreloaderGate({
   children,
@@ -26,9 +30,9 @@ export default function PreloaderGate({
   };
 
   return (
-    <>
+    <PreloaderContext.Provider value={{ isReady: !isLoading }}>
       <Preloader onComplete={handleComplete} />
       {children}
-    </>
+    </PreloaderContext.Provider>
   );
 }

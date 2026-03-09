@@ -17,6 +17,7 @@ interface CopyRevealProps {
   duration?: number;
   className?: string;
   as?: React.ElementType;
+  textAlign?: "left" | "center" | "right";
 }
 
 export default function CopyReveal({
@@ -28,6 +29,7 @@ export default function CopyReveal({
   duration = 0.75,
   className = "",
   as: Tag = "div",
+  textAlign = "center",
 }: CopyRevealProps) {
   const containerRef = useRef<HTMLElement>(null);
   const splitRef = useRef<SplitType | null>(null);
@@ -50,9 +52,17 @@ export default function CopyReveal({
       blocksRef.current = [];
 
       const lineElements = el.querySelectorAll<HTMLElement>(".line");
+      const alignStyles =
+        textAlign === "left"
+          ? { marginLeft: "0", marginRight: "auto" }
+          : textAlign === "right"
+            ? { marginLeft: "auto", marginRight: "0" }
+            : { marginLeft: "auto", marginRight: "auto" };
+
       lineElements.forEach((line) => {
         const wrapper = document.createElement("div");
         wrapper.className = "block-line-wrapper";
+        Object.assign(wrapper.style, alignStyles);
         line.parentNode?.insertBefore(wrapper, line);
         wrapper.appendChild(line);
 
@@ -133,6 +143,7 @@ export default function CopyReveal({
         blockColor,
         stagger,
         duration,
+        textAlign,
       ],
     }
   );

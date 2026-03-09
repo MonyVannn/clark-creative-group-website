@@ -4,6 +4,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
+import CopyReveal from "./CopyReveal";
+import { FaServicestack } from "react-icons/fa6";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -176,15 +178,34 @@ export default function CoreOverview() {
             >
               <GeometricArtBlock pattern={card.pattern} />
               <div className="flex flex-col gap-3">
-                <h3 className="font-clash-display text-2xl font-semibold text-[#191919] md:text-3xl">
+                <CopyReveal
+                  as="p"
+                  className="font-clash-display text-2xl font-semibold text-[#191919] md:text-3xl"
+                  textAlign="left"
+                  stagger={0.2}
+                >
                   {card.title}
-                </h3>
-                <p className="font-satoshi text-sm leading-relaxed text-[#191919] md:text-base">
+                </CopyReveal>
+                <CopyReveal
+                  as="p"
+                  className="font-satoshi text-sm leading-relaxed text-[#191919] md:text-base"
+                  textAlign="left"
+                  stagger={0.2}
+                >
                   {card.description}
-                </p>
+                </CopyReveal>
                 <ul className="font-satoshi list-disc pl-5 text-sm leading-relaxed text-[#191919] md:text-base">
                   {card.services.map((service) => (
-                    <li key={service}>{service}</li>
+                    <li key={service}>
+                      <CopyReveal
+                        as="p"
+                        className="font-satoshi text-sm leading-relaxed text-[#191919] md:text-base"
+                        textAlign="left"
+                        stagger={0.2}
+                      >
+                        {service}
+                      </CopyReveal>
+                    </li>
                   ))}
                 </ul>
               </div>

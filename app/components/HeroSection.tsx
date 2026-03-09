@@ -48,15 +48,13 @@ export default function HeroSection() {
   useGSAP(
     () => {
       gsap.to(splineRef.current, {
-        left: "90%",
-        top: "130%",
-        width: "800px",
-        height: "800px",
-        ease: "none",
+        left: "80%",
+        top: "110%",
+        ease: "power2.inOut",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "bottom top",
+          end: "bottom center",
           scrub: true,
         },
       });
@@ -122,7 +120,7 @@ export default function HeroSection() {
         >
           {/* Heading column */}
           <div className="mb-12 md:mb-0 md:min-w-0 md:flex-1">
-            <h1 className="font-satoshi text-5xl font-medium leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
+            <h1 className="font-clash-display text-5xl font-semibold leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
                 Creators of
               </AnimatedCopy>
@@ -141,8 +139,8 @@ export default function HeroSection() {
               as="p"
               className="font-satoshi text-xs font-medium uppercase leading-relaxed tracking-tight text-[#191919] md:text-left md:text-xl xl:text-lg 2xl:text-xl"
             >
-              A creative advisory for founders. We design brands, build
-              business systems, and connect the whole picture.
+              A creative advisory for founders. We design brands, build business
+              systems, and connect the whole picture.
             </AnimatedCopy>
             <div className="flex flex-wrap flex-col gap-4 xl:gap-3">
               <button
