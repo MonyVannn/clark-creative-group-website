@@ -54,6 +54,31 @@ body {
   width: 100%;
 }
 
+/* CopyReveal block wipe animation */
+.block-line-wrapper {
+  position: relative;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.block-line-wrapper .line {
+  position: relative;
+  display: block;
+}
+
+.block-revealer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 101%;
+  height: 101%;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 1;
+}
+
 @media (max-width: 1000px) {
   .preloader-revealer {
     width: 200%;

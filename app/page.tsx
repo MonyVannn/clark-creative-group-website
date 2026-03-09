@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import IntroSection from "./components/IntroSection";
 import CoreOverview from "./components/CoreOverview";
 import PreloaderGate from "./components/PreloaderGate";
 
@@ -22,6 +23,9 @@ export default function Home() {
         />
         <div className="relative z-10 px-8 md:px-4 lg:px-16">
           <HeroSection />
+        </div>
+        <IntroSection />
+        <div className="relative z-10 px-8 md:px-4 lg:px-16">
           <CoreOverview />
         </div>
       </div>
