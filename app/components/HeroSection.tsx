@@ -101,12 +101,12 @@ export default function HeroSection() {
       {/* Spline 3D background - viewport-scaled, smaller at xl for 1440x900 */}
       <div
         ref={splineRef}
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(700px,65vh)] h-[min(700px,65vh)] xl:w-[min(550px,55vh)] xl:h-[min(550px,55vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(700px,65vh)]"
+        className="pointer-events-none absolute left-1/2 top-2/3 2xl:top-1/2 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(600px,55vh)] h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)]"
       >
         <div ref={splineMouseRef} className="h-full w-full">
           <Spline
             scene="https://prod.spline.design/ib9PB3lUzxmxoVK7/scene.splinecode"
-            className="h-full w-full"
+            className="h-full w-full xl:scale-75 2xl:scale-100"
           />
         </div>
       </div>
