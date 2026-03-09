@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import CopyReveal from "./CopyReveal";
 import { FaServicestack } from "react-icons/fa6";
+import SplitText from "./SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -178,33 +179,47 @@ export default function CoreOverview() {
             >
               <GeometricArtBlock pattern={card.pattern} />
               <div className="flex flex-col gap-3">
-                <CopyReveal
-                  as="p"
-                  className="font-clash-display text-2xl font-semibold text-[#191919] md:text-3xl"
+                <SplitText
+                  text={card.title}
+                  className="font-clash-display text-2xl font-semibold text-[#191919] md:text-3xl text-left"
                   textAlign="left"
-                  stagger={0.2}
-                >
-                  {card.title}
-                </CopyReveal>
-                <CopyReveal
-                  as="p"
+                  delay={50}
+                  duration={1.25}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                />
+
+                <SplitText
+                  text={card.description}
                   className="font-satoshi text-sm leading-relaxed text-[#191919] md:text-base"
                   textAlign="left"
-                  stagger={0.2}
-                >
-                  {card.description}
-                </CopyReveal>
+                  delay={20}
+                  duration={1}
+                  ease="power3.out"
+                  splitType="lines"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                />
+
                 <ul className="font-satoshi list-disc pl-5 text-sm leading-relaxed text-[#191919] md:text-base">
                   {card.services.map((service) => (
                     <li key={service}>
-                      <CopyReveal
-                        as="p"
+                      <SplitText
+                        text={service}
                         className="font-satoshi text-sm leading-relaxed text-[#191919] md:text-base"
                         textAlign="left"
-                        stagger={0.2}
-                      >
-                        {service}
-                      </CopyReveal>
+                        delay={20}
+                        duration={1}
+                        ease="power3.out"
+                        splitType="lines"
+                        from={{ opacity: 0, y: 40 }}
+                        to={{ opacity: 1, y: 5 }}
+                        threshold={0.1}
+                      />
                     </li>
                   ))}
                 </ul>
