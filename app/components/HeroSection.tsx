@@ -107,7 +107,7 @@ export default function HeroSection() {
       >
         <div ref={splineMouseRef} className="h-full w-full">
           <Spline
-            scene="https://prod.spline.design/tjWKQyWMHuEQYFmH/scene.splinecode"
+            scene="https://prod.spline.design/ib9PB3lUzxmxoVK7/scene.splinecode"
             className="h-full w-full"
           />
         </div>
@@ -124,13 +124,13 @@ export default function HeroSection() {
           <div className="mb-12 md:mb-0 md:min-w-0 md:flex-1">
             <h1 className="font-satoshi text-5xl font-medium leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
-                Bridge the Gap
+                Creators of
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                Between Vision
+                Visionary Lives
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                and Reality
+                and Businesses
               </AnimatedCopy>
             </h1>
           </div>
@@ -141,21 +141,15 @@ export default function HeroSection() {
               as="p"
               className="font-satoshi text-xs font-medium uppercase leading-relaxed tracking-tight text-[#191919] md:text-left md:text-xl xl:text-lg 2xl:text-xl"
             >
-              Turn your vision into reality through structured systems and
-              expert clarity.
+              A creative advisory for founders. We design brands, build
+              business systems, and connect the whole picture.
             </AnimatedCopy>
             <div className="flex flex-wrap flex-col gap-4 xl:gap-3">
               <button
                 type="button"
                 className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
               >
-                START RIGHT NOW
-              </button>
-              <button
-                type="button"
-                className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
-              >
-                EXPLORE OUR SERVICES
+                Start a Conversation
               </button>
             </div>
           </div>
@@ -164,7 +158,7 @@ export default function HeroSection() {
         <div
           ref={largeGridRef}
           data-preloader-target="hero-grid"
-          className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#191919] aspect-[5/4] h-auto max-h-[min(55vh,520px)] min-h-[clamp(200px,35vw,280px)] bottom-[clamp(6rem,12vh,13rem)] sm:min-h-[clamp(240px,40vw,320px)] md:max-h-[min(50vh,480px)] lg:min-h-[clamp(260px,38vw,340px)] xl:bottom-[clamp(2rem,6vh,6rem)] xl:max-h-[min(48vh,460px)] 2xl:bottom-[clamp(8rem,15vh,13rem)] 2xl:max-h-[min(52vh,540px)]"
+          className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#191919] aspect-5/4 h-auto max-h-[min(55vh,520px)] min-h-[clamp(200px,35vw,280px)] bottom-[clamp(6rem,12vh,13rem)] sm:min-h-[clamp(240px,40vw,320px)] md:max-h-[min(50vh,480px)] lg:min-h-[clamp(260px,38vw,340px)] xl:bottom-[clamp(2rem,6vh,6rem)] xl:max-h-[min(48vh,460px)] 2xl:bottom-[clamp(8rem,15vh,13rem)] 2xl:max-h-[min(52vh,540px)]"
         >
           {Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => {
             const col = i % GRID_COLS;

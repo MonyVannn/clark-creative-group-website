@@ -1,6 +1,5 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import DoubleScrollingLogos from "./components/DoubleScrollingLogos";
 import CoreOverview from "./components/CoreOverview";
 import PreloaderGate from "./components/PreloaderGate";
 

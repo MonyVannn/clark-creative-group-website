@@ -9,24 +9,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CARDS = [
   {
-    title: "SPACE",
-    label: "DESIGN PRINCIPLE",
+    title: "01. Space",
     description:
-      "Every great outcome starts with room to think. We create intentional space -- in strategy, design, and process -- so ideas have room to breathe and evolve.",
+      "Your environment shapes everything. Not just the room -- the website, the community, the entire world you and your customers move through. We design those environments. Physical. Digital. Social. When the container matches the ambition, momentum is natural.",
+    services: [
+      "Architectural Design & Consulting",
+      "Brand Environment Audits",
+      "Website & Digital Presence Architecture",
+      "Workspace & Studio Design Direction",
+    ],
     pattern: "space",
   },
   {
-    title: "STORY",
-    label: "CREATIVE FRAMEWORK",
+    title: "02. Story",
     description:
-      "Facts inform, but stories transform. We craft narratives that connect your brand's purpose to your audience's reality -- turning complexity into clarity.",
+      "The story you tell about your business is the business. We gather the truths underneath -- sit with founders, listen to what's really there -- and craft a narrative the right people can't ignore. Clear voice. Real message. The kind of story people repeat without being asked.",
+    services: [
+      "Brand Strategy & Voice",
+      "Founder Story Development",
+      "Investor & Stakeholder Narratives",
+      "Content Strategy & Messaging Frameworks",
+    ],
     pattern: "story",
   },
   {
-    title: "SYSTEM",
-    label: "OPERATIONAL BACKBONE",
+    title: "03. System",
     description:
-      "Vision without structure is just a wish. We build scalable systems that turn one-time wins into repeatable, compounding growth engines.",
+      "Business systems multiply your best work. Every day. We build automation, AI tools, and operational architecture designed around how you actually work -- custom AI workflows for key team members, dashboards that show real numbers, communication rhythms that hold a growing company together.",
+    services: [
+      "Business Automation & AI Integration",
+      "AI Workflow Design (role-specific tools for key people)",
+      "CRM & Operations Architecture",
+      "Growth Dashboards & KPI Systems",
+      "Team Workflow & Communication Design",
+    ],
     pattern: "system",
   },
 ] as const;
@@ -137,14 +153,14 @@ export default function CoreOverview() {
             ref={headlineRef}
             className="font-clash-display text-4xl font-semibold leading-tight text-[#191919] md:text-5xl lg:text-6xl"
           >
-            Built on Three Pillars
+            Three Pillars
           </h2>
           <p
             ref={sublineRef}
             className="font-satoshi max-w-2xl text-base font-medium text-[#606060] md:text-lg"
           >
-            Space, Story, and System — the foundation of how we turn vision into
-            reality.
+            Brand, systems, and strategy are not three separate problems. They
+            are one architecture. We design them together.
           </p>
         </div>
 
@@ -163,12 +179,14 @@ export default function CoreOverview() {
                 <h3 className="font-clash-display text-2xl font-semibold text-[#191919] md:text-3xl">
                   {card.title}
                 </h3>
-                <span className="font-satoshi text-xs font-medium uppercase tracking-wider text-[#606060] -mt-3">
-                  {card.label}
-                </span>
                 <p className="font-satoshi text-sm leading-relaxed text-[#191919] md:text-base">
                   {card.description}
                 </p>
+                <ul className="font-satoshi list-disc pl-5 text-sm leading-relaxed text-[#191919] md:text-base">
+                  {card.services.map((service) => (
+                    <li key={service}>{service}</li>
+                  ))}
+                </ul>
               </div>
             </article>
           ))}
