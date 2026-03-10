@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const navLinks = [
-  { href: "#", label: "HOME", active: true },
-  { href: "#", label: "FOUNDERS", active: false },
-  { href: "#", label: "COMPANIES", active: false },
-  { href: "#", label: "OPENINGS", active: false },
+  { href: "/", label: "HOME", active: true },
+  { href: "#", label: "ABOUT", active: false },
+  { href: "#", label: "SERVICES", active: false },
+  { href: "#", label: "PORTAL", active: false },
 ];
 
 function NavLink({

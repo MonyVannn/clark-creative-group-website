@@ -5,20 +5,13 @@ import Spline from "@splinetool/react-spline";
 import { FiArrowRight } from "react-icons/fi";
 
 const navLinks = [
-  { href: "#", label: "HOME" },
-  { href: "#", label: "FOUNDERS" },
-  { href: "#", label: "COMPANIES" },
-  { href: "#", label: "OPENINGS" },
+  { href: "/", label: "HOME" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/services", label: "SERVICES" },
+  { href: "/contact", label: "CONTACT" },
 ];
 
-const socialPlatforms = [
-  "LinkedIn",
-  "Instagram",
-  "Dribbble",
-  "Behance",
-  "Pinterest",
-  "Facebook",
-];
+const socialPlatforms = ["LinkedIn", "Instagram"];
 
 function FooterCTA({
   children,
@@ -72,49 +65,37 @@ export default function Footer() {
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
       // UI only - no backend
-      setFormState({ name: "", email: "", phone: "", company: "", message: "" });
+      setFormState({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
     }
   };
 
   return (
-    <footer className="relative bg-[#181818] text-white overflow-hidden">
+    <footer className="relative bg-[#191919] text-white overflow-hidden">
       {/* Spline scene - bottom right of footer */}
       <div className="pointer-events-none absolute top-0 right-0 z-0 h-[600px] w-[500px]">
         <Spline
           scene="https://prod.spline.design/f-MiHctywQQqwRd7/scene.splinecode"
-          className="h-full w-full scale-75"
+          className="h-full w-full scale-200 opacity-5"
         />
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 container-wide mx-auto px-6 py-16 lg:px-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
-          {/* Left Column - Locations & Contact */}
+          {/* Left Column - Contact & Connect */}
           <div className="flex flex-col gap-10 md:flex-row md:gap-12 lg:flex-col lg:gap-12">
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
-                  THE STUDIO
-                </h3>
-                <p className="mt-2 font-satoshi text-sm text-neutral-400">
-                  123 Creative Lane, Brighton, BN1 1AA
-                </p>
-                <div className="mt-3">
-                  <FooterCTA href="#">Brighton Studio</FooterCTA>
-                </div>
-              </div>
-              <div>
-                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
-                  LONDON OFFICE
-                </h3>
-                <p className="mt-2 font-satoshi text-sm text-neutral-400">
-                  45 Design Street, Richmond, TW9 1AB
-                </p>
-                <div className="mt-3">
-                  <FooterCTA href="#">London Office</FooterCTA>
-                </div>
-              </div>
-            </div>
+            <p className="font-clash-display text-4xl text-white-400 font-semibold">
+              CLARK CREATIVE
+            </p>
+            <p className="font-clash-display text-4xl text-white-400 font-semibold -mt-14">
+              GROUP
+            </p>
             <div className="flex flex-col gap-8 md:flex-row lg:flex-col">
               <div>
                 <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
@@ -123,11 +104,8 @@ export default function Footer() {
                 <p className="mt-2 font-satoshi text-sm text-neutral-400">
                   contact@clarkcreativegroup.com
                 </p>
-                <p className="mt-1 font-satoshi text-sm text-neutral-400">
-                  +44 20 1234 5678
-                </p>
                 <div className="mt-4">
-                  <FooterCTA href="#">Start a Project</FooterCTA>
+                  <FooterCTA href="/contact">Start a Conversation</FooterCTA>
                 </div>
               </div>
               <div>
@@ -155,6 +133,10 @@ export default function Footer() {
             <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
               GET IN TOUCH
             </h3>
+            <p className="mt-2 font-satoshi text-sm text-neutral-400">
+              Thirty minutes. Your vision, your business, and where Space,
+              Story, or System creates the most momentum.
+            </p>
             <form onSubmit={handleSubmit} className="mt-6 space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
@@ -231,7 +213,7 @@ export default function Footer() {
                   type="submit"
                   className="group flex items-center gap-3 text-sm font-medium tracking-wide text-white transition-opacity hover:opacity-80"
                 >
-                  <span>Send Message</span>
+                  <span>Let&apos;s Talk</span>
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/60 transition-colors group-hover:border-white">
                     <FiArrowRight className="h-3.5 w-3.5" />
                   </span>
@@ -272,8 +254,7 @@ export default function Footer() {
       <div className="relative z-10 border-t border-white/20">
         <div className="container-wide mx-auto flex flex-col items-center justify-between gap-4 px-6 py-4 lg:flex-row lg:px-16">
           <p className="max-w-2xl text-center font-satoshi text-[10px] leading-relaxed text-neutral-500 lg:text-left">
-            Clark Creative Group Ltd. Company Reg No. 12345678. Registered
-            Address: 123 Creative Lane, Brighton, BN1 1AA
+            Creators of Visionary Lives and Businesses
           </p>
           <p className="shrink-0 font-satoshi text-[10px] text-neutral-500">
             © 2025 Clark Creative Group
