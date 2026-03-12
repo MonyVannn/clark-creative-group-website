@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import IntroSection from "./components/IntroSection";
+import TargetAudienceSection from "./components/TargetAudienceSection";
 import CoreOverview from "./components/CoreOverview";
 import TestimonialSection from "./components/TestimonialSection";
 import Footer from "./components/Footer";
@@ -34,6 +35,7 @@ export default function Home() {
               <CoreOverview />
             </div>
             <TestimonialSection />
+            <TargetAudienceSection />
           </div>
           <Footer />
         </main>

@@ -209,8 +209,7 @@ export default function TestimonialSection() {
 
       const st = ScrollTrigger.create({
         trigger: elem,
-        start: "top 30%",
-        end: "bottom 30%",
+        start: "top 20%",
         markers: false,
         onEnter: () => {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });
@@ -247,7 +246,7 @@ export default function TestimonialSection() {
             isDarkTheme ? "text-white" : "text-[#191919]"
           }`}
         >
-          Proof
+          Case Studies
         </h3>
         <p
           className={`font-satoshi my-4 transition-colors duration-1400 ${

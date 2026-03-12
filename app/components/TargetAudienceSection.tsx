@@ -1,0 +1,124 @@
+"use client";
+
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CopyReveal from "./CopyReveal";
+import { useTheme } from "../contexts/ThemeContext";
+import Image from "next/image";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function TargetAudienceSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { isDarkTheme, setIsDarkTheme } = useTheme();
+  const setIsDarkThemeRef = useRef(setIsDarkTheme);
+
+  useGSAP(
+    () => {
+      const elem = sectionRef.current;
+      const mainEl = elem?.closest("main");
+      if (!elem || !mainEl) return;
+
+      const color = elem.getAttribute("data-color") ?? "#191919";
+      const defaultColor = "#f2f2f2";
+
+      const st = ScrollTrigger.create({
+        trigger: elem,
+        start: "top 35%",
+        end: "bottom 35%",
+        markers: false,
+        onEnter: () => {
+          gsap.to(mainEl, { backgroundColor: color, duration: 1 });
+          setIsDarkThemeRef.current(true);
+        },
+        onLeave: () => {
+          gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
+          setIsDarkThemeRef.current(false);
+        },
+        onLeaveBack: () => {
+          gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
+          setIsDarkThemeRef.current(false);
+        },
+        onEnterBack: () => {
+          gsap.to(mainEl, { backgroundColor: color, duration: 1 });
+          setIsDarkThemeRef.current(true);
+        },
+      });
+
+      return () => st.kill();
+    },
+    { scope: sectionRef },
+  );
+
+  return (
+    <section
+      ref={sectionRef}
+      data-color="#191919"
+      className="relative w-full px-8 py-28 md:px-12 lg:px-16"
+    >
+      <Image
+        src="/blob.png"
+        width={600}
+        height={600}
+        alt="blob"
+        className="absolute top-0 left-1/5 opacity-5 w-[400px] h-[400px]"
+      />
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
+        <p
+          className={`font-satoshi text-xs font-semibold tracking-[0.22em] uppercase ${
+            isDarkTheme ? "text-neutral-400" : "text-neutral-600"
+          }`}
+        >
+          Who is this for
+        </p>
+
+        <CopyReveal
+          as="div"
+          className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug ${
+            isDarkTheme ? "text-neutral-100" : "text-[#191919]"
+          }`}
+          blockColor="#f2f2f2"
+          stagger={0.12}
+          textAlign="left"
+        >
+          The landscape is shifting. Founders who build the next generation of
+          businesses aren&apos;t hiring five vendors and hoping the pieces fit.
+          They&apos;re working with partners who see the whole picture — and
+          design every part to work together.
+        </CopyReveal>
+
+        <CopyReveal
+          as="div"
+          className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug ${
+            isDarkTheme ? "text-neutral-200" : "text-[#191919]"
+          }`}
+          blockColor="#f2f2f2"
+          stagger={0.1}
+          delay={0.2}
+          textAlign="left"
+        >
+          If you build, grow, and create. If you have a vision and the will to
+          make it real — whether that&apos;s a{" "}
+          <span className="font-clash-display font-medium underline decoration-white/40 underline-offset-4">
+            regenerative farm
+          </span>
+          , a{" "}
+          <span className="font-clash-display font-medium underline decoration-white/40 underline-offset-4">
+            food company with a mission
+          </span>
+          , a{" "}
+          <span className="font-clash-display font-medium underline decoration-white/40 underline-offset-4">
+            construction business ready to scale
+          </span>
+          , or something entirely new. If you believe your business can be an
+          extension of your values and you&apos;re ready to build it that way —
+          <span className="mt-4 block font-clash-display font-medium text-2xl md:text-3xl lg:text-4xl">
+            you&apos;re in the right place.
+          </span>
+        </CopyReveal>
+      </div>
+    </section>
+  );
+}
