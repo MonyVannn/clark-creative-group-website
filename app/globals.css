@@ -44,6 +44,11 @@ body {
   max-width: 1280px;
 }
 
+/* Hide preloader-targeted content initially to prevent flash before JS loads */
+[data-preloader-target] {
+  opacity: 0;
+}
+
 /* Preloader animation - line mask for SplitText */
 .preloader .line {
   transform: translateY(100%);

@@ -15,7 +15,7 @@ const COPY_2 =
 function animateCounter(
   element: HTMLElement | null,
   duration = 5,
-  delay = 0
+  delay = 0,
 ): void {
   if (!element) return;
   let currentValue = 0;
@@ -66,10 +66,10 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     if (!preloader || !revealer || !copy1 || !copy2 || !counter) return;
 
     const pageTargets = document.querySelectorAll<HTMLElement>(
-      "[data-preloader-target]"
+      "[data-preloader-target]",
     );
 
-    gsap.set(pageTargets, { y: "35svh" });
+    gsap.set(pageTargets, { y: "35svh", autoAlpha: 0 });
 
     const split1 = SplitText.create(copy1, {
       type: "lines",
@@ -88,14 +88,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     });
     splitRefs.current = [split1, split2, splitCounter];
 
-    gsap.set(
-      [
-        ...split1.lines,
-        ...split2.lines,
-        ...splitCounter.lines,
-      ],
-      { y: "100%" }
-    );
+    gsap.set([copy1, copy2, counter], { visibility: "visible" });
 
     animateCounter(counter, 4.5, 2);
 
@@ -107,20 +100,13 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       },
     });
 
-    tl.to(
-      [
-        ...split1.lines,
-        ...split2.lines,
-        ...splitCounter.lines,
-      ],
-      {
-        y: "0%",
-        duration: 1,
-        stagger: 0.075,
-        ease: "power3.out",
-        delay: 1,
-      }
-    )
+    tl.to([...split1.lines, ...split2.lines, ...splitCounter.lines], {
+      y: "0%",
+      duration: 1,
+      stagger: 0.075,
+      ease: "power3.out",
+      delay: 1,
+    })
       .to(
         revealer,
         {
@@ -128,7 +114,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           duration: 0.75,
           ease: "power2.out",
         },
-        "<"
+        "<",
       )
       .to(revealer, {
         scale: 0.25,
@@ -157,16 +143,17 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           duration: 1.25,
           ease: "power3.out",
         },
-        "-=1"
+        "-=1",
       )
       .to(
         pageTargets,
         {
           y: "0%",
+          autoAlpha: 1,
           duration: 1.25,
           ease: "power3.out",
         },
-        "<"
+        "<",
       );
   }, [onComplete]);
 
@@ -174,7 +161,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     () => {
       runAnimation();
     },
-    { scope: preloaderRef, dependencies: [] }
+    { scope: preloaderRef, dependencies: [] },
   );
 
   useEffect(() => {
@@ -201,6 +188,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           <p
             ref={copy1Ref}
             className="w-full font-mono text-[0.8rem] font-medium uppercase leading-none tracking-tight text-white md:w-3/4"
+            style={{ visibility: "hidden" }}
           >
             {COPY_1}
           </p>
@@ -209,6 +197,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           <p
             ref={copy2Ref}
             className="w-full font-mono text-[0.8rem] font-medium uppercase leading-none tracking-tight text-white md:w-3/4"
+            style={{ visibility: "hidden" }}
           >
             {COPY_2}
           </p>
@@ -219,6 +208,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         <p
           ref={counterRef}
           className="font-mono text-[0.8rem] font-medium uppercase leading-none tracking-tight text-white"
+          style={{ visibility: "hidden" }}
         >
           00
         </p>

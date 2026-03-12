@@ -31,7 +31,7 @@ export default function PreloaderGate({
 
   return (
     <PreloaderContext.Provider value={{ isReady: !isLoading }}>
-      <Preloader onComplete={handleComplete} />
+      {isLoading && <Preloader onComplete={handleComplete} />}
       {children}
     </PreloaderContext.Provider>
   );
