@@ -6,7 +6,7 @@ import { Nav } from "./MobileNav";
 
 const navLinks = [
   { href: "/", label: "HOME", active: true },
-  { href: "#", label: "ABOUT", active: false },
+  { href: "/about", label: "ABOUT", active: false },
   { href: "#", label: "SERVICES", active: false },
   { href: "#", label: "PORTAL", active: false },
 ];
