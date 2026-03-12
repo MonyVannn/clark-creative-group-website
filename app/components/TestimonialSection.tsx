@@ -209,7 +209,7 @@ export default function TestimonialSection() {
 
       const st = ScrollTrigger.create({
         trigger: elem,
-        start: "top 100%",
+        start: "top center",
         markers: false,
         onEnter: () => {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });
@@ -238,7 +238,7 @@ export default function TestimonialSection() {
     <section
       ref={sectionRef}
       data-color="#191919"
-      className="grid items-center grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 overflow-hidden"
+      className="grid items-center grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 overflow-hidden lg:py-56"
     >
       <div>
         <h3

@@ -46,14 +46,14 @@ export default function TargetAudienceSection() {
     <section
       ref={sectionRef}
       data-color="#191919"
-      className="relative w-full px-8 py-28 md:px-12 lg:px-16"
+      className="relative w-full px-8 py-28 lg:py-40 md:px-12 lg:px-16"
     >
       <Image
         src="/blob.png"
         width={600}
         height={600}
         alt="blob"
-        className="absolute top-0 2xl:left-1/5 opacity-5 w-[400px] h-[400px]"
+        className="absolute top-0 2xl:left-1/5 opacity-15 w-[400px] h-[400px]"
       />
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
         <p
