@@ -215,10 +215,6 @@ export default function TestimonialSection() {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });
           setIsDarkThemeRef.current(true);
         },
-        onLeave: () => {
-          gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
-          setIsDarkThemeRef.current(false);
-        },
         onLeaveBack: () => {
           gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
           setIsDarkThemeRef.current(false);

@@ -22,10 +22,10 @@ export default function TargetAudienceSection() {
       if (!elem || !mainEl) return;
 
       const color = elem.getAttribute("data-color") ?? "#191919";
-      const defaultColor = "#f2f2f2";
 
       const st = ScrollTrigger.create({
         trigger: elem,
+        end: "bottom top",
         markers: false,
         onEnter: () => {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });

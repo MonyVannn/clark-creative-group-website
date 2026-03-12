@@ -3,12 +3,13 @@
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import { Nav } from "./MobileNav";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { href: "/", label: "HOME", active: true },
-  { href: "/about", label: "ABOUT", active: false },
-  { href: "#", label: "SERVICES", active: false },
-  { href: "#", label: "PORTAL", active: false },
+  { href: "/", label: "HOME" },
+  { href: "/about", label: "ABOUT" },
+  { href: "#", label: "SERVICES" },
+  { href: "#", label: "PORTAL" },
 ];
 
 function NavLink({
@@ -58,6 +59,7 @@ function NavLink({
 
 export default function Header() {
   const { isDarkTheme } = useTheme();
+  const pathname = usePathname();
 
   return (
     <header
@@ -92,7 +94,7 @@ export default function Header() {
             <NavLink
               key={link.label}
               href={link.href}
-              active={link.active}
+              active={pathname === link.href}
               isDarkTheme={isDarkTheme}
             >
               {link.label}
