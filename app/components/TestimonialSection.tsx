@@ -209,7 +209,7 @@ export default function TestimonialSection() {
 
       const st = ScrollTrigger.create({
         trigger: elem,
-        start: "top 20%",
+        start: "top 100%",
         markers: false,
         onEnter: () => {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });

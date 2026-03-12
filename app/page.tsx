@@ -7,6 +7,7 @@ import TestimonialSection from "./components/TestimonialSection";
 import Footer from "./components/Footer";
 import PreloaderGate from "./components/PreloaderGate";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Line from "./components/Line";
 
 export default function Home() {
   return (
@@ -37,6 +38,8 @@ export default function Home() {
             <TestimonialSection />
             <TargetAudienceSection />
           </div>
+          <Line />
+
           <Footer />
         </main>
       </ThemeProvider>

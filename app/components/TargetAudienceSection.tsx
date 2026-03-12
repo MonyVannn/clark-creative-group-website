@@ -26,8 +26,6 @@ export default function TargetAudienceSection() {
 
       const st = ScrollTrigger.create({
         trigger: elem,
-        start: "top 35%",
-        end: "bottom 35%",
         markers: false,
         onEnter: () => {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });
@@ -63,7 +61,7 @@ export default function TargetAudienceSection() {
         width={600}
         height={600}
         alt="blob"
-        className="absolute top-0 left-1/5 opacity-5 w-[400px] h-[400px]"
+        className="absolute top-0 2xl:left-1/5 opacity-5 w-[400px] h-[400px]"
       />
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
         <p

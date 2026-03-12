@@ -76,7 +76,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#191919] text-white overflow-hidden">
+    <footer className="relative bg-[#191919] text-white overflow-hidden z-10">
       {/* Spline scene - bottom right of footer */}
       <div className="pointer-events-none absolute top-0 right-0 z-0 h-[600px] w-[500px]">
         <Spline
@@ -96,6 +96,10 @@ export default function Footer() {
             <p className="font-clash-display text-4xl text-white-400 font-semibold -mt-14">
               GROUP
             </p>
+            <h3 className="font-satoshi w-2/3 -mt-10 text-neutral-400">
+              We partner with a small number of founders at a time. Every
+              engagement gets our full attention and our full creativity.
+            </h3>
             <div className="flex flex-col gap-8 md:flex-row lg:flex-col">
               <div>
                 <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
@@ -104,9 +108,6 @@ export default function Footer() {
                 <p className="mt-2 font-satoshi text-sm text-neutral-400">
                   contact@clarkcreativegroup.com
                 </p>
-                <div className="mt-4">
-                  <FooterCTA href="/contact">Start a Conversation</FooterCTA>
-                </div>
               </div>
               <div>
                 <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
