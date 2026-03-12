@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
+import { Nav } from "./MobileNav";
 
 const navLinks = [
   { href: "/", label: "HOME", active: true },
@@ -78,7 +79,8 @@ export default function Header() {
         </div>
 
         {/* Navigation */}
-        <nav className="flex items-center gap-8 md:gap-12">
+        <Nav />
+        <nav className="items-center gap-8 md:gap-12 hidden lg:flex">
           {navLinks.map((link) => (
             <NavLink
               key={link.label}
@@ -92,7 +94,7 @@ export default function Header() {
         </nav>
 
         {/* CTA Button */}
-        <div className="shrink-0">
+        <div className="shrink-0 hidden lg:flex">
           <button
             className={`rounded-md cursor-pointer px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
               isDarkTheme

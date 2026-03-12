@@ -112,7 +112,7 @@ export default function TargetAudienceSection() {
           </span>
           , or something entirely new. If you believe your business can be an
           extension of your values and you&apos;re ready to build it that way —
-          <span className="mt-4 block font-clash-display font-medium text-2xl md:text-3xl lg:text-4xl">
+          <span className="mt-4 block font-clash-display font-medium text-xl lg:text-4xl">
             you&apos;re in the right place.
           </span>
         </CopyReveal>

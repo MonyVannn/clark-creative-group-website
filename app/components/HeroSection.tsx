@@ -116,11 +116,23 @@ export default function HeroSection() {
         {/* Copy row - absolute for consistent position across screen sizes */}
         <div
           data-preloader-target="hero-content"
-          className="absolute left-0 right-0 top-[clamp(6rem,12vh,12rem)] z-20 flex w-full flex-col px-6 md:flex-row md:items-end md:justify-between md:gap-12 lg:px-12 xl:top-[clamp(2rem,6vh,6rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12"
+          className="absolute left-0 right-0 top-10 z-20 flex w-full flex-col px-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-12 xl:top-[clamp(2rem,6vh,6rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12"
         >
           {/* Heading column */}
           <div className="mb-12 md:mb-0 md:min-w-0 md:flex-1">
-            <h1 className="font-clash-display text-5xl font-semibold leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
+            <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-[#191919] lg:text-8xl xl:text-7xl 2xl:text-8xl">
+              <AnimatedCopy as="span" className="block">
+                Creators of
+              </AnimatedCopy>
+              <AnimatedCopy as="span" className="block">
+                Visionary Lives
+              </AnimatedCopy>
+              <AnimatedCopy as="span" className="block">
+                and Businesses
+              </AnimatedCopy>
+            </h1>
+            {/* {Mobile & Tablet} */}
+            <h1 className="font-clash-display lg:hidden text-5xl font-semibold leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
                 Creators of
               </AnimatedCopy>
@@ -134,10 +146,10 @@ export default function HeroSection() {
           </div>
 
           {/* Description + buttons column */}
-          <div className="flex flex-col gap-6 md:w-80 md:shrink-0 md:gap-8 xl:w-72 xl:gap-6 2xl:w-80 2xl:gap-8">
+          <div className="flex flex-col gap-6 lg:w-80 lg:shrink-0 lg:gap-8 xl:w-72 xl:gap-6 2xl:w-80 2xl:gap-8">
             <AnimatedCopy
               as="p"
-              className="font-satoshi text-xs font-medium uppercase leading-relaxed tracking-tight text-[#191919] md:text-left md:text-xl xl:text-lg 2xl:text-xl"
+              className="font-satoshi text-xs font-medium uppercase leading-relaxed tracking-tight text-[#191919]  md:text-xl xl:text-lg 2xl:text-xl mt-10"
             >
               A creative advisory for founders. We design brands, build business
               systems, and connect the whole picture.

@@ -89,7 +89,7 @@ export default function Footer() {
       <div className="relative z-10 container-wide mx-auto px-6 py-16 lg:px-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
           {/* Left Column - Contact & Connect */}
-          <div className="flex flex-col gap-10 md:flex-row md:gap-12 lg:flex-col lg:gap-12">
+          <div className="flex flex-col gap-10 md:gap-12 md:flex-col lg:gap-12">
             <p className="font-clash-display text-4xl text-white-400 font-semibold">
               CLARK CREATIVE
             </p>

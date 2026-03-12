@@ -238,9 +238,9 @@ export default function TestimonialSection() {
     <section
       ref={sectionRef}
       data-color="#191919"
-      className=" py-24 px-4 lg:px-8 grid items-center grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 overflow-hidden"
+      className="grid items-center grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 overflow-hidden"
     >
-      <div className="p-10">
+      <div>
         <h3
           className={`font-clash-display text-5xl font-semibold transition-colors duration-1400 ${
             isDarkTheme ? "text-white" : "text-[#191919]"
