@@ -19,7 +19,7 @@ export default function Home() {
           <div className="relative min-h-screen">
             {/* Grid area - white visible outside via parent padding */}
             <div
-              className="pointer-events-none absolute inset-6 md:inset-y-2 lg:inset-x-16 z-0"
+              className="pointer-events-none absolute inset-6 inset-y-0 md:inset-y-2 lg:inset-x-16 z-0"
               style={{
                 backgroundImage: `
             linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),

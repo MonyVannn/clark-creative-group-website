@@ -31,14 +31,6 @@ export default function TargetAudienceSection() {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });
           setIsDarkThemeRef.current(true);
         },
-        onLeave: () => {
-          gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
-          setIsDarkThemeRef.current(false);
-        },
-        onLeaveBack: () => {
-          gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
-          setIsDarkThemeRef.current(false);
-        },
         onEnterBack: () => {
           gsap.to(mainEl, { backgroundColor: color, duration: 1 });
           setIsDarkThemeRef.current(true);
@@ -112,7 +104,7 @@ export default function TargetAudienceSection() {
           </span>
           , or something entirely new. If you believe your business can be an
           extension of your values and you&apos;re ready to build it that way —
-          <span className="mt-4 block font-clash-display font-medium text-xl lg:text-4xl">
+          <span className="mt-4 block font-clash-display font-medium md:text-xl lg:text-4xl">
             you&apos;re in the right place.
           </span>
         </CopyReveal>

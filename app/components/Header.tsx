@@ -66,15 +66,22 @@ export default function Header() {
         isDarkTheme ? "bg-[#191919]/90" : "bg-[#f2f2f2]"
       }`}
     >
-      <div className="md:px-12 lg:px-16 flex items-center justify-between">
+      <div className="px-6 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Brand */}
         <div className="shrink-0">
           <span
-            className={`font-clash-display text-lg font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
+            className={`font-clash-display hidden md:block font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
               isDarkTheme ? "text-white" : "text-[#171717]"
             }`}
           >
             CLARK CREATIVE GROUP
+          </span>
+          <span
+            className={`font-clash-display md:hidden text-2xl font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
+              isDarkTheme ? "text-white" : "text-[#171717]"
+            }`}
+          >
+            CLARK CREATIVE
           </span>
         </div>
 

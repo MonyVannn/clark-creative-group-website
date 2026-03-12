@@ -1,5 +1,11 @@
 import { SiInstagram, SiLinkedin, SiYoutube } from "react-icons/si";
-import React, { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import React, {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 
@@ -80,7 +86,7 @@ const Logo = () => {
       }}
       exit={{ opacity: 0, y: -12 }}
       href="#"
-      className="grid h-20 w-20 place-content-center rounded-br-xl rounded-tl-xl bg-white transition-colors hover:bg-violet-50"
+      className="grid h-20 w-20 place-content-center rounded-br-xl rounded-tl-xl bg-[#191919] transition-colors hover:bg-violet-50"
     >
       <h1 className="font-clash-display text-5xl font-black">C</h1>
     </motion.a>
@@ -94,9 +100,20 @@ const HamburgerButton = ({
   active: boolean;
   setActive: Dispatch<SetStateAction<boolean>>;
 }) => {
+  // 1. Track if the screen is mobile (under 768px to match Tailwind's 'md' breakpoint)
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Check on mount
+    window.addEventListener("resize", checkMobile); // Check on resize
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <>
       <motion.div
+        custom={isMobile} // Pass isMobile to the underlay variants
         initial={false}
         animate={active ? "open" : "closed"}
         style={{ top: 16, right: 16 }}
@@ -107,23 +124,28 @@ const HamburgerButton = ({
         initial={false}
         animate={active ? "open" : "closed"}
         onClick={() => setActive((pv) => !pv)}
-        className={`group fixed block lg:hidden right-4 z-50 h-20 w-20 bg-white/0 transition-all hover:bg-white/20 ${
+        // 2. Add md: classes to scale the button back up to 80px on desktop
+        className={`group fixed block lg:hidden right-4 z-50 h-14 w-14 md:h-20 md:w-20 bg-white/0 transition-all hover:bg-white/20 ${
           active ? "rounded-bl-xl rounded-tr-xl" : "rounded-xl"
         }`}
       >
         <motion.span
           variants={HAMBURGER_VARIANTS.top}
-          className="absolute block h-1 w-10 bg-[#191919]"
+          // 3. Add md: classes for the top line
+          className="absolute block h-1 w-6 md:w-10 bg-[#191919]"
           style={{ y: "-50%", left: "50%", x: "-50%" }}
         />
         <motion.span
           variants={HAMBURGER_VARIANTS.middle}
-          className="absolute block h-1 w-10 bg-[#191919]"
+          // Add md: classes for the middle line
+          className="absolute block h-1 w-6 md:w-10 bg-[#191919]"
           style={{ left: "50%", x: "-50%", top: "50%", y: "-50%" }}
         />
         <motion.span
+          custom={isMobile} // Pass isMobile to the bottom line variants
           variants={HAMBURGER_VARIANTS.bottom}
-          className="absolute block h-1 w-5 bg-[#191919]"
+          // Add md: classes for the bottom line
+          className="absolute block h-1 w-3 md:w-5 bg-[#191919]"
           style={{ x: "-50%", y: "50%" }}
         />
       </motion.button>
@@ -218,9 +240,10 @@ const UNDERLAY_VARIANTS = {
     height: "calc(100vh - 32px)",
     transition: { type: "spring", mass: 3, stiffness: 400, damping: 50 },
   },
-  closed: {
-    width: "80px",
-    height: "80px",
+  // Turn 'closed' into a function that accepts isMobile
+  closed: (isMobile: boolean) => ({
+    width: isMobile ? "56px" : "80px",
+    height: isMobile ? "56px" : "80px",
     transition: {
       delay: 0.75,
       type: "spring",
@@ -228,7 +251,7 @@ const UNDERLAY_VARIANTS = {
       stiffness: 400,
       damping: 50,
     },
-  },
+  }),
 };
 
 const HAMBURGER_VARIANTS = {
@@ -256,10 +279,11 @@ const HAMBURGER_VARIANTS = {
       bottom: ["35%", "50%", "50%"],
       left: "50%",
     },
-    closed: {
+    // Turn 'closed' into a function that accepts isMobile
+    closed: (isMobile: boolean) => ({
       rotate: ["45deg", "0deg", "0deg"],
       bottom: ["50%", "50%", "35%"],
-      left: "calc(50% + 10px)",
-    },
+      left: isMobile ? "calc(50% + 6px)" : "calc(50% + 10px)",
+    }),
   },
 };
