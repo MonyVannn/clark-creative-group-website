@@ -1,4 +1,5 @@
-import { SiInstagram, SiLinkedin, SiYoutube } from "react-icons/si";
+import { SiInstagram, SiYoutube } from "react-icons/si";
+import { FaLinkedinIn } from "react-icons/fa";
 import React, {
   Dispatch,
   ReactNode,
@@ -225,7 +226,7 @@ const SOCIAL_CTAS = [
     href: "#",
   },
   {
-    Component: SiLinkedin,
+    Component: FaLinkedinIn,
     href: "#",
   },
   {

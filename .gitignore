@@ -42,3 +42,4 @@ next-env.d.ts
 
 # github
 /.github
+package-lock.json
