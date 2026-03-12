@@ -69,7 +69,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       "[data-preloader-target]"
     );
 
-    gsap.set(pageTargets, { y: "35svh" });
+    gsap.set(pageTargets, { y: "35svh", autoAlpha: 0 });
 
     const split1 = SplitText.create(copy1, {
       type: "lines",
@@ -87,6 +87,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       linesClass: "line",
     });
     splitRefs.current = [split1, split2, splitCounter];
+
+    gsap.set([copy1, copy2, counter], { visibility: "visible" });
 
     gsap.set(
       [
@@ -163,6 +165,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         pageTargets,
         {
           y: "0%",
+          autoAlpha: 1,
           duration: 1.25,
           ease: "power3.out",
         },
@@ -201,6 +204,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           <p
             ref={copy1Ref}
             className="w-full font-mono text-[0.8rem] font-medium uppercase leading-none tracking-tight text-white md:w-3/4"
+            style={{ visibility: "hidden" }}
           >
             {COPY_1}
           </p>
@@ -209,6 +213,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           <p
             ref={copy2Ref}
             className="w-full font-mono text-[0.8rem] font-medium uppercase leading-none tracking-tight text-white md:w-3/4"
+            style={{ visibility: "hidden" }}
           >
             {COPY_2}
           </p>
@@ -219,6 +224,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         <p
           ref={counterRef}
           className="font-mono text-[0.8rem] font-medium uppercase leading-none tracking-tight text-white"
+          style={{ visibility: "hidden" }}
         >
           00
         </p>
