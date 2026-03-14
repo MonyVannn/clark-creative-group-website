@@ -1,6 +1,7 @@
 "use client";
 
-import CopyReveal from "../ui/CopyReveal";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutHeroSection({
   onCtaClick,
@@ -9,7 +10,20 @@ export default function AboutHeroSection({
 }) {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center pt-32 pb-24 text-center overflow-hidden">
-      <div className="z-10 flex flex-col items-end justify-center">
+      <div className="relative z-10 flex flex-col items-end justify-center">
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-0 opacity-50 w-50 h-50 z-0 pointer-events-none scale-x-[-1]"
+        >
+          <Image
+            src="/square.png"
+            width={1000}
+            height={1000}
+            alt="square"
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
         <h1 className="font-clash-display text-left text-3xl md:text-5xl lg:text-6xl xl:text-8xl font-semibold text-[#191919] max-w-4xl tracking-tight">
           We set out to build a life. The company came from that.
         </h1>

@@ -3,6 +3,7 @@ import { ThemeProvider } from "../components/contexts/ThemeContext";
 import Line from "../components/ui/Line";
 import Footer from "../components/footer/Footer";
 import AboutHeroSection from "../components/aboutpage/AboutHeroSection";
+import TeamSection from "../components/aboutpage/TeamSection";
 import NoPreloaderGate from "../components/layout/NoPreloaderGate";
 
 export default function About() {
@@ -24,6 +25,7 @@ export default function About() {
             />
             <div className="relative z-10 px-8 md:px-6 lg:px-16">
               <AboutHeroSection />
+              <TeamSection />
             </div>
           </div>
           <Line />
