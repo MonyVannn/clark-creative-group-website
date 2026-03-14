@@ -1,13 +1,13 @@
-import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
-import IntroSection from "./components/IntroSection";
-import TargetAudienceSection from "./components/TargetAudienceSection";
-import CoreOverview from "./components/CoreOverview";
-import TestimonialSection from "./components/TestimonialSection";
-import Footer from "./components/Footer";
-import PreloaderGate from "./components/PreloaderGate";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import Line from "./components/Line";
+import Header from "./components/header/Header";
+import HeroSection from "./components/homepage/HeroSection";
+import IntroSection from "./components/homepage/IntroSection";
+import TargetAudienceSection from "./components/homepage/TargetAudienceSection";
+import CoreOverview from "./components/aboutpage/CoreOverview";
+import TestimonialSection from "./components/homepage/TestimonialSection";
+import Footer from "./components/footer/Footer";
+import PreloaderGate from "./components/layout/PreloaderGate";
+import { ThemeProvider } from "./components/contexts/ThemeContext";
+import Line from "./components/ui/Line";
 
 export default function Home() {
   return (

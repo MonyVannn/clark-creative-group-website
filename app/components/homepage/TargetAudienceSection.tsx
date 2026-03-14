@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CopyReveal from "./CopyReveal";
+import CopyReveal from "../ui/CopyReveal";
 import { useTheme } from "../contexts/ThemeContext";
 import Image from "next/image";
 

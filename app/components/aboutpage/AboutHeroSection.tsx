@@ -1,6 +1,6 @@
 "use client";
 
-import CopyReveal from "./CopyReveal";
+import CopyReveal from "../ui/CopyReveal";
 
 export default function AboutHeroSection({
   onCtaClick,

@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useMemo, useRef } from "react";
 import Spline from "@splinetool/react-spline";
-import AnimatedCopy from "./AnimatedCopy";
+import AnimatedCopy from "../ui/AnimatedCopy";
 
 gsap.registerPlugin(ScrollTrigger);
 

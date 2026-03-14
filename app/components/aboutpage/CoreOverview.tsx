@@ -4,9 +4,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import CopyReveal from "./CopyReveal";
+import CopyReveal from "../ui/CopyReveal";
 import { FaServicestack } from "react-icons/fa6";
-import SplitText from "./SplitText";
+import SplitText from "../ui/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 

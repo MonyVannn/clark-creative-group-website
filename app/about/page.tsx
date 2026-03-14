@@ -1,9 +1,9 @@
-import Header from "../components/Header";
-import { ThemeProvider } from "../contexts/ThemeContext";
-import Line from "../components/Line";
-import Footer from "../components/Footer";
-import AboutHeroSection from "../components/AboutHeroSection";
-import NoPreloaderGate from "../components/NoPreloaderGate";
+import Header from "../components/header/Header";
+import { ThemeProvider } from "../components/contexts/ThemeContext";
+import Line from "../components/ui/Line";
+import Footer from "../components/footer/Footer";
+import AboutHeroSection from "../components/aboutpage/AboutHeroSection";
+import NoPreloaderGate from "../components/layout/NoPreloaderGate";
 
 export default function About() {
   return (

@@ -1,36 +1,36 @@
 "use client";
 
-import ScreenFitText from "./ScreenFitText";
-import NeuFollowButton from "./NeuFollowButton";
-import FloatingNav from "./FloatingNav";
+import ScreenFitText from "../ui/ScreenFitText";
+import NeuFollowButton from "../ui/NeuFollowButton";
+import FloatingNav from "../layout/FloatingNav";
 
 export default function HeroSectionV2() {
   const gridStyle: React.CSSProperties = {
     backgroundImage: [
-      "linear-gradient(to right, rgba(188, 108, 37, 0.2) 1px, transparent 1px)",
-      "linear-gradient(to bottom, rgba(188, 108, 37, 0.2) 1px, transparent 1px)",
+      "linear-gradient(to right, rgba(245, 245, 245, 0.14) 1px, transparent 1px)",
+      "linear-gradient(to bottom, rgba(245, 245, 245, 0.14) 1px, transparent 1px)",
     ].join(", "),
     backgroundSize: "30px 30px",
   };
 
   return (
     <section
-      className="h-screen w-screen bg-[#FEFAE0] p-10 pt-28"
+      className="h-screen w-screen bg-[#050B18] p-10 pt-28"
       style={{ fontFamily: "var(--font-geist-sans)" }}
     >
       <FloatingNav />
-      <div className="w-full h-full grid grid-rows-5 border-[#DDA15E] border-2">
+      <div className="w-full h-full grid grid-rows-5 border-[#2D3748] border-2">
         {/* Rows 1-2: Grid area */}
         <div className="relative w-full row-span-2" style={gridStyle}>
           <div className="absolute inset-0 flex items-center justify-center">
-            <CcgLogo className="h-[clamp(6rem,62vw,72rem)] max-h-[72vh] w-auto text-[#DDA15E]" />
+            <CcgLogo className="h-[clamp(6rem,62vw,72rem)] max-h-[72vh] w-auto text-[#FFC878]" />
           </div>
         </div>
 
         {/* Row 3: Labels */}
-        <div style={gridStyle}>
+        <div style={gridStyle} className="relative">
           {/* Divider */}
-          <div className="h-[24px] w-full bg-[#DDA15E]" />
+          <div className="absolute top-0 left-0 h-[18px] w-full bg-[#2D3748]" />
           <div className="grid grid-cols-2 sm:grid-cols-4 w-full h-full items-center gap-y-3 sm:gap-y-0 px-2 sm:px-0">
             {[
               ["DESIGN", "YOUR SPACE"],
@@ -39,7 +39,7 @@ export default function HeroSectionV2() {
             ].map(([line1, line2], i) => (
               <div key={i} className="px-3 sm:mx-auto font-medium z-50">
                 <p
-                  className="font-mono text-[clamp(0.6rem,1.25rem,1.75rem)] tracking-[0.15em] leading-snug text-[#1E1F1C]/80 uppercase"
+                  className="font-mono text-[clamp(0.6rem,1.25rem,1.75rem)] tracking-[0.15em] leading-snug text-[#F5F5F5] uppercase transition-colors duration-300"
                   style={{ fontFamily: "var(--font-geist-mono)" }}
                 >
                   {line1}
@@ -50,27 +50,27 @@ export default function HeroSectionV2() {
             ))}
             {/* CTA button — hidden on the smallest screens, shown sm+ */}
             <div className="hidden sm:flex items-center justify-center px-3">
-              <NeuFollowButton label="GET IN TOUCH" />
+              <NeuFollowButton label="GET IN TOUCH" variant="dark" />
             </div>
           </div>
         </div>
 
         {/* Row 4: Primary branding */}
-        <div className="w-full border-t-2 border-b-2 border-[#DDA15E]">
+        <div className="w-full border-t-2 border-b-2 border-[#2D3748]">
           <div className="relative h-full">
             <ScreenFitText
               text="CLARK CREATIVE GROUP"
-              className="absolute bottom-0 font-black uppercase tracking-[-0.02em] text-[#1E1F1C]"
+              className="absolute bottom-0 font-black uppercase tracking-[-0.02em] text-[#F5F5F5]"
             />
           </div>
         </div>
 
         {/* Row 5: Tagline */}
-        <div className="w-full ">
+        <div className="w-full">
           <div className="relative h-full">
             <ScreenFitText
               text="RECLAIM YOUR TIME. Automate for Growth."
-              className="absolute bottom-0 font-black uppercase tracking-[-0.02em] text-[#1E1F1C]"
+              className="absolute bottom-0 font-black uppercase tracking-[-0.02em] text-[#F5F5F5]"
             />
           </div>
         </div>
