@@ -128,7 +128,7 @@ export default function HeroSection() {
                 Visionary Lives
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                and Businesses
+                and Businesses.
               </AnimatedCopy>
             </h1>
             {/* {Mobile & Tablet} */}
@@ -140,7 +140,7 @@ export default function HeroSection() {
                 Visionary Lives
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                and Businesses
+                and Businesses.
               </AnimatedCopy>
             </h1>
           </div>

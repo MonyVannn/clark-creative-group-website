@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CopyReveal from "../ui/CopyReveal";
 import { useTheme } from "../contexts/ThemeContext";
 import Image from "next/image";
+import SplitText from "../ui/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,13 +57,14 @@ export default function TargetAudienceSection() {
         className="absolute top-0 2xl:left-1/5 opacity-15 w-[400px] h-[400px]"
       />
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
-        <p
-          className={`font-satoshi text-xs font-semibold tracking-[0.22em] uppercase ${
-            isDarkTheme ? "text-neutral-400" : "text-neutral-600"
-          }`}
-        >
-          Who is this for
-        </p>
+        <SplitText
+          text="Who is this for."
+          tag="h2"
+          splitType="words, chars"
+          className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
+          textAlign="left"
+          delay={20}
+        />
 
         <CopyReveal
           as="div"

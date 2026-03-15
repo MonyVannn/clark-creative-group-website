@@ -155,7 +155,7 @@ export default function CoreOverview() {
             ref={headlineRef}
             className="font-clash-display text-4xl font-semibold leading-tight text-[#191919] md:text-5xl lg:text-6xl"
           >
-            Three Pillars
+            Three Pillars.
           </h2>
           <p
             ref={sublineRef}
