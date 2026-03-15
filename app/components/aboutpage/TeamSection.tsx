@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
+import SplitText from "../ui/SplitText";
 
 // Mock data for the team members
 const teamMembers = [
@@ -59,16 +60,20 @@ export default function TeamSection() {
         />
       </motion.div>
       <div className="pb-16 md:pb-24 max-w-3xl relative z-10">
-        <h2 className="font-clash-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6">
-          Meet the Minds Behind the Architecture
-        </h2>
-        <p
+        <SplitText
+          tag="h2"
+          splitType="words"
+          textAlign="left"
+          className="font-clash-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6"
+          text="Meet the Minds Behind the Architecture"
+        />
+        <SplitText
+          tag="p"
+          splitType="lines"
+          textAlign="left"
           className={`font-satoshi text-lg md:text-xl leading-relaxed ${mutedTextColor} ${transition}`}
-        >
-          We bring together deep expertise in systems, space, and story to help
-          you build something that matters. No fluff. Just clear thinking and
-          honest execution.
-        </p>
+          text="We bring together deep expertise in systems, space, and story to help you build something that matters. No fluff. Just clear thinking and honest execution."
+        />
       </div>
       <div className={`border-t border-x ${borderColor} ${transition}`}>
         {teamMembers.map((member, index) => (
@@ -95,25 +100,41 @@ export default function TeamSection() {
               <div
                 className={`w-full md:w-[35%] lg:w-[30%] p-10 aspect-square border-b md:border-b-0 md:border-r shrink-0 ${borderColor} ${transition}`}
               >
-                <div className="relative w-full h-full overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top"
-                  />
+                <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
+                  <motion.div
+                    initial={{ y: "100%" }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </motion.div>
                 </div>
               </div>
 
               {/* Right: Bio Header */}
               <div className="w-full md:w-[65%] lg:w-[70%] flex flex-col justify-between p-8 lg:p-12 relative min-h-75">
-                <div>
-                  <h2 className="font-clash-display text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-4 lg:mb-6">
-                    {member.name}
-                  </h2>
-                  <h3 className="font-mono font-medium text-sm lg:text-xl uppercase tracking-[0.2em] opacity-80">
-                    {member.position}
-                  </h3>
+                <div className="flex flex-col items-start w-full">
+                  <SplitText
+                    tag="h2"
+                    splitType="chars"
+                    textAlign="left"
+                    className="font-clash-display text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-4 lg:mb-6"
+                    text={member.name}
+                  />
+                  <SplitText
+                    tag="h2"
+                    splitType="words"
+                    textAlign="left"
+                    className="font-mono font-medium text-sm lg:text-xl uppercase tracking-[0.2em] opacity-80"
+                    text={member.position}
+                  />
                 </div>
 
                 {/* LinkedIn Button */}
@@ -159,9 +180,26 @@ export default function TeamSection() {
 
               {/* Typography Block */}
               <div className="w-full  md:w-[65%] lg:w-[70%] font-mono uppercase text-sm text-justify md:text-xl leading-9 tracking-[0.05em] space-y-8 pr-0 lg:pr-12 opacity-90">
-                <p>{member.bio1}</p>
-                <p>{member.bio2}</p>
-                {member.bio3 && <p>{member.bio3}</p>}
+                <SplitText
+                  tag="p"
+                  splitType="lines"
+                  textAlign="justify"
+                  text={member.bio1}
+                />
+                <SplitText
+                  tag="p"
+                  splitType="lines"
+                  textAlign="justify"
+                  text={member.bio2}
+                />
+                {member.bio3 && (
+                  <SplitText
+                    tag="p"
+                    splitType="lines"
+                    textAlign="justify"
+                    text={member.bio3}
+                  />
+                )}
               </div>
             </div>
           </div>

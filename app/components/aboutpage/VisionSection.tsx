@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import SplitText from "../ui/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,18 +74,20 @@ export default function VisionSection() {
         />
       </motion.div>
       <div className="max-w-3xl relative z-10">
-        <h2
+        <SplitText
+          tag="h2"
+          splitType="words"
+          textAlign="left"
           className={`font-clash-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 ${textColor} ${transition}`}
-        >
-          What We Believe
-        </h2>
-        <p
+          text="What We Believe"
+        />
+        <SplitText
+          tag="p"
+          splitType="lines"
+          textAlign="left"
           className={`font-satoshi text-lg md:text-xl leading-relaxed ${mutedTextColor} ${transition}`}
-        >
-          A set of internal laws for external results. We strip away the noise
-          to focus on what actually moves the needle: environment, momentum, and
-          the radical pursuit of clarity.
-        </p>
+          text="A set of internal laws for external results. We strip away the noise to focus on what actually moves the needle: environment, momentum, and the radical pursuit of clarity."
+        />
       </div>
 
       <GridCards isDarkTheme={isDarkTheme} />
@@ -106,6 +109,7 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
       >
         <Card
           isDarkTheme={isDarkTheme}
+          index={0}
           title="You move faster when you know exactly"
           title2=" where you are and where you're headed."
           description="Clarity first. Then speed comes naturally."
@@ -113,6 +117,7 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
         />
         <Card
           isDarkTheme={isDarkTheme}
+          index={1}
           title="Your environment shapes "
           title2="your outcome."
           description="We've seen it in architecture. We've lived it in business. The space around you is always shaping what's possible."
@@ -124,6 +129,7 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
       >
         <Card
           isDarkTheme={isDarkTheme}
+          index={2}
           title="Business and life can run on "
           title2="the same frequency."
           description="When they do, everything compounds. Your values reinforce your work. Your work feeds your life. We built Clark Creative Group as proof that this is real."
@@ -131,6 +137,7 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
         />
         <Card
           isDarkTheme={isDarkTheme}
+          index={3}
           title="Use what"
           title2=" you have."
           description="Make the decision right instead of endlessly searching for the right decision. Start with what's in front of you."
@@ -147,12 +154,14 @@ const Card = ({
   title2,
   description,
   src,
+  index = 0,
 }: {
   isDarkTheme: boolean;
   title: string;
   title2: string;
   description: string;
   src: string;
+  index?: number;
 }) => {
   const hoverBg = isDarkTheme ? "hover:bg-neutral-950" : "hover:bg-neutral-200";
   const hoverText = isDarkTheme
@@ -164,7 +173,11 @@ const Card = ({
     : "group-hover:text-[#191919]";
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.15 }}
       className={`group relative flex h-56 flex-col justify-between overflow-hidden p-6 transition-colors duration-1000 ${hoverBg} md:h-80 md:p-9`}
     >
       <h2 className="text-3xl font-clash-display font-medium leading-tight z-10">
@@ -191,7 +204,7 @@ const Card = ({
       />
 
       <Corners isDarkTheme={isDarkTheme} />
-    </div>
+    </motion.div>
   );
 };
 
