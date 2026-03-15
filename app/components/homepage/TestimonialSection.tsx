@@ -92,10 +92,10 @@ export default function TestimonialSection() {
     <section
       ref={sectionRef}
       data-color="#191919"
-      className="w-full py-24 lg:py-80 px-8 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24 overflow-hidden"
+      className="w-full min-h-[700px] lg:min-h-[780px] py-24 lg:py-80 px-8 lg:px-24 flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-24 overflow-hidden"
     >
       {/* Left Column */}
-      <div className="w-full lg:w-5/12 flex flex-col justify-between h-full min-h-75 lg:min-h-100">
+      <div className="w-full lg:w-5/12 flex flex-col justify-between min-h-[320px] lg:min-h-[400px] shrink-0">
         <div>
           <SplitText
             text="From our "
@@ -159,20 +159,20 @@ export default function TestimonialSection() {
         </motion.div>
       </div>
 
-      {/* Right Column */}
+      {/* Right Column - fixed height so section doesn't jump when changing testimonials */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="w-full lg:w-7/12 relative min-h-87.5 lg:min-h-100 flex flex-col justify-center"
+        className="w-full lg:w-7/12 relative h-[380px] sm:h-[420px] lg:h-[460px] xl:h-[500px] flex flex-col shrink-0 overflow-hidden"
       >
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
-          className={`text-8xl lg:text-9xl font-serif absolute -top-8 lg:-top-16 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]/20"}`}
+          className={`text-8xl lg:text-7xl font-serif absolute -top-8 lg:top-0 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]/20"}`}
         >
           &ldquo;
         </motion.div>
@@ -184,10 +184,10 @@ export default function TestimonialSection() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="pt-12"
+            className="pt-12 h-full flex flex-col"
           >
             <p
-              className={`font-satoshi text-2xl lg:text-4xl xl:text-3xl 2xl:text-4xl leading-normal lg:leading-relaxed font-normal tracking-wide transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#191919]"}`}
+              className={`font-satoshi text-2xl lg:text-4xl xl:text-3xl 2xl:text-4xl leading-normal lg:leading-relaxed font-normal tracking-wide transition-colors duration-1000 flex-grow ${isDarkTheme ? "text-white" : "text-[#191919]"}`}
             >
               {testimonials[currentIndex].quote}
             </p>
