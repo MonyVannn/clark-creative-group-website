@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useContext, useEffect, useRef } from "react";
 import SplitType from "split-type";
-import { PreloaderContext } from "../layout/PreloaderGate";
+import { PreloaderContext } from "../layout/PreloaderContext";
 
 interface AnimatedCopyProps {
   children: React.ReactNode;
