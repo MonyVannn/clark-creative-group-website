@@ -14,7 +14,7 @@ export default function AboutHeroSection({
         <motion.div
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-0 opacity-50 w-50 h-50 z-0 pointer-events-none scale-x-[-1]"
+          className="absolute top-1/2 left-0 opacity-20 md:opacity-50 w-50 h-50 z-0 pointer-events-none scale-x-[-1]"
         >
           <Image
             src="/square.png"
@@ -24,11 +24,11 @@ export default function AboutHeroSection({
             className="w-full h-full object-contain"
           />
         </motion.div>
-        <h1 className="font-clash-display text-left text-3xl md:text-5xl lg:text-6xl xl:text-8xl font-semibold text-[#191919] max-w-4xl tracking-tight">
+        <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#191919] max-w-3xl lg:max-w-4xl tracking-tight">
           We set out to build a life. The company came from that.
         </h1>
 
-        <div className="font-satoshi text-right font-medium uppercase text-[#191919] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-40 mb-12">
+        <div className="font-satoshi text-center md:text-right font-medium uppercase text-[#191919] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-20 md:mt-40 mb-12">
           <p>
             Clark Creative Group started when Roger and Hattie Clark — childhood
             friends turned life partners — decided to take everything they knew
@@ -42,7 +42,7 @@ export default function AboutHeroSection({
           </p>
         </div>
 
-        <div className="self-end">
+        <div className="self-center md:self-end">
           <button
             onClick={onCtaClick}
             className="cursor-pointer rounded-full bg-[#d1d1d1] hover:bg-[#e2e2e2] px-8 py-4 font-satoshi font-medium uppercase text-[#191919] tracking-widest transition-colors duration-300"

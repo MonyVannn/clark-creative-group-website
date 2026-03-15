@@ -63,7 +63,7 @@ export default function VisionSection() {
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-40 right-0 opacity-5 w-100 h-100 z-0 pointer-events-none"
+        className="absolute top-52 md:top-40 -right-20 md:right-0 opacity-5 md:w-100 md:h-100 z-0 pointer-events-none"
       >
         <Image
           src="/space.png"
@@ -178,7 +178,7 @@ const Card = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: "easeOut", delay: index * 0.15 }}
-      className={`group relative flex h-56 flex-col justify-between overflow-hidden p-6 transition-colors duration-1000 ${hoverBg} md:h-80 md:p-9`}
+      className={`group relative flex h-[400px] flex-col justify-between overflow-hidden p-6 transition-colors duration-1000 ${hoverBg} md:h-80 md:p-9`}
     >
       <h2 className="text-3xl font-clash-display font-medium leading-tight z-10">
         <span

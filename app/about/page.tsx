@@ -13,7 +13,7 @@ export default function About() {
       <ThemeProvider>
         <main className="min-h-screen bg-[#f2f2f2]">
           <Header />
-          <div className="relative min-h-screen">
+          <div className="relative min-h-screen overflow-x-hidden">
             <div
               className="pointer-events-none absolute inset-6 inset-y-0 md:inset-y-2 lg:inset-x-16 z-0"
               style={{
