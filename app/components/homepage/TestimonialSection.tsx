@@ -101,7 +101,7 @@ export default function TestimonialSection() {
             text="From our "
             tag="h2"
             splitType="words, chars"
-            className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
+            className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
             textAlign="left"
             delay={20}
           />
@@ -110,7 +110,7 @@ export default function TestimonialSection() {
             text="community."
             tag="h2"
             splitType="words, chars"
-            className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
+            className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
             textAlign="left"
             delay={25}
           />
@@ -119,7 +119,7 @@ export default function TestimonialSection() {
               text="Here's what other subscribers had to say about Clark Creative Group."
               tag="p"
               splitType="words"
-              className={`font-satoshi text-lg lg:text-xl max-w-sm font-light transition-colors duration-1000 ${isDarkTheme ? "text-neutral-400" : "text-neutral-600"}`}
+              className={`font-satoshi text-lg lg:text-base max-w-sm font-medium transition-colors duration-1000 ${isDarkTheme ? "text-neutral-400" : "text-neutral-600"}`}
               textAlign="left"
               delay={40}
             />
@@ -172,7 +172,7 @@ export default function TestimonialSection() {
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
-          className={`text-8xl lg:text-9xl font-serif absolute -top-8 lg:-top-16 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]/30" : "text-[#191919]/20"}`}
+          className={`text-8xl lg:text-9xl font-serif absolute -top-8 lg:-top-16 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]/20"}`}
         >
           &ldquo;
         </motion.div>
@@ -187,7 +187,7 @@ export default function TestimonialSection() {
             className="pt-12"
           >
             <p
-              className={`font-satoshi text-2xl lg:text-4xl leading-normal lg:leading-relaxed font-normal tracking-wide transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#191919]"}`}
+              className={`font-satoshi text-2xl lg:text-4xl xl:text-3xl 2xl:text-4xl leading-normal lg:leading-relaxed font-normal tracking-wide transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#191919]"}`}
             >
               {testimonials[currentIndex].quote}
             </p>

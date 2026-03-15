@@ -49,7 +49,7 @@ export default function TeamSection() {
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 md:-top-56 md:right-10 lg:right-40 opacity-30 md:opacity-50 w-100 h-100 z-0 pointer-events-none"
+        className="absolute top-20 xl:-top-20 2xl:top-20 md:-top-56 md:right-10 lg:right-40 opacity-30 md:opacity-50 w-100 h-100 z-0 pointer-events-none"
       >
         <Image
           src="/square.png"

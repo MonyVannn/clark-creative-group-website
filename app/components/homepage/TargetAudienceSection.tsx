@@ -61,7 +61,7 @@ export default function TargetAudienceSection() {
           text="Who is this for."
           tag="h2"
           splitType="words, chars"
-          className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
+          className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
           textAlign="left"
           delay={20}
         />
