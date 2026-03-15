@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTheme } from "../contexts/ThemeContext";
 
 // Mock data for the team members
 const teamMembers = [
@@ -30,8 +31,20 @@ const teamMembers = [
 ];
 
 export default function TeamSection() {
+  const { isDarkTheme } = useTheme();
+
+  const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]";
+  const mutedTextColor = isDarkTheme ? "text-neutral-400" : "text-[#393939]";
+  const borderColor = isDarkTheme ? "border-[#f2f2f2]" : "border-[#191919]";
+  const btnBg = isDarkTheme ? "bg-[#f2f2f2]" : "bg-[#191919]";
+  const btnText = isDarkTheme ? "text-[#191919]" : "text-[#f2f2f2]";
+  const btnHover = isDarkTheme ? "hover:bg-neutral-300" : "hover:bg-[#393939]";
+  const transition = "transition-colors duration-1000";
+
   return (
-    <section className="relative w-full max-w-7xl mx-auto text-[#191919] my-10 px-4 md:px-0">
+    <section
+      className={`relative w-full max-w-7xl mx-auto my-10 px-4 md:px-0 ${textColor} ${transition}`}
+    >
       <motion.div
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -49,31 +62,39 @@ export default function TeamSection() {
         <h2 className="font-clash-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6">
           Meet the Minds Behind the Architecture
         </h2>
-        <p className="font-satoshi text-lg md:text-xl text-[#393939] leading-relaxed">
+        <p
+          className={`font-satoshi text-lg md:text-xl leading-relaxed ${mutedTextColor} ${transition}`}
+        >
           We bring together deep expertise in systems, space, and story to help
           you build something that matters. No fluff. Just clear thinking and
           honest execution.
         </p>
       </div>
-      <div className="border-t border-x border-[#191919]">
+      <div className={`border-t border-x ${borderColor} ${transition}`}>
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="w-full border-b border-[#191919] flex flex-col"
+            className={`w-full border-b flex flex-col ${borderColor} ${transition}`}
           >
             {/* Top Navbar */}
-            <div className="flex justify-between items-center px-6 py-4 border-b border-[#191919] font-mono text-sm uppercase tracking-widest">
+            <div
+              className={`flex justify-between items-center px-6 py-4 border-b font-mono text-sm uppercase tracking-widest ${borderColor} ${transition}`}
+            >
               <div className="flex items-center gap-4">
                 <span className="text-xl font-medium">{member.id}</span>
               </div>
-              <button className="text-2xl hover:opacity-70 transition-opacity">
+              <button
+                className={`text-2xl hover:opacity-70 transition-opacity ${textColor} ${transition}`}
+              >
                 ✕
               </button>
             </div>
 
             <div className="flex flex-col md:flex-row">
               {/* Left: Profile Square */}
-              <div className="w-full md:w-[35%] lg:w-[30%] p-10 aspect-square border-b md:border-b-0 md:border-r border-[#191919] shrink-0">
+              <div
+                className={`w-full md:w-[35%] lg:w-[30%] p-10 aspect-square border-b md:border-b-0 md:border-r shrink-0 ${borderColor} ${transition}`}
+              >
                 <div className="relative w-full h-full overflow-hidden">
                   <Image
                     src={member.image}
@@ -100,7 +121,7 @@ export default function TeamSection() {
                   href={member.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-12 md:mt-0 md:absolute md:bottom-0 md:right-0 bg-[#191919] text-[#f2f2f2] px-8 py-4 lg:px-12 lg:py-6 font-mono text-sm font-semibold tracking-widest uppercase hover:bg-[#393939] transition-colors inline-block"
+                  className={`mt-12 md:mt-0 md:absolute md:bottom-0 md:right-0 px-8 py-4 lg:px-12 lg:py-6 font-mono text-sm font-semibold tracking-widest uppercase inline-block ${btnBg} ${btnText} ${btnHover} ${transition}`}
                 >
                   LINKEDIN
                 </a>
@@ -108,7 +129,9 @@ export default function TeamSection() {
             </div>
 
             {/* Details Component */}
-            <div className="flex flex-col md:flex-row border-t border-[#191919] p-8 lg:p-12">
+            <div
+              className={`flex flex-col md:flex-row border-t p-8 lg:p-12 ${borderColor} ${transition}`}
+            >
               {/* L-Arrow Anchor */}
               <div className="w-full md:w-[35%] lg:w-[30%] mb-8 md:mb-0 flex justify-start items-start pt-2">
                 <svg
@@ -117,16 +140,17 @@ export default function TeamSection() {
                   viewBox="0 0 60 60"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className={`transition-colors duration-1000 ${isDarkTheme ? "stroke-[#f2f2f2]" : "stroke-[#191919]"}`}
                 >
                   <path
                     d="M2.5 0V32.5H27"
-                    stroke="#f2f2f2"
+                    stroke="inherit"
                     strokeWidth="1.5"
                     fill="none"
                   />
                   <path
                     d="M22 27L28 32.5L22 38"
-                    stroke="#f2f2f2"
+                    stroke="inherit"
                     strokeWidth="1.5"
                     fill="none"
                   />
@@ -134,7 +158,7 @@ export default function TeamSection() {
               </div>
 
               {/* Typography Block */}
-              <div className="w-full  md:w-[65%] lg:w-[70%] font-mono uppercase text-sm text-justify md:text-xl leading-[2.2] tracking-[0.05em] space-y-8 pr-0 lg:pr-12 opacity-90">
+              <div className="w-full  md:w-[65%] lg:w-[70%] font-mono uppercase text-sm text-justify md:text-xl leading-9 tracking-[0.05em] space-y-8 pr-0 lg:pr-12 opacity-90">
                 <p>{member.bio1}</p>
                 <p>{member.bio2}</p>
                 {member.bio3 && <p>{member.bio3}</p>}

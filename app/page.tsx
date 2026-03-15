@@ -2,7 +2,7 @@ import Header from "./components/header/Header";
 import HeroSection from "./components/homepage/HeroSection";
 import IntroSection from "./components/homepage/IntroSection";
 import TargetAudienceSection from "./components/homepage/TargetAudienceSection";
-import CoreOverview from "./components/aboutpage/CoreOverview";
+import CoreOverview from "./components/homepage/CoreOverview";
 import TestimonialSection from "./components/homepage/TestimonialSection";
 import Footer from "./components/footer/Footer";
 import PreloaderGate from "./components/layout/PreloaderGate";
