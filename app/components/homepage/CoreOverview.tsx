@@ -8,111 +8,12 @@ import CopyReveal from "../ui/CopyReveal";
 import { FaServicestack } from "react-icons/fa6";
 import SplitText from "../ui/SplitText";
 import { useTheme } from "../contexts/ThemeContext";
+import SpaceSketchModel from "../ui/CoreOverview/SpaceSketchModel";
+import StorySketchModel from "../ui/CoreOverview/StorySketchModel";
+import SystemSketchModel from "../ui/CoreOverview/SystemSketchModel";
+import HexaBackground from "../ui/CoreOverview/HexaBackground";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const CARDS = [
-  {
-    title: "01. Space",
-    description:
-      "Your environment shapes everything. Not just the room — the website, the community, the entire world you and your customers move through. We design those environments. Physical. Digital. Social. When the container matches the ambition, momentum is natural.",
-    services: [
-      "Architectural Design & Consulting",
-      "Brand Environment Audits",
-      "Website & Digital Presence Architecture",
-      "Workspace & Studio Design Direction",
-    ],
-    pattern: "space",
-  },
-  {
-    title: "02. Story",
-    description:
-      "The story you tell about your business is the business. We gather the truths underneath — sit with founders, listen to what's really there — and craft a narrative the right people can't ignore. Clear voice. Real message. The kind of story people repeat without being asked.",
-    services: [
-      "Brand Strategy & Voice",
-      "Founder Story Development",
-      "Investor & Stakeholder Narratives",
-      "Content Strategy & Messaging Frameworks",
-    ],
-    pattern: "story",
-  },
-  {
-    title: "03. System",
-    description:
-      "Business systems multiply your best work. Every day. We build automation, AI tools, and operational architecture designed around how you actually work — custom AI workflows for key team members, dashboards that show real numbers, communication rhythms that hold a growing company together.",
-    services: [
-      "Business Automation & AI Integration",
-      "CRM & Operations Architecture",
-      "Growth Dashboards & KPI Systems",
-      "Team Workflow & Communication Design",
-    ],
-    pattern: "system",
-  },
-] as const;
-
-function GeometricArtBlock({
-  pattern,
-  isDarkTheme,
-}: {
-  pattern: (typeof CARDS)[number]["pattern"];
-  isDarkTheme: boolean;
-}) {
-  const COLS = 6;
-  const ROWS = 5;
-
-  // Space: sparse scattered cells (openness)
-  const spaceCells = new Set([2, 8, 15, 21, 28]);
-
-  // Story: diagonal flow (narrative progression)
-  const storyCells = new Set([0, 7, 14, 21, 28, 35, 6, 13, 20, 27]);
-
-  // System: dense structured grid (order)
-  const systemCells = new Set([
-    0, 1, 2, 3, 4, 5, 6, 11, 12, 17, 18, 23, 24, 29, 30,
-  ]);
-
-  const getCells = () => {
-    switch (pattern) {
-      case "space":
-        return spaceCells;
-      case "story":
-        return storyCells;
-      case "system":
-        return systemCells;
-    }
-  };
-
-  const cells = getCells();
-  const borderColor = isDarkTheme ? "border-white/20" : "border-[#0a191f]";
-  const filledColor = isDarkTheme ? "bg-white/20" : "bg-[#0a191f]";
-  const emptyColor = isDarkTheme ? "bg-transparent" : "bg-[#f2f2f2]";
-
-  return (
-    <div
-      className={`grid w-full ${borderColor}`}
-      style={{
-        gridTemplateColumns: `repeat(${COLS}, 1fr)`,
-        gridTemplateRows: `repeat(${ROWS}, 1fr)`,
-        aspectRatio: `${COLS} / ${ROWS}`,
-      }}
-    >
-      {Array.from({ length: COLS * ROWS }, (_, i) => {
-        const col = i % COLS;
-        const row = Math.floor(i / COLS);
-        const isLastCol = col === COLS - 1;
-        const isLastRow = row === ROWS - 1;
-        const isBlack = cells.has(i);
-
-        return (
-          <div
-            key={i}
-            className={`${borderColor} ${!isLastCol ? "border-r" : ""} ${!isLastRow ? "border-b" : ""} ${isBlack ? filledColor : emptyColor} transition-colors duration-1400`}
-          />
-        );
-      })}
-    </div>
-  );
-}
 
 export default function CoreOverview() {
   const { isDarkTheme } = useTheme();
@@ -180,68 +81,169 @@ export default function CoreOverview() {
         {/* 3-column card grid */}
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:gap-6 lg:gap-8"
+          className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:gap-6 lg:gap-8 space-y-20 lg:space-y-0"
         >
-          {CARDS.map((card) => (
-            <article
-              key={card.title}
-              className={`flex flex-col md:flex-row gap-6 border p-6 lg:p-8 lg:flex-col transition-colors duration-1400 ${
-                isDarkTheme
-                  ? "border-white/20 bg-white/5"
-                  : "border-[#0a191f] bg-[#f2f2f2]"
-              }`}
-            >
-              {/* Wrap the GeometricArtBlock in a div to control its size on tablet */}
-              <div className="w-full md:w-1/2 lg:w-full">
-                <GeometricArtBlock
-                  pattern={card.pattern}
-                  isDarkTheme={isDarkTheme}
-                />
-              </div>
+          {/* Space Card */}
+          <article
+            className={`flex lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
+          >
+            {/* Model container for Space */}
+            <div className="w-1/2 lg:w-full h-72 lg:h-120 ">
+              {/* Model layer */}
+              <SpaceSketchModel className="w-full h-full" />
+            </div>
 
-              <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
-                <SplitText
-                  text={card.title}
-                  className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
-                    isDarkTheme ? "text-white" : "text-[#0a191f]"
-                  }`}
-                  textAlign="left"
-                  delay={50}
-                  duration={1.25}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                />
+            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
+              <SplitText
+                text="01. Space"
+                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
+                  isDarkTheme ? "text-white" : "text-[#0a191f]"
+                }`}
+                textAlign="left"
+                delay={50}
+                duration={1.25}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              />
 
-                <SplitText
-                  text={card.description}
-                  className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
-                  textAlign="left"
-                  delay={20}
-                  duration={1}
-                  ease="power3.out"
-                  splitType="lines"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                />
+              <SplitText
+                text="Your environment shapes everything. Not just the room — the website, the community, the entire world you and your customers move through. We design those environments. Physical. Digital. Social. When the container matches the ambition, momentum is natural."
+                className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                }`}
+                textAlign="left"
+                delay={20}
+                duration={1}
+                ease="power3.out"
+                splitType="lines"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              />
 
-                <ul
-                  className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
-                >
-                  {card.services.map((service) => (
-                    <li key={service}>{service}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
+              <ul
+                className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                }`}
+              >
+                <li>Architectural Design & Consulting</li>
+                <li>Brand Environment Audits</li>
+                <li>Website & Digital Presence Architecture</li>
+                <li>Workspace & Studio Design Direction</li>
+              </ul>
+            </div>
+          </article>
+
+          {/* Story Card */}
+          <article
+            className={`flex lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
+          >
+            {/* Model container for Story */}
+            <div className="w-1/2 lg:w-full h-72 lg:h-120 order-2 lg:order-0">
+              {/* Model layer */}
+              <StorySketchModel className="w-full h-full" />
+            </div>
+
+            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
+              <SplitText
+                text="02. Story"
+                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
+                  isDarkTheme ? "text-white" : "text-[#0a191f]"
+                }`}
+                textAlign="left"
+                delay={50}
+                duration={1.25}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              />
+
+              <SplitText
+                text="The story you tell about your business is the business. We gather the truths underneath — sit with founders, listen to what's really there — and craft a narrative the right people can't ignore. Clear voice. Real message. The kind of story people repeat without being asked."
+                className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                }`}
+                textAlign="left"
+                delay={20}
+                duration={1}
+                ease="power3.out"
+                splitType="lines"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              />
+
+              <ul
+                className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                }`}
+              >
+                <li>Brand Strategy & Voice</li>
+                <li>Founder Story Development</li>
+                <li>Investor & Stakeholder Narratives</li>
+                <li>Content Strategy & Messaging Frameworks</li>
+              </ul>
+            </div>
+          </article>
+
+          {/* System Card */}
+          <article
+            className={`flex lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400 overflow-hidden`}
+          >
+            {/* Model container for System */}
+            <div className="w-1/2 lg:w-full h-72 lg:h-120 ">
+              {/* Model layer */}
+              <SystemSketchModel className="w-full h-full" />
+            </div>
+
+            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
+              <SplitText
+                text="03. System"
+                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
+                  isDarkTheme ? "text-white" : "text-[#0a191f]"
+                }`}
+                textAlign="left"
+                delay={50}
+                duration={1.25}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              />
+
+              <SplitText
+                text="Business systems multiply your best work. Every day. We build automation, AI tools, and operational architecture designed around how you actually work — custom AI workflows for key team members, dashboards that show real numbers, communication rhythms that hold a growing company together."
+                className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                }`}
+                textAlign="left"
+                delay={20}
+                duration={1}
+                ease="power3.out"
+                splitType="lines"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              />
+
+              <ul
+                className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                }`}
+              >
+                <li>Business Automation & AI Integration</li>
+                <li>CRM & Operations Architecture</li>
+                <li>Growth Dashboards & KPI Systems</li>
+                <li>Team Workflow & Communication Design</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
     </section>
