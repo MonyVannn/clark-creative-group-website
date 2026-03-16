@@ -23,11 +23,11 @@ function FooterCTA({
   onClick?: () => void;
 }) {
   const className =
-    "group flex items-center gap-3 text-sm font-medium tracking-wide text-white transition-opacity hover:opacity-80 cursor-pointer";
+    "group flex items-center gap-3 text-sm font-medium tracking-wide text-[#f6f8ff] transition-opacity hover:opacity-80 cursor-pointer";
   const content = (
     <>
       <span>{children}</span>
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/60 transition-colors group-hover:border-white">
+      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f6f8ff]/60 transition-colors group-hover:border-[#f6f8ff]">
         <FiArrowRight className="h-3.5 w-3.5" />
       </span>
     </>
@@ -76,7 +76,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#191919] text-[f2f2f2] overflow-hidden z-10">
+    <footer className="relative bg-[#040b22] text-[f2f2f2] overflow-hidden z-10">
       {/* Spline scene - bottom right of footer */}
       <div className="pointer-events-none absolute top-0 right-0 z-0 h-[600px] w-[500px]">
         <Spline
@@ -90,10 +90,10 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
           {/* Left Column - Contact & Connect */}
           <div className="flex flex-col gap-10 md:gap-12 md:flex-col lg:gap-12">
-            <p className="font-clash-display text-4xl text-white-400 font-semibold">
+            <p className="font-clash-display text-4xl text-[#f6f8ff]-400 font-semibold">
               CLARK CREATIVE
             </p>
-            <p className="font-clash-display text-4xl text-white-400 font-semibold -mt-10 md:-mt-14">
+            <p className="font-clash-display text-4xl text-[#f6f8ff]-400 font-semibold -mt-10 md:-mt-14">
               GROUP
             </p>
             <h3 className="font-satoshi w-2/3 -mt-5 md:-mt-10 text-neutral-400">
@@ -102,7 +102,7 @@ export default function Footer() {
             </h3>
             <div className="flex flex-col gap-8 md:flex-row lg:flex-col">
               <div>
-                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
+                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-[#f6f8ff]">
                   CONTACT
                 </h3>
                 <p className="mt-2 font-satoshi text-sm text-neutral-400">
@@ -110,7 +110,7 @@ export default function Footer() {
                 </p>
               </div>
               <div>
-                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
+                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-[#f6f8ff]">
                   CONNECT
                 </h3>
                 <ul className="mt-2 space-y-1">
@@ -118,7 +118,7 @@ export default function Footer() {
                     <li key={platform}>
                       <a
                         href="#"
-                        className="font-satoshi text-sm text-neutral-400 transition-colors hover:text-white"
+                        className="font-satoshi text-sm text-neutral-400 transition-colors hover:text-[#f6f8ff]"
                       >
                         {platform}
                       </a>
@@ -131,7 +131,7 @@ export default function Footer() {
 
           {/* Right Column - Inquiry Form */}
           <div>
-            <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-white">
+            <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-[#f6f8ff]">
               GET IN TOUCH
             </h3>
             <p className="mt-2 font-satoshi text-sm text-neutral-400">
@@ -148,7 +148,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, name: e.target.value }))
                     }
-                    className="w-full border-b border-white/30 bg-transparent px-0 py-2 font-satoshi text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-white"
+                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
                   />
                   {errors.name && (
                     <p className="mt-1 text-xs text-red-400">{errors.name}</p>
@@ -162,7 +162,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, email: e.target.value }))
                     }
-                    className="w-full border-b border-white/30 bg-transparent px-0 py-2 font-satoshi text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-white"
+                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
                   />
                   {errors.email && (
                     <p className="mt-1 text-xs text-red-400">{errors.email}</p>
@@ -178,7 +178,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, phone: e.target.value }))
                     }
-                    className="w-full border-b border-white/30 bg-transparent px-0 py-2 font-satoshi text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-white"
+                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
                   />
                 </div>
                 <div>
@@ -189,12 +189,12 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, company: e.target.value }))
                     }
-                    className="w-full border-b border-white/30 bg-transparent px-0 py-2 font-satoshi text-sm text-white placeholder-neutral-500 outline-none transition-colors focus:border-white"
+                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
                   />
                 </div>
               </div>
               <div>
-                <div className="relative min-h-[180px] rounded border-b border-white/30 overflow-hidden">
+                <div className="relative min-h-[180px] rounded border-b border-[#f6f8ff]/30 overflow-hidden">
                   <textarea
                     placeholder="Message*"
                     value={formState.message}
@@ -202,7 +202,7 @@ export default function Footer() {
                       setFormState((s) => ({ ...s, message: e.target.value }))
                     }
                     rows={4}
-                    className="relative z-10 w-full resize-none border-0 bg-transparent px-0 py-3 font-satoshi text-sm text-white placeholder-neutral-500 outline-none"
+                    className="relative z-10 w-full resize-none border-0 bg-transparent px-0 py-3 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none"
                   />
                 </div>
                 {errors.message && (
@@ -212,10 +212,10 @@ export default function Footer() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="group flex items-center gap-3 text-sm font-medium tracking-wide text-white transition-opacity hover:opacity-80"
+                  className="group flex items-center gap-3 text-sm font-medium tracking-wide text-[#f6f8ff] transition-opacity hover:opacity-80"
                 >
                   <span>Let&apos;s Talk</span>
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/60 transition-colors group-hover:border-white">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f6f8ff]/60 transition-colors group-hover:border-[#f6f8ff]">
                     <FiArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </button>
@@ -226,11 +226,11 @@ export default function Footer() {
       </div>
 
       {/* Utility Navigation Bar */}
-      <div className="relative z-10 border-t border-white/20 bg-[#191919]">
+      <div className="relative z-10 border-t border-[#f6f8ff]/20 bg-[#040b22]">
         <div className="container-wide mx-auto flex flex-col items-center justify-between gap-4 px-6 py-6 lg:flex-row lg:px-16">
           <a
             href="#"
-            className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-white"
+            className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-[#f6f8ff]"
           >
             Privacy / Cookies Policy
           </a>
@@ -239,7 +239,7 @@ export default function Footer() {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-white"
+                className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-[#f6f8ff]"
               >
                 {link.label}
               </a>
@@ -252,7 +252,7 @@ export default function Footer() {
       </div>
 
       {/* Technical Fine Print */}
-      <div className="relative z-10 border-t border-white/20">
+      <div className="relative z-10 border-t border-[#f6f8ff]/20">
         <div className="container-wide mx-auto flex flex-col items-center justify-between gap-4 px-6 py-4 lg:flex-row lg:px-16">
           <p className="max-w-2xl text-center font-satoshi text-[10px] leading-relaxed text-neutral-500 lg:text-left">
             Creators of Visionary Lives and Businesses

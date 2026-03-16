@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useMemo, useRef } from "react";
 import Spline from "@splinetool/react-spline";
 import AnimatedCopy from "../ui/AnimatedCopy";
+import Hexa from "../ui/Hexa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,14 +102,15 @@ export default function HeroSection() {
       {/* Spline 3D background - viewport-scaled, smaller at xl for 1440x900 */}
       <div
         ref={splineRef}
-        className="pointer-events-none absolute left-1/2 top-2/3 2xl:top-1/2 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(600px,55vh)] h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)]"
+        className="pointer-events-none absolute left-1/2 top-2/3 2xl:top-2/3 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(600px,55vh)] h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)] flex items-center justify-center"
       >
-        <div ref={splineMouseRef} className="h-full w-full">
+        {/* <div ref={splineMouseRef} className="h-full w-full">
           <Spline
             scene="https://prod.spline.design/ib9PB3lUzxmxoVK7/scene.splinecode"
             className="h-full w-full scale-50 xl:scale-75 2xl:scale-100"
           />
-        </div>
+        </div> */}
+        <Hexa className="w-full h-full" />
       </div>
 
       {/* Content container - fills viewport for whole-screen hero */}
@@ -120,7 +122,7 @@ export default function HeroSection() {
         >
           {/* Heading column */}
           <div className="md:min-w-0 md:flex-1">
-            <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-[#191919] lg:text-8xl xl:text-7xl 2xl:text-8xl">
+            <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-[#f6f8ff] lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
                 Creators of
               </AnimatedCopy>
@@ -132,7 +134,7 @@ export default function HeroSection() {
               </AnimatedCopy>
             </h1>
             {/* {Mobile & Tablet} */}
-            <h1 className="font-clash-display lg:hidden text-center md:text-left text-4xl font-semibold leading-[1.3] text-[#191919] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
+            <h1 className="font-clash-display lg:hidden text-center md:text-left text-4xl font-semibold leading-[1.3] text-[#f6f8ff] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
                 Creators of
               </AnimatedCopy>
@@ -149,7 +151,7 @@ export default function HeroSection() {
           <div className="flex flex-col gap-6 lg:w-80 lg:shrink-0 lg:gap-8 xl:w-72 xl:gap-6 2xl:w-80 2xl:gap-8">
             <AnimatedCopy
               as="p"
-              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-tight text-[#191919]  md:text-xl xl:text-lg 2xl:text-xl mt-10"
+              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-tight text-[#f6f8ff]  md:text-xl xl:text-lg 2xl:text-xl mt-10"
             >
               A creative advisory for founders. We design brands, build business
               systems, and connect the whole picture.
@@ -157,18 +159,24 @@ export default function HeroSection() {
             <div className="flex flex-wrap flex-col gap-4 xl:gap-3">
               <button
                 type="button"
-                className="rounded-full w-64 bg-[#d1d1d1] px-6 py-3 font-satoshi font-medium text-sm uppercase tracking-wider text-[#191919] transition-colors hover:bg-[#e2e2e2] cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
+                className="rounded-full w-64 bg-[#ffc878] px-6 py-3 font-satoshi font-bold text-sm uppercase tracking-wider text-[#040b22] transition-colors hover:bg-[#ffc878]/80 cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
               >
-                Start a Conversation
+                Work With us
+              </button>
+              <button
+                type="button"
+                className="rounded-full w-64 bg-[#ffc878] px-6 py-3 font-satoshi font-bold text-sm uppercase tracking-wider text-[#040b22] transition-colors hover:bg-[#ffc878]/80 cursor-pointer xl:w-56 xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-64 2xl:px-6 2xl:py-3 2xl:text-sm"
+              >
+                Explore Services
               </button>
             </div>
           </div>
         </div>
         {/* Rectangle Grid - scales with viewport via aspect-ratio */}
-        <div
+        {/* <div
           ref={largeGridRef}
           data-preloader-target="hero-grid"
-          className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#191919] aspect-5/4 h-auto max-h-[min(55vh,520px)] min-h-[clamp(200px,35vw,280px)] bottom-[clamp(6rem,12vh,13rem)] sm:min-h-[clamp(240px,40vw,320px)] md:max-h-[min(50vh,480px)] lg:min-h-[clamp(260px,38vw,340px)] xl:bottom-[clamp(2rem,6vh,6rem)] xl:max-h-[min(48vh,460px)] 2xl:bottom-[clamp(8rem,15vh,13rem)] 2xl:max-h-[min(52vh,540px)]"
+          className="absolute left-0 z-1 grid w-full grid-cols-5 grid-rows-4 border border-[#f6f8ff]/50 aspect-5/4 h-auto max-h-[min(55vh,520px)] min-h-[clamp(200px,35vw,280px)] bottom-[clamp(6rem,12vh,13rem)] sm:min-h-[clamp(240px,40vw,320px)] md:max-h-[min(50vh,480px)] lg:min-h-[clamp(260px,38vw,340px)] xl:bottom-[clamp(2rem,6vh,6rem)] xl:max-h-[min(48vh,460px)] 2xl:bottom-[clamp(8rem,15vh,13rem)] 2xl:max-h-[min(52vh,540px)]"
         >
           {Array.from({ length: GRID_COLS * GRID_ROWS }, (_, i) => {
             const col = i % GRID_COLS;
@@ -180,11 +188,11 @@ export default function HeroSection() {
             return (
               <div
                 key={i}
-                className={`w-full border-[#191919] ${!isLastCol ? "border-r" : ""} ${!isLastRow ? "border-b" : ""} ${isBlack ? "bg-[#191919]" : ""}`}
+                className={`w-full border-[#f6f8ff]/50 ${!isLastCol ? "border-r" : ""} ${!isLastRow ? "border-b" : ""} ${isBlack ? "bg-[#f6f8ff]/50" : ""}`}
               />
             );
           })}
-        </div>
+        </div> */}
       </div>
     </section>
   );

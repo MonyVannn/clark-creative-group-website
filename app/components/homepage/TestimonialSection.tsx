@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
@@ -40,11 +40,6 @@ export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { isDarkTheme, setIsDarkTheme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
-  const setIsDarkThemeRef = useRef(setIsDarkTheme);
-
-  useEffect(() => {
-    setIsDarkThemeRef.current = setIsDarkTheme;
-  });
 
   useGSAP(
     () => {
@@ -52,24 +47,27 @@ export default function TestimonialSection() {
       const mainEl = elem?.closest("main");
       if (!elem || !mainEl) return;
 
-      const color = elem.getAttribute("data-color") ?? "#191919";
-      const defaultColor = "#f2f2f2";
-
       const st = ScrollTrigger.create({
         trigger: elem,
         start: "top center",
         markers: false,
         onEnter: () => {
-          gsap.to(mainEl, { backgroundColor: color, duration: 1 });
-          setIsDarkThemeRef.current(true);
+          gsap.to(mainEl, {
+            backgroundColor: "rgba(242, 242, 242, 0.95)",
+            duration: 1,
+          });
+          setIsDarkTheme(false);
         },
         onLeaveBack: () => {
-          gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
-          setIsDarkThemeRef.current(false);
+          gsap.to(mainEl, { backgroundColor: "transparent", duration: 1 });
+          setIsDarkTheme(true);
         },
         onEnterBack: () => {
-          gsap.to(mainEl, { backgroundColor: color, duration: 1 });
-          setIsDarkThemeRef.current(true);
+          gsap.to(mainEl, {
+            backgroundColor: "rgba(242, 242, 242, 0.95)",
+            duration: 1,
+          });
+          setIsDarkTheme(false);
         },
       });
 
@@ -91,8 +89,8 @@ export default function TestimonialSection() {
   return (
     <section
       ref={sectionRef}
-      data-color="#191919"
-      className="w-full min-h-[700px] lg:min-h-[780px] py-24 lg:py-80 px-8 lg:px-24 flex flex-col lg:flex-row items-start justify-between gap-16 lg:gap-24 overflow-hidden"
+      data-color="#f2f2f2"
+      className="w-full py-24 lg:py-80 px-8 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24 overflow-hidden"
     >
       {/* Left Column */}
       <div className="w-full lg:w-5/12 flex flex-col justify-between min-h-[320px] lg:min-h-[400px] shrink-0">
@@ -101,7 +99,7 @@ export default function TestimonialSection() {
             text="From our "
             tag="h2"
             splitType="words, chars"
-            className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
+            className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
             textAlign="left"
             delay={20}
           />
@@ -110,7 +108,7 @@ export default function TestimonialSection() {
             text="community."
             tag="h2"
             splitType="words, chars"
-            className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
+            className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
             textAlign="left"
             delay={25}
           />
@@ -119,7 +117,7 @@ export default function TestimonialSection() {
               text="Here's what other subscribers had to say about Clark Creative Group."
               tag="p"
               splitType="words"
-              className={`font-satoshi text-lg lg:text-base max-w-sm font-medium transition-colors duration-1000 ${isDarkTheme ? "text-neutral-400" : "text-neutral-600"}`}
+              className={`font-satoshi text-lg lg:text-xl max-w-sm font-light transition-colors duration-1000 ${isDarkTheme ? "text-gray-400" : "text-gray-700"}`}
               textAlign="left"
               delay={40}
             />
@@ -139,7 +137,7 @@ export default function TestimonialSection() {
             className={`cursor-pointer w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-300 ${
               isDarkTheme
                 ? "border-white/20 hover:bg-white/10 text-white"
-                : "border-neutral-300 hover:bg-neutral-200 text-[#191919]"
+                : "border-[#0a191f]/20 hover:bg-[#0a191f]/10 text-[#0a191f]"
             }`}
             aria-label="Previous Testimonial"
           >
@@ -150,7 +148,7 @@ export default function TestimonialSection() {
             className={`cursor-pointer w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-300 ${
               isDarkTheme
                 ? "border-white/20 hover:bg-white/10 text-white"
-                : "border-neutral-300 hover:bg-neutral-200 text-[#191919]"
+                : "border-[#0a191f]/20 hover:bg-[#0a191f]/10 text-[#0a191f]"
             }`}
             aria-label="Next Testimonial"
           >
@@ -172,7 +170,7 @@ export default function TestimonialSection() {
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
-          className={`text-8xl lg:text-7xl font-serif absolute -top-8 lg:top-0 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]/20"}`}
+          className={`text-8xl lg:text-9xl font-serif absolute -top-8 lg:-top-16 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-white/30" : "text-[#0a191f]/20"}`}
         >
           &ldquo;
         </motion.div>
@@ -187,7 +185,7 @@ export default function TestimonialSection() {
             className="pt-12 h-full flex flex-col"
           >
             <p
-              className={`font-satoshi text-2xl lg:text-4xl xl:text-3xl 2xl:text-4xl leading-normal lg:leading-relaxed font-normal tracking-wide transition-colors duration-1000 flex-grow ${isDarkTheme ? "text-white" : "text-[#191919]"}`}
+              className={`font-satoshi text-2xl lg:text-4xl leading-normal lg:leading-relaxed font-normal tracking-wide transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
             >
               {testimonials[currentIndex].quote}
             </p>
@@ -203,12 +201,12 @@ export default function TestimonialSection() {
               </div>
               <div className="flex flex-col">
                 <span
-                  className={`font-satoshi font-bold text-lg transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#191919]"}`}
+                  className={`font-satoshi font-bold text-lg transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
                 >
                   {testimonials[currentIndex].name}
                 </span>
                 <span
-                  className={`font-satoshi text-sm mt-0.5 transition-colors duration-1000 ${isDarkTheme ? "text-neutral-400" : "text-neutral-500"}`}
+                  className={`font-satoshi text-sm mt-0.5 transition-colors duration-1000 ${isDarkTheme ? "text-gray-400" : "text-gray-700"}`}
                 >
                   {testimonials[currentIndex].title}
                 </span>

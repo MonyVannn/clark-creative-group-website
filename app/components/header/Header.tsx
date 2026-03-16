@@ -23,9 +23,9 @@ function NavLink({
   active?: boolean;
   isDarkTheme: boolean;
 }) {
-  const activeColor = isDarkTheme ? "text-neutral-400" : "text-[#606060]";
-  const inactiveColor = isDarkTheme ? "text-neutral-500" : "text-[#a0a0a0]";
-  const underlineColor = isDarkTheme ? "bg-neutral-400" : "bg-[#606060]";
+  const activeColor = isDarkTheme ? "text-white" : "text-[#606060]";
+  const inactiveColor = isDarkTheme ? "text-gray-400" : "text-[#a0a0a0]";
+  const underlineColor = isDarkTheme ? "bg-[#f2f2f2]" : "bg-[#606060]";
 
   return (
     <a href={href} className="block overflow-hidden">
@@ -65,7 +65,7 @@ export default function Header() {
     <header
       data-preloader-target="nav"
       className={`sticky top-0 z-50 py-5 backdrop-blur-md transition-colors duration-1400 ${
-        isDarkTheme ? "bg-[#191919]/90" : "bg-[#f2f2f2]"
+        isDarkTheme ? "bg-[#040b22]/90" : "bg-[##f2f2f2]"
       }`}
     >
       <div className="px-6 md:px-12 lg:px-16 flex items-center justify-between">
@@ -73,14 +73,14 @@ export default function Header() {
         <div className="shrink-0">
           <span
             className={`font-clash-display hidden md:block font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
-              isDarkTheme ? "text-white" : "text-[#171717]"
+              isDarkTheme ? "text-[#f6f8ff]" : "text-[#0a191f]"
             }`}
           >
             CLARK CREATIVE GROUP
           </span>
           <span
             className={`font-clash-display md:hidden text-2xl font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
-              isDarkTheme ? "text-white" : "text-[#171717]"
+              isDarkTheme ? "text-[#f6f8ff]" : "text-[#0a191f]"
             }`}
           >
             CLARK CREATIVE
@@ -107,8 +107,8 @@ export default function Header() {
           <button
             className={`rounded-md cursor-pointer px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
               isDarkTheme
-                ? "bg-white text-[#191919]"
-                : "bg-[#191919] text-white"
+                ? "bg-[#ffc878] text-[#040b22]"
+                : "bg-[#0a191f] text-[#f6f8ff]"
             }`}
             type="button"
           >

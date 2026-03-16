@@ -7,6 +7,7 @@ import { useRef } from "react";
 import CopyReveal from "../ui/CopyReveal";
 import { FaServicestack } from "react-icons/fa6";
 import SplitText from "../ui/SplitText";
+import { useTheme } from "../contexts/ThemeContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,8 +52,10 @@ const CARDS = [
 
 function GeometricArtBlock({
   pattern,
+  isDarkTheme,
 }: {
   pattern: (typeof CARDS)[number]["pattern"];
+  isDarkTheme: boolean;
 }) {
   const COLS = 6;
   const ROWS = 5;
@@ -80,10 +83,13 @@ function GeometricArtBlock({
   };
 
   const cells = getCells();
+  const borderColor = isDarkTheme ? "border-white/20" : "border-[#0a191f]";
+  const filledColor = isDarkTheme ? "bg-white/20" : "bg-[#0a191f]";
+  const emptyColor = isDarkTheme ? "bg-transparent" : "bg-[#f2f2f2]";
 
   return (
     <div
-      className="grid w-full border border-[#191919]"
+      className={`grid w-full ${borderColor}`}
       style={{
         gridTemplateColumns: `repeat(${COLS}, 1fr)`,
         gridTemplateRows: `repeat(${ROWS}, 1fr)`,
@@ -100,7 +106,7 @@ function GeometricArtBlock({
         return (
           <div
             key={i}
-            className={`border-[#191919] ${!isLastCol ? "border-r" : ""} ${!isLastRow ? "border-b" : ""} ${isBlack ? "bg-[#191919]" : "bg-[#f2f2f2]"}`}
+            className={`${borderColor} ${!isLastCol ? "border-r" : ""} ${!isLastRow ? "border-b" : ""} ${isBlack ? filledColor : emptyColor} transition-colors duration-1400`}
           />
         );
       })}
@@ -109,6 +115,7 @@ function GeometricArtBlock({
 }
 
 export default function CoreOverview() {
+  const { isDarkTheme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const sublineRef = useRef<HTMLParagraphElement>(null);
@@ -153,13 +160,17 @@ export default function CoreOverview() {
         <div className="flex flex-col gap-2">
           <h2
             ref={headlineRef}
-            className="font-clash-display text-4xl font-semibold leading-tight text-[#191919] md:text-5xl lg:text-6xl"
+            className={`font-clash-display text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl transition-colors duration-1400 ${
+              isDarkTheme ? "text-white" : "text-[#0a191f]"
+            }`}
           >
             Three Pillars.
           </h2>
           <p
             ref={sublineRef}
-            className="font-satoshi max-w-2xl text-base font-medium text-[#606060] md:text-lg"
+            className={`font-satoshi max-w-2xl text-base font-medium md:text-lg transition-colors duration-1400 ${
+              isDarkTheme ? "text-gray-400" : "text-[#606060]"
+            }`}
           >
             Brand, systems, and strategy are not three separate problems. They
             are one architecture. We design them together.
@@ -174,17 +185,26 @@ export default function CoreOverview() {
           {CARDS.map((card) => (
             <article
               key={card.title}
-              className="flex flex-col md:flex-row gap-6 border border-[#191919] bg-[#f2f2f2] p-6 lg:p-8 lg:flex-col"
+              className={`flex flex-col md:flex-row gap-6 border p-6 lg:p-8 lg:flex-col transition-colors duration-1400 ${
+                isDarkTheme
+                  ? "border-white/20 bg-white/5"
+                  : "border-[#0a191f] bg-[#f2f2f2]"
+              }`}
             >
               {/* Wrap the GeometricArtBlock in a div to control its size on tablet */}
               <div className="w-full md:w-1/2 lg:w-full">
-                <GeometricArtBlock pattern={card.pattern} />
+                <GeometricArtBlock
+                  pattern={card.pattern}
+                  isDarkTheme={isDarkTheme}
+                />
               </div>
 
               <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
                 <SplitText
                   text={card.title}
-                  className="font-clash-display text-2xl font-semibold text-[#191919] md:text-3xl text-left"
+                  className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
+                    isDarkTheme ? "text-white" : "text-[#0a191f]"
+                  }`}
                   textAlign="left"
                   delay={50}
                   duration={1.25}
@@ -197,7 +217,9 @@ export default function CoreOverview() {
 
                 <SplitText
                   text={card.description}
-                  className="font-satoshi text-sm leading-relaxed text-[#191919] md:text-base"
+                  className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
                   textAlign="left"
                   delay={20}
                   duration={1}
@@ -208,7 +230,11 @@ export default function CoreOverview() {
                   threshold={0.1}
                 />
 
-                <ul className="font-satoshi list-disc pl-5 text-sm leading-relaxed text-[#191919] md:text-base">
+                <ul
+                  className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
+                >
                   {card.services.map((service) => (
                     <li key={service}>{service}</li>
                   ))}

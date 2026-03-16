@@ -24,7 +24,7 @@ export default function CopyReveal({
   children,
   animateOnScroll = true,
   delay = 0,
-  blockColor = "#191919",
+  blockColor = "#f2f2f2",
   stagger = 0.15,
   duration = 0.75,
   className = "",
@@ -84,7 +84,7 @@ export default function CopyReveal({
       const createBlockRevealAnimation = (
         block: HTMLDivElement,
         line: HTMLElement,
-        index: number
+        index: number,
       ) => {
         const tl = gsap.timeline({ delay: delay + index * stagger });
         tl.to(block, {
@@ -107,7 +107,7 @@ export default function CopyReveal({
           const tl = createBlockRevealAnimation(
             block,
             linesRef.current[index],
-            index
+            index,
           );
           tl.pause();
           ScrollTrigger.create({
@@ -145,7 +145,7 @@ export default function CopyReveal({
         duration,
         textAlign,
       ],
-    }
+    },
   );
 
   const props = {

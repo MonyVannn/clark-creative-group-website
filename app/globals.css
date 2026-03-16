@@ -1,43 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #040b22;
+  --foreground: #f6f8ff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: #040b22;
+    background-image: url("/topography.svg");
+    background-repeat: repeat;
+    background-size: 1000px auto;
+    background-position: center top;
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@utility font-clash-display {
+.font-clash-display {
   font-family: var(--font-clash-display);
 }
 
-@utility font-satoshi {
+.font-satoshi {
   font-family: var(--font-satoshi);
 }
 
-@utility font-newtitle {
+.font-newtitle {
   font-family: var(--font-newtitle);
 }
 
-@utility container-wide {
+.container-wide {
   width: 100%;
   margin-inline: auto;
   padding-inline: 1.5rem;
@@ -98,24 +90,38 @@ body {
   }
 }
 
-@utility container {
+.container {
   width: 100%;
   margin-inline: auto;
   padding-inline: 1.5rem;
+}
 
-  @media (width >= 640px) {
+@media (width >= 640px) {
+  .container {
     max-width: 640px;
   }
-  @media (width >= 768px) {
+}
+
+@media (width >= 768px) {
+  .container {
     max-width: 768px;
   }
-  @media (width >= 1024px) {
+}
+
+@media (width >= 1024px) {
+  .container {
     max-width: 1024px;
   }
-  @media (width >= 1280px) {
+}
+
+@media (width >= 1280px) {
+  .container {
     max-width: 1280px;
   }
-  @media (width >= 1536px) {
+}
+
+@media (width >= 1536px) {
+  .container {
     max-width: 1536px;
   }
 }
