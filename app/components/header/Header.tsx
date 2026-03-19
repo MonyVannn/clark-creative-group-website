@@ -64,9 +64,7 @@ export default function Header() {
   return (
     <header
       data-preloader-target="nav"
-      className={`sticky top-0 z-50 py-5 backdrop-blur-md transition-colors duration-1400 ${
-        isDarkTheme ? "bg-[#040b22]/90" : "bg-[##f2f2f2]"
-      }`}
+      className={`sticky top-0 z-50 py-5 backdrop-blur-sm transition-colors duration-1400 bg-transparent `}
     >
       <div className="px-6 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Brand */}

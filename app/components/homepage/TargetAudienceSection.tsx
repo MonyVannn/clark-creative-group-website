@@ -1,54 +1,15 @@
 "use client";
 
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CopyReveal from "../ui/CopyReveal";
 import { useTheme } from "../contexts/ThemeContext";
 import Image from "next/image";
 import SplitText from "../ui/SplitText";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function TargetAudienceSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { isDarkTheme, setIsDarkTheme } = useTheme();
-
-  useGSAP(
-    () => {
-      const elem = sectionRef.current;
-      const mainEl = elem?.closest("main");
-      if (!elem || !mainEl) return;
-
-      const st = ScrollTrigger.create({
-        trigger: elem,
-        start: "top center",
-        markers: false,
-        onEnter: () => {
-          gsap.to(mainEl, {
-            backgroundColor: "rgba(242, 242, 242, 0.95)",
-            duration: 1,
-          });
-          setIsDarkTheme(false);
-        },
-        onEnterBack: () => {
-          gsap.to(mainEl, {
-            backgroundColor: "rgba(242, 242, 242, 0.95)",
-            duration: 1,
-          });
-          setIsDarkTheme(false);
-        },
-      });
-
-      return () => st.kill();
-    },
-    { scope: sectionRef },
-  );
+  const { isDarkTheme } = useTheme();
 
   return (
     <section
-      ref={sectionRef}
       data-color="#f2f2f2"
       className="relative w-full px-8 py-28 lg:py-40 md:px-12 lg:px-16"
     >
@@ -57,7 +18,7 @@ export default function TargetAudienceSection() {
         width={600}
         height={600}
         alt="blob"
-        className="absolute top-0 2xl:left-1/5 opacity-15 w-100 h-100"
+        className="absolute top-0 2xl:left-1/5 opacity-35 w-100 h-100"
       />
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
         <SplitText
@@ -74,7 +35,7 @@ export default function TargetAudienceSection() {
           className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug ${
             isDarkTheme ? "text-neutral-100" : "text-[#040b22]"
           }`}
-          blockColor="#040b22"
+          blockColor="#e5e5e5"
           stagger={0.12}
           textAlign="left"
         >
@@ -89,7 +50,7 @@ export default function TargetAudienceSection() {
           className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug ${
             isDarkTheme ? "text-neutral-200" : "text-[#040b22]"
           }`}
-          blockColor="#040b22"
+          blockColor="#e5e5e5"
           stagger={0.1}
           delay={0.2}
           textAlign="left"

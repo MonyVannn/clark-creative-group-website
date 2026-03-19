@@ -5,12 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
 import { useTheme } from "../contexts/ThemeContext";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "../ui/SplitText";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
@@ -38,43 +33,7 @@ const testimonials = [
 
 export default function TestimonialSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { isDarkTheme, setIsDarkTheme } = useTheme();
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useGSAP(
-    () => {
-      const elem = sectionRef.current;
-      const mainEl = elem?.closest("main");
-      if (!elem || !mainEl) return;
-
-      const st = ScrollTrigger.create({
-        trigger: elem,
-        start: "top center",
-        markers: false,
-        onEnter: () => {
-          gsap.to(mainEl, {
-            backgroundColor: "rgba(242, 242, 242, 0.95)",
-            duration: 1,
-          });
-          setIsDarkTheme(false);
-        },
-        onLeaveBack: () => {
-          gsap.to(mainEl, { backgroundColor: "transparent", duration: 1 });
-          setIsDarkTheme(true);
-        },
-        onEnterBack: () => {
-          gsap.to(mainEl, {
-            backgroundColor: "rgba(242, 242, 242, 0.95)",
-            duration: 1,
-          });
-          setIsDarkTheme(false);
-        },
-      });
-
-      return () => st.kill();
-    },
-    { scope: sectionRef },
-  );
+  const { isDarkTheme } = useTheme();
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -88,7 +47,7 @@ export default function TestimonialSection() {
 
   return (
     <section
-      ref={sectionRef}
+      // ref={sectionRef}
       data-color="#f2f2f2"
       className="w-full py-24 lg:py-80 px-8 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24 overflow-hidden"
     >

@@ -5,7 +5,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import AnimatedCopy from "../ui/AnimatedCopy";
-import Hexa from "../ui/Hexa";
+import Hexa from "../ui/HeroSectionHomepage/Hexa";
+import HexaSketch from "../ui/HeroSectionHomepage/HexaSketch";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
