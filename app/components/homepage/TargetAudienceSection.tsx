@@ -11,14 +11,14 @@ export default function TargetAudienceSection() {
   return (
     <section
       data-color="#f2f2f2"
-      className="relative w-full px-8 py-28 lg:py-40 md:px-12 lg:px-16"
+      className="relative w-full px-6 py-28 lg:py-40 md:px-12 lg:px-16"
     >
       <Image
         src="/blob.png"
         width={600}
         height={600}
         alt="blob"
-        className="absolute top-0 2xl:left-1/5 opacity-35 w-100 h-100"
+        className="absolute top-0 2xl:left-1/5 opacity-35 w-64 h-64 md:w-100 md:h-100"
       />
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
         <SplitText

@@ -7,14 +7,14 @@ import HexaSketch from "../ui/HeroSectionHomepage/HexaSketch";
 export default function IntroSection() {
   const { isDarkTheme } = useTheme();
   return (
-    <section className="intro-section relative w-full px-8 py-28 md:px-12  lg:px-16">
-      <div className="absolute -top-64 left-40 w-[min(600px,55vh)] h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)]">
+    <section className="intro-section relative w-full px-8 py-28 md:px-12 lg:px-16 overflow-x-clip md:overflow-visible">
+      <div className="absolute top-0 left-0 md:-top-64 md:left-40 w-[min(300px,40vh)] h-[min(400px,40vh)] md:w-[min(600px,55vh)] md:h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)]">
         <HexaSketch className="w-full h-full opacity-50" />
       </div>
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center gap-14 md:gap-16 lg:gap-20">
         <CopyReveal
           as="div"
-          className={`font-satoshi text-2xl font-medium leading-tight text-center md:text-4xl lg:text-5xl transition-colors duration-1400 ${
+          className={`font-satoshi text-3xl font-medium leading-tight text-center md:text-4xl lg:text-5xl transition-colors duration-1400 ${
             isDarkTheme ? "text-[#f6f8ff]" : "text-[#0a191f]"
           }`}
           stagger={0.12}

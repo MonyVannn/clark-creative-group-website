@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import AnimatedCopy from "../ui/AnimatedCopy";
 import Hexa from "../ui/HeroSectionHomepage/Hexa";
-import HexaSketch from "../ui/HeroSectionHomepage/HexaSketch";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
@@ -15,27 +14,31 @@ export default function HeroSection() {
 
   useGSAP(
     () => {
-      gsap.to(splineRef.current, {
-        left: "80%",
-        top: "110%",
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom center",
-          scrub: true,
-        },
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.to(splineRef.current, {
+          left: "80%",
+          top: "110%",
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom center",
+            scrub: true,
+          },
+        });
       });
     },
     { scope: sectionRef },
   );
 
   return (
-    <section ref={sectionRef} className="relative min-h-dvh overflow-visible">
+    <section ref={sectionRef} className="relative min-h-dvh py-20 md:py-0">
       {/* Spline 3D background - viewport-scaled, smaller at xl for 1440x900 */}
       <div
         ref={splineRef}
-        className="pointer-events-none absolute left-1/2 top-2/3 2xl:top-2/3 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(600px,55vh)] h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)] flex items-center justify-center"
+        className="pointer-events-none absolute left-1/2 bottom-20 md:top-2/3 2xl:top-2/3 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(300px,40vh)] h-[min(400px,40vh)] md:w-[min(600px,55vh)] md:h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)] flex items-center justify-center"
       >
         <Hexa className="w-full h-full" />
       </div>

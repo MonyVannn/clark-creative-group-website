@@ -49,7 +49,7 @@ export default function TestimonialSection() {
     <section
       // ref={sectionRef}
       data-color="#f2f2f2"
-      className="w-full py-24 lg:py-80 px-8 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24 overflow-hidden"
+      className="w-full py-24 lg:py-80 px-6 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24"
     >
       {/* Left Column */}
       <div className="w-full lg:w-5/12 flex flex-col justify-between min-h-[320px] lg:min-h-[400px] shrink-0">
@@ -122,14 +122,14 @@ export default function TestimonialSection() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="w-full lg:w-7/12 relative h-[380px] sm:h-[420px] lg:h-[460px] xl:h-[500px] flex flex-col shrink-0 overflow-hidden"
+        className="w-full lg:w-7/12 relative h-[420px] lg:h-[460px] xl:h-[500px] flex flex-col shrink-0 overflow-hidden"
       >
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6, type: "spring" }}
-          className={`text-8xl lg:text-9xl font-serif absolute -top-8 lg:-top-16 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-white/30" : "text-[#0a191f]/20"}`}
+          className={`text-8xl lg:text-9xl font-serif absolute top-0 md:-top-8 lg:-top-16 left-0 leading-none transition-colors duration-1000 ${isDarkTheme ? "text-white/30" : "text-[#0a191f]/20"}`}
         >
           &ldquo;
         </motion.div>

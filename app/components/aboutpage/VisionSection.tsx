@@ -9,7 +9,7 @@ import SplitText from "../ui/SplitText";
 export default function VisionSection() {
   const { isDarkTheme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
-  const textColor = "text-[#f2f2f2]";
+  const textColor = "text-[#f6f8ff]";
   const mutedTextColor = "text-neutral-400";
   const transition = "transition-colors duration-1000";
 

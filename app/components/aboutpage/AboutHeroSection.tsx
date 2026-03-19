@@ -9,9 +9,9 @@ export default function AboutHeroSection({
   onCtaClick?: () => void;
 }) {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center pt-32 pb-24 text-center overflow-hidden">
+    <section className="relative flex min-h-screen flex-col items-center justify-center pt-32 pb-24 text-center ">
       <div className="relative z-10 flex flex-col items-end justify-center">
-        <div className="absolute top-52 left-0 md:opacity-50 w-150 h-150 z-0 pointer-events-none">
+        <div className="absolute -bottom-64 md:top-52 left-0 md:opacity-50 w-100 h-100 md:w-150 md:h-150 z-0 pointer-events-none">
           <SquareSketch className="opacity-50 -rotate-12" />
         </div>
         <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#f2f2f2] max-w-3xl lg:max-w-4xl tracking-tight">

@@ -50,12 +50,35 @@ export default function CoreOverview() {
           { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 },
           "-=0.3",
         );
+
+      const featureLists = gsap.utils.toArray(".feature-list") as HTMLElement[];
+      featureLists.forEach((list) => {
+        gsap.fromTo(
+          list.children,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: list,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      });
     },
     { scope: sectionRef },
   );
 
   return (
-    <section ref={sectionRef} className="relative py-24 md:py-32 lg:py-40">
+    <section
+      ref={sectionRef}
+      className="relative py-24 md:py-32 lg:py-40 overflow-x-hidden px-6 md:px-12 lg:px-16"
+    >
       <div className="flex flex-col gap-12 md:gap-16 lg:gap-20">
         {/* Section intro */}
         <div className="flex flex-col gap-2">
@@ -85,10 +108,10 @@ export default function CoreOverview() {
         >
           {/* Space Card */}
           <article
-            className={`flex lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
+            className={`flex flex-col md:flex-row lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
           >
             {/* Model container for Space */}
-            <div className="w-1/2 lg:w-full h-72 lg:h-120 ">
+            <div className="w-full md:w-1/2 lg:w-full h-72 lg:h-120 ">
               {/* Model layer */}
               <SpaceSketchModel className="w-full h-full" />
             </div>
@@ -125,7 +148,7 @@ export default function CoreOverview() {
               />
 
               <ul
-                className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`feature-list font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >
@@ -139,10 +162,10 @@ export default function CoreOverview() {
 
           {/* Story Card */}
           <article
-            className={`flex lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
+            className={`flex flex-col md:flex-row lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
           >
             {/* Model container for Story */}
-            <div className="w-1/2 lg:w-full h-72 lg:h-120 order-2 lg:order-0">
+            <div className="w-full md:w-1/2 lg:w-full h-72 lg:h-120 order-0 md:order-2 lg:order-0">
               {/* Model layer */}
               <StorySketchModel className="w-full h-full" />
             </div>
@@ -179,7 +202,7 @@ export default function CoreOverview() {
               />
 
               <ul
-                className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`feature-list font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >
@@ -193,10 +216,10 @@ export default function CoreOverview() {
 
           {/* System Card */}
           <article
-            className={`flex lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400 overflow-hidden`}
+            className={`flex flex-col md:flex-row lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400 overflow-hidden`}
           >
             {/* Model container for System */}
-            <div className="w-1/2 lg:w-full h-72 lg:h-120 ">
+            <div className="w-full md:w-1/2 lg:w-full h-72 lg:h-120 ">
               {/* Model layer */}
               <SystemSketchModel className="w-full h-full" />
             </div>
@@ -233,7 +256,7 @@ export default function CoreOverview() {
               />
 
               <ul
-                className={`font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`feature-list font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >

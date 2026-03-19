@@ -19,7 +19,7 @@ export default function Home() {
           <div className="relative min-h-screen">
             {/* Grid area - white visible outside via parent padding */}
 
-            <div className="relative z-10 px-8 md:px-6 lg:px-16">
+            <div className="relative z-10  lg:px-16">
               <HeroSection />
               <IntroSection />
               <CoreOverview />
