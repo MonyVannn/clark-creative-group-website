@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
+import RectangleSketch from "../ui/RectangleSketch";
+import SquareSketch from "../ui/SquareSketch";
 
 export default function AboutHeroSection({
   onCtaClick,
@@ -11,19 +11,9 @@ export default function AboutHeroSection({
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center pt-32 pb-24 text-center overflow-hidden">
       <div className="relative z-10 flex flex-col items-end justify-center">
-        <motion.div
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-0 opacity-20 md:opacity-50 w-50 h-50 z-0 pointer-events-none scale-x-[-1]"
-        >
-          <Image
-            src="/square.png"
-            width={1000}
-            height={1000}
-            alt="square"
-            className="w-full h-full object-contain"
-          />
-        </motion.div>
+        <div className="absolute top-52 left-0 md:opacity-50 w-150 h-150 z-0 pointer-events-none">
+          <SquareSketch className="opacity-50 -rotate-12" />
+        </div>
         <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#f2f2f2] max-w-3xl lg:max-w-4xl tracking-tight">
           We set out to build a life. The company came from that.
         </h1>
@@ -43,12 +33,13 @@ export default function AboutHeroSection({
         </div>
 
         <div className="self-center md:self-end">
-          <button
+          <a
+            href="#team"
             onClick={onCtaClick}
-            className="cursor-pointer rounded-full bg-[#ffc878] hover:bg-[#ffc878]/80 px-8 py-4 font-satoshi font-medium uppercase text-[#191919] tracking-widest transition-colors duration-300"
+            className="cursor-pointer bg-[#ffc878] hover:bg-[#ffc878]/80 px-8 py-4 font-satoshi font-medium uppercase text-[#191919] tracking-widest transition-colors duration-300"
           >
             Meet the Team
-          </button>
+          </a>
         </div>
       </div>
     </section>

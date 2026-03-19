@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import SplitText from "../ui/SplitText";
+import RectangleSketch from "../ui/RectangleSketch";
 
 // Mock data for the team members
 const teamMembers = [
@@ -36,7 +37,7 @@ export default function TeamSection() {
 
   const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#f2f2f2]";
   const mutedTextColor = isDarkTheme ? "text-neutral-400" : "text-neutral-400";
-  const borderColor = isDarkTheme ? "border-neutral-700" : "border-neutral-700";
+  const borderColor = isDarkTheme ? "border-[#e3e6ee]" : "border-[#e3e6ee]";
   const btnBg = isDarkTheme ? "bg-[#ffc878]" : "bg-[#ffc878]";
   const btnText = isDarkTheme ? "text-[#191919]" : "text-[#191919]";
   const btnHover = isDarkTheme
@@ -46,21 +47,9 @@ export default function TeamSection() {
 
   return (
     <section
+      id="team"
       className={`relative w-full max-w-7xl mx-auto my-10 px-4 md:px-0 ${textColor} ${transition}`}
     >
-      <motion.div
-        animate={{ y: [0, -20, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 xl:-top-20 2xl:top-20 md:-top-56 md:right-10 lg:right-40 opacity-30 md:opacity-50 w-100 h-100 z-0 pointer-events-none"
-      >
-        <Image
-          src="/square.png"
-          width={1000}
-          height={1000}
-          alt="square"
-          className="w-full h-full object-contain"
-        />
-      </motion.div>
       <div className="pb-16 md:pb-24 max-w-3xl relative z-10">
         <SplitText
           tag="h2"
@@ -122,6 +111,8 @@ export default function TeamSection() {
 
               {/* Right: Bio Header */}
               <div className="w-full md:w-[65%] lg:w-[70%] flex flex-col justify-between p-8 lg:p-12 relative min-h-75">
+                <RectangleSketch className="absolute opacity-50 rotate-90 w-100 h-100 top-0 -left-32" />
+
                 <div className="flex flex-col items-start w-full">
                   <SplitText
                     tag="h2"

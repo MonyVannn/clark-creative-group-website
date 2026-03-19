@@ -112,7 +112,7 @@ export default function Line() {
           }}
           className="relative z-10 h-10 w-full top-[-40px]"
         ></div>
-        <svg className="absolute w-full h-[500px] top-[-250px]">
+        <svg className="absolute w-full h-[350px] top-[-250px]">
           <path
             ref={path}
             className="stroke-current text-[f2f2f2] stroke-[1px] fill-none"
