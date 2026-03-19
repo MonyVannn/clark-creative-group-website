@@ -34,12 +34,14 @@ const teamMembers = [
 export default function TeamSection() {
   const { isDarkTheme } = useTheme();
 
-  const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]";
-  const mutedTextColor = isDarkTheme ? "text-neutral-400" : "text-[#393939]";
-  const borderColor = isDarkTheme ? "border-[#f2f2f2]" : "border-[#191919]";
-  const btnBg = isDarkTheme ? "bg-[#f2f2f2]" : "bg-[#191919]";
-  const btnText = isDarkTheme ? "text-[#191919]" : "text-[#f2f2f2]";
-  const btnHover = isDarkTheme ? "hover:bg-neutral-300" : "hover:bg-[#393939]";
+  const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#f2f2f2]";
+  const mutedTextColor = isDarkTheme ? "text-neutral-400" : "text-neutral-400";
+  const borderColor = isDarkTheme ? "border-neutral-700" : "border-neutral-700";
+  const btnBg = isDarkTheme ? "bg-[#ffc878]" : "bg-[#ffc878]";
+  const btnText = isDarkTheme ? "text-[#191919]" : "text-[#191919]";
+  const btnHover = isDarkTheme
+    ? "hover:bg-[#ffc878]/80"
+    : "hover:bg-[#ffc878]/80";
   const transition = "transition-colors duration-1000";
 
   return (

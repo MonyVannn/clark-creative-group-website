@@ -24,11 +24,11 @@ export default function AboutHeroSection({
             className="w-full h-full object-contain"
           />
         </motion.div>
-        <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#191919] max-w-3xl lg:max-w-4xl tracking-tight">
+        <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#f2f2f2] max-w-3xl lg:max-w-4xl tracking-tight">
           We set out to build a life. The company came from that.
         </h1>
 
-        <div className="font-satoshi text-center md:text-right font-medium uppercase text-[#191919] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-20 md:mt-40 mb-12">
+        <div className="font-satoshi text-center md:text-right font-medium uppercase text-[#f2f2f2] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-20 md:mt-40 mb-12">
           <p>
             Clark Creative Group started when Roger and Hattie Clark — childhood
             friends turned life partners — decided to take everything they knew
@@ -45,7 +45,7 @@ export default function AboutHeroSection({
         <div className="self-center md:self-end">
           <button
             onClick={onCtaClick}
-            className="cursor-pointer rounded-full bg-[#d1d1d1] hover:bg-[#e2e2e2] px-8 py-4 font-satoshi font-medium uppercase text-[#191919] tracking-widest transition-colors duration-300"
+            className="cursor-pointer rounded-full bg-[#ffc878] hover:bg-[#ffc878]/80 px-8 py-4 font-satoshi font-medium uppercase text-[#191919] tracking-widest transition-colors duration-300"
           >
             Meet the Team
           </button>

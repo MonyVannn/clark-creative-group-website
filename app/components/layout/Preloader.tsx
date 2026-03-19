@@ -176,6 +176,10 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       className="preloader fixed inset-0 z-[100] flex items-center overflow-hidden bg-[#191919] p-8"
       style={{
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        backgroundImage: "url('/topography.svg')",
+        backgroundRepeat: "repeat",
+        backgroundSize: "1000px auto",
+        backgroundPosition: "center top",
       }}
     >
       <div

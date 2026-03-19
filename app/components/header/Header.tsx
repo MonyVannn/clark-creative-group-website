@@ -103,7 +103,7 @@ export default function Header() {
         {/* CTA Button */}
         <div className="shrink-0 hidden lg:flex">
           <button
-            className={`rounded-md cursor-pointer px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
+            className={`cursor-pointer px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
               isDarkTheme
                 ? "bg-[#ffc878] text-[#040b22]"
                 : "bg-[#0a191f] text-[#f6f8ff]"

@@ -1,58 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useTheme } from "../contexts/ThemeContext";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SplitText from "../ui/SplitText";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function VisionSection() {
-  const { isDarkTheme, setIsDarkTheme } = useTheme();
+  const { isDarkTheme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
-  const setIsDarkThemeRef = useRef(setIsDarkTheme);
-  const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]";
-  const mutedTextColor = isDarkTheme ? "text-neutral-400" : "text-[#393939]";
+  const textColor = "text-[#f2f2f2]";
+  const mutedTextColor = "text-neutral-400";
   const transition = "transition-colors duration-1000";
-
-  useEffect(() => {
-    setIsDarkThemeRef.current = setIsDarkTheme;
-  }, [setIsDarkTheme]);
-
-  useGSAP(
-    () => {
-      const elem = sectionRef.current;
-      const mainEl = elem?.closest("main");
-      if (!elem || !mainEl) return;
-
-      const color = elem.getAttribute("data-color") ?? "#191919";
-      const defaultColor = "#f2f2f2";
-
-      const st = ScrollTrigger.create({
-        trigger: elem,
-        start: "top center",
-        onEnter: () => {
-          gsap.to(mainEl, { backgroundColor: color, duration: 1 });
-          setIsDarkThemeRef.current(true);
-        },
-        onLeaveBack: () => {
-          gsap.to(mainEl, { backgroundColor: defaultColor, duration: 1 });
-          setIsDarkThemeRef.current(false);
-        },
-        onEnterBack: () => {
-          gsap.to(mainEl, { backgroundColor: color, duration: 1 });
-          setIsDarkThemeRef.current(true);
-        },
-      });
-
-      return () => st.kill();
-    },
-    { scope: sectionRef },
-  );
 
   return (
     <section
@@ -64,15 +23,7 @@ export default function VisionSection() {
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-52 md:top-40 -right-20 md:right-0 opacity-5 md:w-100 md:h-100 z-0 pointer-events-none"
-      >
-        <Image
-          src="/space.png"
-          width={1000}
-          height={1000}
-          alt="space"
-          className="w-full h-full object-contain"
-        />
-      </motion.div>
+      ></motion.div>
       <div className="max-w-3xl relative z-10">
         <SplitText
           tag="h2"
@@ -96,9 +47,9 @@ export default function VisionSection() {
 }
 
 const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
-  const borderColor = isDarkTheme ? "border-neutral-700" : "border-neutral-300";
-  const divideColor = isDarkTheme ? "divide-neutral-700" : "divide-neutral-300";
-  const textColor = isDarkTheme ? "text-neutral-50" : "text-[#191919]";
+  const borderColor = "border-neutral-700";
+  const divideColor = "divide-neutral-700";
+  const textColor = "text-[#f2f2f2]";
 
   return (
     <div
@@ -163,14 +114,10 @@ const Card = ({
   src: string;
   index?: number;
 }) => {
-  const hoverBg = isDarkTheme ? "hover:bg-neutral-950" : "hover:bg-neutral-200";
-  const hoverText = isDarkTheme
-    ? "group-hover:text-emerald-300"
-    : "group-hover:text-[#191919]";
-  const mutedText = isDarkTheme ? "text-neutral-400" : "text-neutral-500";
-  const descHoverText = isDarkTheme
-    ? "group-hover:text-neutral-50"
-    : "group-hover:text-[#191919]";
+  const hoverBg = "hover:bg-neutral-900";
+  const hoverText = "group-hover:text-[#ffc878]";
+  const mutedText = "text-neutral-400";
+  const descHoverText = "group-hover:text-[#f2f2f2]";
 
   return (
     <motion.div
@@ -209,7 +156,7 @@ const Card = ({
 };
 
 const Corners = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
-  const cornerColor = isDarkTheme ? "bg-emerald-300" : "bg-[#191919]";
+  const cornerColor = "bg-[#ffc878]";
 
   return (
     <>
