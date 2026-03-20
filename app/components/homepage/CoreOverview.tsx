@@ -79,7 +79,7 @@ export default function CoreOverview() {
       ref={sectionRef}
       className="relative py-24 md:py-32 lg:py-40 overflow-x-hidden px-6 md:px-12 lg:px-16"
     >
-      <div className="flex flex-col gap-12 md:gap-16 lg:gap-20">
+      <div className="flex flex-col gap-12 md:gap-16 xl:gap-0 2xl:gap-16">
         {/* Section intro */}
         <div className="flex flex-col gap-2">
           <h2

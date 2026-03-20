@@ -49,7 +49,7 @@ export default function TestimonialSection() {
     <section
       // ref={sectionRef}
       data-color="#f2f2f2"
-      className="w-full py-24 lg:py-80 px-6 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24"
+      className="w-full py-24 px-6 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24"
     >
       {/* Left Column */}
       <div className="w-full lg:w-5/12 flex flex-col justify-between min-h-[320px] lg:min-h-[400px] shrink-0">
@@ -58,7 +58,7 @@ export default function TestimonialSection() {
             text="From our "
             tag="h2"
             splitType="words, chars"
-            className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
+            className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
             textAlign="left"
             delay={20}
           />
@@ -67,7 +67,7 @@ export default function TestimonialSection() {
             text="community."
             tag="h2"
             splitType="words, chars"
-            className={`font-clash-display font-semibold text-5xl lg:text-7xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
+            className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-white" : "text-[#0a191f]"}`}
             textAlign="left"
             delay={25}
           />

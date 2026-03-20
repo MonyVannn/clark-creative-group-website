@@ -4,6 +4,7 @@ import CopyReveal from "../ui/CopyReveal";
 import { useTheme } from "../contexts/ThemeContext";
 import Image from "next/image";
 import SplitText from "../ui/SplitText";
+import SquareSketch from "../ui/SquareSketch";
 
 export default function TargetAudienceSection() {
   const { isDarkTheme } = useTheme();
@@ -13,13 +14,7 @@ export default function TargetAudienceSection() {
       data-color="#f2f2f2"
       className="relative w-full px-6 py-28 lg:py-40 md:px-12 lg:px-16"
     >
-      <Image
-        src="/blob.png"
-        width={600}
-        height={600}
-        alt="blob"
-        className="absolute top-0 2xl:left-1/5 opacity-35 w-64 h-64 md:w-100 md:h-100"
-      />
+      <SquareSketch className="absolute top-20 2xl:left-1/5 opacity-35 w-64 h-64 md:w-120 md:h-120 rotate-12" />
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
         <SplitText
           text="Who is this for."

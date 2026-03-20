@@ -20,6 +20,7 @@ export default function HeroSection() {
         gsap.to(splineRef.current, {
           left: "80%",
           top: "110%",
+          opacity: 0.6,
           ease: "power2.inOut",
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -87,12 +88,6 @@ export default function HeroSection() {
               systems, and connect the whole picture.
             </AnimatedCopy>
             <div className="flex flex-wrap flex-col gap-4 xl:gap-3 items-center md:items-baseline">
-              <button
-                type="button"
-                className="w-64 bg-[#ffc878] px-6 py-3 font-satoshi font-bold text-sm uppercase tracking-wider text-[#040b22] transition-colors hover:bg-[#ffc878]/80 cursor-pointer xl:w-full xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-full 2xl:px-6 2xl:py-3 2xl:text-sm"
-              >
-                Work With us
-              </button>
               <button
                 type="button"
                 className="w-64 bg-[#ffc878] px-6 py-3 font-satoshi font-bold text-sm uppercase tracking-wider text-[#040b22] transition-colors hover:bg-[#ffc878]/80 cursor-pointer xl:w-full xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-full 2xl:px-6 2xl:py-3 2xl:text-sm"
