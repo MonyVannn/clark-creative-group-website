@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import RectangleSketch from "../ui/RectangleSketch";
 import SquareSketch from "../ui/SquareSketch";
 
@@ -33,13 +34,12 @@ export default function AboutHeroSection({
         </div>
 
         <div className="self-center md:self-end">
-          <a
-            href="#team"
-            onClick={onCtaClick}
-            className="cursor-pointer bg-[#ffc878] hover:bg-[#ffc878]/80 px-8 py-4 font-satoshi font-medium uppercase text-[#191919] tracking-widest transition-colors duration-300"
+          <Link
+            href="/contact"
+            className="cursor-pointer bg-[#ffc878] hover:bg-[#ffc878]/80 px-8 py-4 font-satoshi font-bold uppercase text-[#191919] tracking-widest transition-colors duration-300"
           >
-            Meet the Team
-          </a>
+            Talk To Us
+          </Link>
         </div>
       </div>
     </section>
