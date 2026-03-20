@@ -8,7 +8,7 @@ export default function IntroSection() {
   const { isDarkTheme } = useTheme();
   return (
     <section className="intro-section relative w-full px-8 py-28 md:px-12 lg:px-16 overflow-x-clip md:overflow-visible">
-      <div className="absolute top-0 left-0 md:-top-64 md:left-40 w-[min(300px,40vh)] h-[min(400px,40vh)] md:w-[min(600px,55vh)] md:h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)]">
+      <div className="absolute top-0 left-0 lg:-top-64 lg:left-40 w-[min(300px,40vh)] h-[min(400px,40vh)] md:w-[min(400px,50vh)] md:h-[min(500px,50vh)] lg:w-[min(600px,55vh)] lg:h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)]">
         <HexaSketch className="w-full h-full opacity-50" />
       </div>
       <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center gap-14 md:gap-16 lg:gap-20">

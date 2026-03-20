@@ -16,7 +16,7 @@ export default function HeroSection() {
     () => {
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 768px)", () => {
+      mm.add("(min-width: 1024px)", () => {
         gsap.to(splineRef.current, {
           left: "80%",
           top: "110%",
@@ -35,7 +35,10 @@ export default function HeroSection() {
   );
 
   return (
-    <section ref={sectionRef} className="relative min-h-dvh py-20 md:py-0">
+    <section
+      ref={sectionRef}
+      className="relative min-h-dvh py-20 md:py-0 overflow-x-clip"
+    >
       {/* Spline 3D background - viewport-scaled, smaller at xl for 1440x900 */}
       <div
         ref={splineRef}
