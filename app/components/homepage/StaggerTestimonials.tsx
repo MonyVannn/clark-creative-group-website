@@ -65,14 +65,19 @@ export const StaggerTestimonials = ({ items }: StaggerTestimonialsProps) => {
 
     const handleResize = () => {
       const width = container.offsetWidth;
+      const vh = window.innerHeight;
       const newSize = Math.round(Math.min(Math.max(width * 0.28, 300), 560));
       setCardSize(newSize);
       if (width < 768) {
-        setCardHeight(newSize * 1.6);
+        setCardHeight(newSize * 1.52);
       } else if (width < 1024) {
-        setCardHeight(newSize * 1.75);
+        setCardHeight(newSize * 1.62);
       } else {
-        setCardHeight(newSize);
+        let hMult = width < 1536 ? 1.22 : 1.08;
+        if (width / vh > 1.5) {
+          hMult += 0.05;
+        }
+        setCardHeight(Math.round(newSize * Math.min(hMult, 1.38)));
       }
     };
 
@@ -86,7 +91,7 @@ export const StaggerTestimonials = ({ items }: StaggerTestimonialsProps) => {
   return (
     <div
       ref={containerRef}
-      className={`relative w-screen max-w-[100vw] min-h-[850px] overflow-hidden transition-colors duration-1000 left-1/2 -translate-x-1/2`}
+      className={`relative w-screen max-w-[100vw] min-h-[880px] overflow-hidden transition-colors duration-1000 left-1/2 -translate-x-1/2`}
     >
       {testimonials.map((t, idx) => {
         let position = 0;
@@ -210,7 +215,7 @@ const TestimonialCard = ({
           />
         </div>
         <h3
-          className={`font-satoshi text-base sm:text-lg lg:text-2xl font-medium leading-relaxed ${
+          className={`font-satoshi text-base sm:text-lg lg:text-lg font-medium leading-relaxed ${
             isActive ? activeText : inactiveText
           }`}
         >

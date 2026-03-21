@@ -43,24 +43,6 @@ const FIXED_SKETCHES: SketchConfig[] = [
     opacity: 0.4,
     scale: 1.3,
   },
-  {
-    id: 4,
-    type: "square",
-    top: "80%",
-    left: "10%",
-    rotate: 35,
-    opacity: 0.2,
-    scale: 0.8,
-  },
-  {
-    id: 5,
-    type: "rectangle",
-    top: "45%",
-    left: "-5%",
-    rotate: -60,
-    opacity: 0.3,
-    scale: 1.0,
-  },
 ];
 
 export default function ServicesHeroSection() {

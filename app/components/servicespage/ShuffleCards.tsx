@@ -123,9 +123,7 @@ const Card = ({
       }}
       initial={{ x: "0%", rotate: "0deg" }}
       animate={
-        revealLayout
-          ? { rotate: rotateZ, x }
-          : { x: "0%", rotate: "0deg" }
+        revealLayout ? { rotate: rotateZ, x } : { x: "0%", rotate: "0deg" }
       }
       drag
       dragElastic={0.35}

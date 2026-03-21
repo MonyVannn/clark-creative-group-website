@@ -42,7 +42,7 @@ export default function TestimonialSection() {
   return (
     <section
       data-color="#f2f2f2"
-      className="w-full h-full py-24 flex flex-col items-center justify-center overflow-x-hidden"
+      className="w-full h-full py-12 flex flex-col items-center justify-center overflow-x-hidden"
     >
       <div className="w-full px-6 lg:px-24 mx-auto flex flex-col items-center justify-center">
         <div className="flex flex-col">
@@ -69,8 +69,8 @@ export default function TestimonialSection() {
       </div>
 
       {/* Full-bleed carousel block */}
-      <motion.div 
-        className="w-full h-full mt-12 lg:mt-16"
+      <motion.div
+        className="w-full h-full"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}

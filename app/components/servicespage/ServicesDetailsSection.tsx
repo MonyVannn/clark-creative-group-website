@@ -107,8 +107,8 @@ export default function ServicesDetailsSection() {
       </div>
       <div className="flex flex-col relative items-center">
         {/* Left Column: ShuffleCards */}
-        <div className="w-full ] flex items-center justify-center py-12 relative z-20">
-          <div className="flex items-center justify-center transform scale-[0.6] sm:scale-[0.7] md:scale-[0.65] lg:scale-[0.75] xl:scale-[1.2] origin-center z-10 w-full h-full">
+        <div className="w-full flex items-center justify-center relative z-20">
+          <div className="flex items-center justify-center transform scale-[0.6] sm:scale-[0.7] md:scale-[0.65] lg:scale-[0.75] xl:scale-[0.9] 2xl:scale-[1.2] origin-center z-10 w-full h-full">
             <ShuffleCards onActiveCardChange={setActiveIndex} />
           </div>
         </div>
