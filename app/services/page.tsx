@@ -3,6 +3,7 @@ import { ThemeProvider } from "../components/contexts/ThemeContext";
 import Line from "../components/ui/Line";
 import Footer from "../components/footer/Footer";
 import ServicesHeroSection from "../components/servicespage/ServicesHeroSection";
+import ServicesDetailsSection from "../components/servicespage/ServicesDetailsSection";
 import NoPreloaderGate from "../components/layout/NoPreloaderGate";
 
 export default function Page() {
@@ -15,6 +16,7 @@ export default function Page() {
             <div className="relative z-10 px-8 md:px-6 lg:px-16">
               <ServicesHeroSection />
             </div>
+            <ServicesDetailsSection />
           </div>
           <Line />
           <Footer />

@@ -1,17 +1,31 @@
-import { motion } from "framer-motion";
-import { useRef, useState } from "react";
-import SpaceSketchModel from "./ui/CoreOverview/SpaceSketchModel";
-import StorySketchModel from "./ui/CoreOverview/StorySketchModel";
-import SystemSketchModel from "./ui/CoreOverview/SystemSketchModel";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import SpaceSketchModel from "../ui/CoreOverview/SpaceSketchModel";
+import StorySketchModel from "../ui/CoreOverview/StorySketchModel";
+import SystemSketchModel from "../ui/CoreOverview/SystemSketchModel";
 
 type ListOrderItem = "front" | "middle" | "back";
 
-const ShuffleCards = () => {
+interface ShuffleCardsProps {
+  onActiveCardChange?: (index: number) => void;
+}
+
+const ShuffleCards = ({ onActiveCardChange }: ShuffleCardsProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const hasEnteredView = useInView(containerRef, { once: true, amount: 0.35 });
+
   const [order, setOrder] = useState<ListOrderItem[]>([
     "front",
     "middle",
     "back",
   ]);
+
+  useEffect(() => {
+    if (onActiveCardChange) {
+      const activeIndex = order.indexOf("front");
+      onActiveCardChange(activeIndex);
+    }
+  }, [order, onActiveCardChange]);
 
   const handleShuffle = (direction: "left" | "right") => {
     const orderCopy = [...order];
@@ -24,14 +38,18 @@ const ShuffleCards = () => {
   };
 
   return (
-    <div className="grid place-content-center overflow-hidden px-8 py-24 text-slate-50">
-      <div className="relative mx-auto h-[450px] w-full max-w-[800px]">
+    <div
+      ref={containerRef}
+      className="flex items-center justify-center w-full min-h-[500px] text-slate-50"
+    >
+      <div className="relative h-[450px] w-[350px]">
         <Card
           Icon={SpaceSketchModel}
           title="Space"
           description="Your environment shapes everything."
           handleShuffle={handleShuffle}
           position={order[0]}
+          revealLayout={hasEnteredView}
         />
         <Card
           Icon={StorySketchModel}
@@ -39,6 +57,7 @@ const ShuffleCards = () => {
           description="The story you tell about your business is the business."
           handleShuffle={handleShuffle}
           position={order[1]}
+          revealLayout={hasEnteredView}
         />
         <Card
           Icon={SystemSketchModel}
@@ -46,6 +65,7 @@ const ShuffleCards = () => {
           description="Business systems multiply your best work."
           handleShuffle={handleShuffle}
           position={order[2]}
+          revealLayout={hasEnteredView}
         />
       </div>
     </div>
@@ -58,6 +78,7 @@ interface CardProps {
   description: string;
   position: ListOrderItem;
   Icon: React.ElementType;
+  revealLayout: boolean;
 }
 
 const Card = ({
@@ -66,6 +87,7 @@ const Card = ({
   description,
   position,
   Icon,
+  revealLayout,
 }: CardProps) => {
   const mousePosRef = useRef(0);
 
@@ -99,7 +121,12 @@ const Card = ({
         zIndex,
         transformOrigin: "center center",
       }}
-      animate={{ rotate: rotateZ, x }}
+      initial={{ x: "0%", rotate: "0deg" }}
+      animate={
+        revealLayout
+          ? { rotate: rotateZ, x }
+          : { x: "0%", rotate: "0deg" }
+      }
       drag
       dragElastic={0.35}
       dragListener={draggable}

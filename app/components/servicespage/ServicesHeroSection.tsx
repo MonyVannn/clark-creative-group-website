@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import ShuffleCards from "../ShuffleCards";
+import ShuffleCards from "./ShuffleCards";
 import RectangleSketch from "../ui/RectangleSketch";
 import SquareSketch from "../ui/SquareSketch";
 
