@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import SplitText from "../ui/SplitText";
 import { VisionStyleCard } from "../ui/VisionStyleCard";
 
-export default function VisionSection() {
+export default function HowWeWorkSection() {
   const { isDarkTheme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
   const textColor = "text-[#f6f8ff]";
@@ -17,7 +17,7 @@ export default function VisionSection() {
     <section
       ref={sectionRef}
       data-color="#191919"
-      className="relative py-32 max-w-7xl mx-auto lg:py-48 flex flex-col justify-center "
+      className="relative py-10 max-w-7xl mx-auto lg:py-18 flex flex-col justify-center"
     >
       <motion.div
         animate={{ y: [0, -20, 0] }}
@@ -30,14 +30,14 @@ export default function VisionSection() {
           splitType="words"
           textAlign="left"
           className={`font-clash-display text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 ${textColor} ${transition}`}
-          text="What We Believe"
+          text="How We Work"
         />
         <SplitText
           tag="p"
           splitType="lines"
           textAlign="left"
           className={`font-satoshi text-lg md:text-xl leading-relaxed ${mutedTextColor} ${transition}`}
-          text="A set of internal laws for external results. We strip away the noise to focus on what actually moves the needle: environment, momentum, and the radical pursuit of clarity."
+          text="We're a small team of designers, developers, and strategists who are passionate about creating beautiful and functional websites."
         />
       </div>
 
@@ -56,42 +56,30 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
       className={`w-full mt-16 px-4 md:px-0 transition-colors duration-1000 ${textColor}`}
     >
       <div
-        className={`grid grid-cols-1 divide-y ${divideColor} border ${borderColor} md:grid-cols-2 md:divide-x md:divide-y-0 transition-colors duration-1000`}
+        className={`grid grid-cols-1 divide-y ${divideColor} border ${borderColor} md:grid-cols-3 md:divide-x md:divide-y-0 transition-colors duration-1000`}
       >
         <VisionStyleCard
           isDarkTheme={isDarkTheme}
           index={0}
-          title="You move faster when you know exactly"
-          title2=" where you are and where you're headed."
-          description="Clarity first. Then speed comes naturally."
+          title=""
+          title2="Kickstarter"
+          description="Foundation. Brand clarity, digital presence, strategic framework. The starting point everything else builds from."
           src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
         <VisionStyleCard
           isDarkTheme={isDarkTheme}
           index={1}
-          title="Your environment shapes "
-          title2="your outcome."
-          description="We've seen it in architecture. We've lived it in business. The space around you is always shaping what's possible."
-          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
-      </div>
-      <div
-        className={`grid grid-cols-1 divide-y ${divideColor} border-x border-b ${borderColor} md:grid-cols-2 md:divide-x md:divide-y-0 transition-colors duration-1000`}
-      >
-        <VisionStyleCard
-          isDarkTheme={isDarkTheme}
-          index={2}
-          title="Business and life can run on "
-          title2="the same frequency."
-          description="When they do, everything compounds. Your values reinforce your work. Your work feeds your life. We built Clark Creative Group as proof that this is real."
+          title=""
+          title2="Builders"
+          description="Three months. Deep work across brand, systems, and strategy. We build the infrastructure for your next stage of growth."
           src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2379&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
         <VisionStyleCard
           isDarkTheme={isDarkTheme}
-          index={3}
-          title="Use what"
-          title2=" you have."
-          description="Make the decision right instead of endlessly searching for the right decision. Start with what's in front of you."
+          index={2}
+          title=""
+          title2="Partner"
+          description="Long-term creative partnership. Ongoing strategy, deep collaboration, shared belief in the outcome."
           src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=2370&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
       </div>

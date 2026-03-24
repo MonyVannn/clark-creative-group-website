@@ -6,6 +6,7 @@ import ShuffleCards from "./ShuffleCards";
 import { useTheme } from "../contexts/ThemeContext";
 import SquareSketch from "../ui/SquareSketch";
 import SplitText from "../ui/SplitText";
+import RectangleSketch from "../ui/RectangleSketch";
 
 const SERVICES_DATA = [
   {
@@ -80,7 +81,6 @@ export default function ServicesDetailsSection() {
   const activeService = SERVICES_DATA[activeIndex] || SERVICES_DATA[0];
 
   const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#f2f2f2]";
-  const borderColor = isDarkTheme ? "border-[#e3e6ee]" : "border-[#e3e6ee]";
   const transition = "transition-colors duration-1000";
 
   return (
@@ -115,13 +115,15 @@ export default function ServicesDetailsSection() {
 
         {/* Right Column: Dynamic Content */}
         <div className={`w-full flex flex-col relative z-10  ${transition}`}>
+          <RectangleSketch className="absolute -bottom-52 left-1/2 -translate-x-1/2 w-150 h-150 opacity-20 pointer-events-none rotate-90 " />
+
           {/* Content Area */}
-          <div className="flex-1 flex flex-col justify-start relative p-8 lg:p-12 min-h-[650px] md:min-h-[700px] lg:min-h-[600px]">
+          <div className="flex-1 flex flex-col justify-start relative min-h-[650px] md:min-h-[700px] lg:min-h-[600px]">
             <div className="flex-1 flex flex-col items-center justify-center text-center z-10 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeService.id}
-                  className="flex flex-col items-center w-full font-satoshi text-sm md:text-xl uppercase leading-loose tracking-[0.05em]"
+                  className="flex flex-col items-center w-full font-satoshi text-sm md:text-xl leading-loose tracking-[0.05em]"
                   variants={copyContainer}
                   initial="hidden"
                   animate="show"
