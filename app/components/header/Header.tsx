@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import { Nav } from "./MobileNav";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "HOME" },
@@ -28,7 +29,7 @@ function NavLink({
   const underlineColor = isDarkTheme ? "bg-[#f2f2f2]" : "bg-[#606060]";
 
   return (
-    <a href={href} className="block overflow-hidden">
+    <Link href={href} className="block overflow-hidden">
       <motion.div
         whileHover={{ y: -20 }}
         transition={{ ease: "backInOut", duration: 0.5 }}
@@ -53,7 +54,7 @@ function NavLink({
           aria-hidden
         />
       )}
-    </a>
+    </Link>
   );
 }
 
@@ -63,7 +64,6 @@ export default function Header() {
 
   return (
     <header
-      data-preloader-target="nav"
       className={`sticky top-0 z-50 py-5 backdrop-blur-sm transition-colors duration-1400 bg-transparent `}
     >
       <div className="px-6 md:px-12 lg:px-16 flex items-center justify-between">

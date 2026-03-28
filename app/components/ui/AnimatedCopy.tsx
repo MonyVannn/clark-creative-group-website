@@ -2,24 +2,24 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import SplitType from "split-type";
-import { PreloaderContext } from "../layout/PreloaderGate";
 
 interface AnimatedCopyProps {
   children: React.ReactNode;
   className?: string;
   as?: React.ElementType;
+  style?: React.CSSProperties;
 }
 
 export default function AnimatedCopy({
   children,
   className = "",
   as: Tag = "span",
+  style,
 }: AnimatedCopyProps) {
   const ref = useRef<HTMLElement>(null);
   const splitRef = useRef<SplitType | null>(null);
-  const { isReady } = useContext(PreloaderContext);
 
   useGSAP(
     () => {
@@ -42,22 +42,21 @@ export default function AnimatedCopy({
         });
       }
 
-      if (isReady) {
-        // Reset to natural position first (previous gsap.set persists when deps change
-        // because useGSAP doesn't revert by default), so gsap.from has a proper "to" value
-        gsap.set(splitRef.current.words, { y: "0%" });
-        gsap.from(splitRef.current.words, {
-          y: "100%",
-          opacity: 1,
-          duration: 0.5,
-          ease: "power1.out",
-          stagger: 0.1,
-        });
-      } else {
-        gsap.set(splitRef.current.words, { y: "100%" });
-      }
+      const words = splitRef.current.words;
+      if (!words?.length) return;
+
+      // Never set y:0% before the tween — that was causing a flash of full text.
+      // Start below the mask, then slide up (no gsap.from after a set to visible).
+      gsap.set(words, { y: "100%" });
+      gsap.set(el, { opacity: 1 });
+      gsap.to(words, {
+        y: "0%",
+        duration: 0.5,
+        ease: "power1.out",
+        stagger: 0.1,
+      });
     },
-    { scope: ref, dependencies: [isReady] },
+    { scope: ref, dependencies: [] },
   );
 
   useEffect(() => {
@@ -67,5 +66,10 @@ export default function AnimatedCopy({
     };
   }, []);
 
-  return React.createElement(Tag, { ref, className }, children);
+  return React.createElement(Tag, {
+    ref,
+    className,
+    // Hide until first layout frame runs Split + gsap.set; avoids SSR/hydration flash of raw text.
+    style: { opacity: 0, ...style },
+  }, children);
 }

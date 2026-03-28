@@ -24,11 +24,6 @@ const satoshi = localFont({
   variable: "--font-satoshi",
 });
 
-const newTitle = localFont({
-  src: "../public/fonts/NewTitle_Complete/Fonts/WEB/fonts/NewTitle-Variable.woff2",
-  variable: "--font-newtitle",
-});
-
 export const metadata: Metadata = {
   title: "Clark Creative Group",
   description: "Personal Website for CCG",
@@ -42,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${clashDisplay.variable} ${satoshi.variable} ${newTitle.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${clashDisplay.variable} ${satoshi.variable} antialiased`}
       >
         <LenisProvider>{children}</LenisProvider>
       </body>

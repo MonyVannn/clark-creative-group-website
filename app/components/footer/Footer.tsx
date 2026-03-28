@@ -76,7 +76,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#040b22] text-[f2f2f2] overflow-hidden z-10">
+    <footer className="relative bg-[#040b22] text-[f2f2f2] border-t border-[#f2f2f2] overflow-hidden z-10">
       {/* Spline scene - bottom right of footer */}
       <div className="pointer-events-none absolute top-0 right-0 z-0 h-[600px] w-[500px]">
         <Spline

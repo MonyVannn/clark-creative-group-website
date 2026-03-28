@@ -50,10 +50,7 @@ export default function HeroSection() {
       {/* Content container - fills viewport for whole-screen hero */}
       <div className="relative z-10 h-dvh">
         {/* Copy row - absolute for consistent position across screen sizes */}
-        <div
-          data-preloader-target="hero-content"
-          className="absolute left-0 right-0 md:top-10 z-20 flex w-full flex-col px-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-12 xl:top-[clamp(2rem,6vh,6rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12"
-        >
+        <div className="absolute left-0 right-0 md:top-10 z-20 flex w-full flex-col px-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-12 xl:top-[clamp(2rem,6vh,6rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12">
           {/* Heading column */}
           <div className="md:min-w-0 md:flex-1">
             <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-[#f6f8ff] lg:text-8xl xl:text-7xl 2xl:text-8xl">
