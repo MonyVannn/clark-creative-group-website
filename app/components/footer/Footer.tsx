@@ -77,14 +77,6 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#040b22] text-[f2f2f2] border-t border-[#f2f2f2] overflow-hidden z-10">
-      {/* Spline scene - bottom right of footer */}
-      <div className="pointer-events-none absolute top-0 right-0 z-0 h-[600px] w-[500px]">
-        <Spline
-          scene="https://prod.spline.design/f-MiHctywQQqwRd7/scene.splinecode"
-          className="h-full w-full scale-200 opacity-5"
-        />
-      </div>
-
       {/* Main Content */}
       <div className="relative z-10 container-wide mx-auto px-6 py-16 lg:px-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">

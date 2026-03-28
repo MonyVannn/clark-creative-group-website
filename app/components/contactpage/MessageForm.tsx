@@ -65,8 +65,7 @@ export default function MessageForm() {
       className="mt-6 overflow-hidden rounded-none border border-[#f6f8ff]/20 bg-[#0a1228]/90"
       variants={revealContainer}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
+      animate="show"
     >
       <div className="grid lg:grid-cols-[0.95fr_1.25fr]">
         <motion.aside

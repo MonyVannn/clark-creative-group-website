@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 import SplitText from "../ui/SplitText";
 import RectangleSketch from "../ui/RectangleSketch";
+import CopyReveal from "../ui/CopyReveal";
 
 // Mock data for the team members
 const teamMembers = [
@@ -173,25 +174,31 @@ export default function TeamSection() {
 
               {/* Typography Block */}
               <div className="w-full  md:w-[65%] lg:w-[70%] font-mono uppercase text-sm text-justify md:text-xl leading-9 tracking-[0.05em] space-y-8 pr-0 lg:pr-12 opacity-90">
-                <SplitText
-                  tag="p"
-                  splitType="lines"
-                  textAlign="justify"
-                  text={member.bio1}
-                />
-                <SplitText
-                  tag="p"
-                  splitType="lines"
-                  textAlign="justify"
-                  text={member.bio2}
-                />
+                <CopyReveal
+                  as="div"
+                  blockColor="#e5e5e5"
+                  stagger={0.12}
+                  textAlign="left"
+                >
+                  {member.bio1}
+                </CopyReveal>
+                <CopyReveal
+                  as="div"
+                  blockColor="#e5e5e5"
+                  stagger={0.12}
+                  textAlign="left"
+                >
+                  {member.bio2}
+                </CopyReveal>
                 {member.bio3 && (
-                  <SplitText
-                    tag="p"
-                    splitType="lines"
-                    textAlign="justify"
-                    text={member.bio3}
-                  />
+                  <CopyReveal
+                    as="div"
+                    blockColor="#e5e5e5"
+                    stagger={0.12}
+                    textAlign="left"
+                  >
+                    {member.bio3}
+                  </CopyReveal>
                 )}
               </div>
             </div>

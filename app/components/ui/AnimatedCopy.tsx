@@ -66,10 +66,14 @@ export default function AnimatedCopy({
     };
   }, []);
 
-  return React.createElement(Tag, {
-    ref,
-    className,
-    // Hide until first layout frame runs Split + gsap.set; avoids SSR/hydration flash of raw text.
-    style: { opacity: 0, ...style },
-  }, children);
+  return React.createElement(
+    Tag,
+    {
+      ref,
+      className,
+      // Hide until first layout frame runs Split + gsap.set; avoids SSR/hydration flash of raw text.
+      style: { opacity: 0, ...style },
+    },
+    children,
+  );
 }

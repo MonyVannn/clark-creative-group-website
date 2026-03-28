@@ -4,6 +4,7 @@ import Link from "next/link";
 import ShuffleCards from "./ShuffleCards";
 import RectangleSketch from "../ui/RectangleSketch";
 import SquareSketch from "../ui/SquareSketch";
+import AnimatedCopy from "../ui/AnimatedCopy";
 
 interface SketchConfig {
   id: number;
@@ -72,15 +73,17 @@ export default function ServicesHeroSection() {
 
       <div className="relative z-10 flex flex-col items-end justify-center">
         <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#f2f2f2] max-w-3xl lg:max-w-4xl tracking-tight">
-          Explore Our Services
+          <AnimatedCopy as="span" className="block">
+            Explore Our Service Offerings.
+          </AnimatedCopy>
         </h1>
 
         <div className="font-satoshi text-center md:text-right font-medium uppercase text-[#f2f2f2] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-20 md:mt-40 mb-12">
-          <p>
+          <AnimatedCopy as="span" className="block">
             We bridge the gap between how you look and how you operate by
             designing your brand, systems, and strategy as one fluid,
             high-performance engine.
-          </p>
+          </AnimatedCopy>
         </div>
 
         <div className="self-center md:self-end">

@@ -1,6 +1,7 @@
 "use client";
 
 import SquareSketch from "../ui/SquareSketch";
+import AnimatedCopy from "../ui/AnimatedCopy";
 
 export default function ContactHeroSection() {
   return (
@@ -10,15 +11,19 @@ export default function ContactHeroSection() {
           <SquareSketch className="opacity-50 -rotate-12" />
         </div>
         <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#f2f2f2] max-w-3xl lg:max-w-4xl tracking-tight">
-          Let&apos;s Start With a Conversation
+          <AnimatedCopy as="span" className="block">
+            Let&apos;s Start With a Conversation
+          </AnimatedCopy>
         </h1>
 
         <div className="font-satoshi text-center md:text-right font-medium uppercase text-[#f2f2f2] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-20 md:mt-40 mb-12">
-          <p>Thirty minutes.</p>
-          <p>
+          <AnimatedCopy as="span" className="block">
+            Thirty minutes.
+          </AnimatedCopy>
+          <AnimatedCopy as="span" className="block">
             Your vision, your business, and where Space, Story, or System
             creates the most momentum.
-          </p>
+          </AnimatedCopy>
         </div>
       </div>
     </section>

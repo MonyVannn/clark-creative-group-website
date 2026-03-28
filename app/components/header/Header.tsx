@@ -5,6 +5,7 @@ import { useTheme } from "../contexts/ThemeContext";
 import { Nav } from "./MobileNav";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "HOME" },
@@ -68,7 +69,13 @@ export default function Header() {
     >
       <div className="px-6 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Brand */}
-        <div className="shrink-0">
+        <Link href="/" className="shrink-0 flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            alt="Clark Creative Group"
+            width={32}
+            height={32}
+          />
           <span
             className={`font-clash-display hidden md:block font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
               isDarkTheme ? "text-[#f6f8ff]" : "text-[#0a191f]"
@@ -83,7 +90,7 @@ export default function Header() {
           >
             CLARK CREATIVE
           </span>
-        </div>
+        </Link>
 
         {/* Navigation */}
         <Nav />
@@ -102,16 +109,16 @@ export default function Header() {
 
         {/* CTA Button */}
         <div className="shrink-0 hidden lg:flex">
-          <button
-            className={`cursor-pointer px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
+          <Link
+            href="/contact"
+            className={`px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
               isDarkTheme
                 ? "bg-[#ffc878] text-[#040b22]"
                 : "bg-[#0a191f] text-[#f6f8ff]"
             }`}
-            type="button"
           >
             CONTACT US
-          </button>
+          </Link>
         </div>
       </div>
     </header>

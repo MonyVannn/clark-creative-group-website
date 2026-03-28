@@ -203,8 +203,7 @@ export default function BookCallPanel() {
       className="mt-6 overflow-hidden rounded-none border border-[#f6f8ff]/20 bg-[#0a1228]/90"
       variants={revealContainer}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      animate="show"
     >
       <div className="grid lg:grid-cols-[1.05fr_1.45fr_1fr]">
         <motion.aside

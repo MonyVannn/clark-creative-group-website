@@ -3,6 +3,7 @@
 import Link from "next/link";
 import RectangleSketch from "../ui/RectangleSketch";
 import SquareSketch from "../ui/SquareSketch";
+import AnimatedCopy from "../ui/AnimatedCopy";
 
 export default function AboutHeroSection({
   onCtaClick,
@@ -16,21 +17,22 @@ export default function AboutHeroSection({
           <SquareSketch className="opacity-50 -rotate-12" />
         </div>
         <h1 className="font-clash-display text-center md:text-left text-5xl md:text-7xl lg:text-6xl xl:text-8xl font-semibold text-[#f2f2f2] max-w-3xl lg:max-w-4xl tracking-tight">
-          We set out to build a life. The company came from that.
+          <AnimatedCopy as="span" className="block">
+            We set out to build a life. The company came from that.
+          </AnimatedCopy>
         </h1>
 
         <div className="font-satoshi text-center md:text-right font-medium uppercase text-[#f2f2f2] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-20 md:mt-40 mb-12">
-          <p>
+          <AnimatedCopy as="span" className="block">
             Clark Creative Group started when Roger and Hattie Clark — childhood
             friends turned life partners — decided to take everything they knew
             about design, narrative, and strategy, and put it to work for
             founders who think the way they do.
-          </p>
-
-          <p>
+          </AnimatedCopy>
+          <AnimatedCopy as="span" className="block">
             You get a lot further when these parts of your life start pulling in
             the same direction.
-          </p>
+          </AnimatedCopy>
         </div>
 
         <div className="self-center md:self-end">
