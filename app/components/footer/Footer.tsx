@@ -224,7 +224,11 @@ export default function Footer() {
       <div className="relative z-10 border-t border-[#f6f8ff]/20 bg-[#040b22]">
         <div className="container-wide mx-auto flex flex-col items-center justify-between gap-4 px-6 py-6 lg:flex-row lg:px-16">
           <a
-            href="#"
+            href="/privacy"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo("/privacy");
+            }}
             className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-[#f6f8ff]"
           >
             Privacy / Cookies Policy
