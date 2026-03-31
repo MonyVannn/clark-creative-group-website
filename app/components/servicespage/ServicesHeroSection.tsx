@@ -5,6 +5,7 @@ import ShuffleCards from "./ShuffleCards";
 import RectangleSketch from "../ui/RectangleSketch";
 import SquareSketch from "../ui/SquareSketch";
 import AnimatedCopy from "../ui/AnimatedCopy";
+import { usePageTransition } from "../transitions/TransitionProvider";
 
 interface SketchConfig {
   id: number;
@@ -47,6 +48,8 @@ const FIXED_SKETCHES: SketchConfig[] = [
 ];
 
 export default function ServicesHeroSection() {
+  const { navigateTo } = usePageTransition();
+
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center pt-32 pb-24 text-center ">
       {/* Background Sketches */}
@@ -89,6 +92,10 @@ export default function ServicesHeroSection() {
         <div className="self-center md:self-end">
           <Link
             href="/contact"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo("/contact");
+            }}
             className="cursor-pointer bg-[#ffc878] hover:bg-[#ffc878]/80 px-8 py-4 font-satoshi font-bold uppercase text-[#191919] tracking-widest transition-colors duration-300"
           >
             Talk To Us

@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import AnimatedCopy from "../ui/AnimatedCopy";
 import Hexa from "../ui/HeroSectionHomepage/Hexa";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
@@ -88,12 +89,12 @@ export default function HeroSection() {
               systems, and connect the whole picture.
             </AnimatedCopy>
             <div className="flex flex-wrap flex-col gap-4 xl:gap-3 items-center md:items-baseline">
-              <button
-                type="button"
-                className="w-64 bg-[#ffc878] px-6 py-3 font-satoshi font-bold text-sm uppercase tracking-wider text-[#040b22] transition-colors hover:bg-[#ffc878]/80 cursor-pointer xl:w-full xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-full 2xl:px-6 2xl:py-3 2xl:text-sm"
+              <Link
+                href="/services"
+                className="w-64 bg-[#ffc878] px-6 py-3 text-center font-satoshi font-bold text-sm uppercase tracking-wider text-[#040b22] transition-colors hover:bg-[#ffc878]/80 cursor-pointer xl:w-full xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-full 2xl:px-6 2xl:py-3 2xl:text-sm"
               >
                 Explore Services
-              </button>
+              </Link>
             </div>
           </div>
         </div>

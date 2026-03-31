@@ -15,9 +15,12 @@ const ROTATE_DEG = 2.5;
 const STAGGER = 15;
 const CENTER_STAGGER = -65;
 const SPREAD_DIVISOR = 1.2;
+const MAX_VISIBLE_OFFSET = 1;
 
 export type StaggerTestimonialItem = {
   testimonial: string;
+  name: string;
+  title: string;
   by: string;
   imgSrc: string;
 };
@@ -151,6 +154,34 @@ const TestimonialCard = ({
   cardHeight,
 }: TestimonialCardProps) => {
   const isActive = position === 0;
+  const isVisible = Math.abs(position) <= MAX_VISIBLE_OFFSET;
+  const handleQuoteWheel = (e: React.WheelEvent<HTMLHeadingElement>) => {
+    if (!isActive) return;
+
+    const el = e.currentTarget;
+    const { scrollTop, scrollHeight, clientHeight } = el;
+    const canScroll = scrollHeight > clientHeight;
+
+    if (!canScroll) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
+    const isScrollingDown = e.deltaY > 0;
+    const atTop = scrollTop <= 0;
+    const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+    // Keep wheel events trapped inside the quote while it can scroll.
+    if ((isScrollingDown && !atBottom) || (!isScrollingDown && !atTop)) {
+      e.stopPropagation();
+      return;
+    }
+
+    // Prevent wheel from bubbling to page scroll when quote hits boundaries.
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
   const activeBg = "bg-[#ffc878]";
   const activeText = "text-black";
@@ -165,8 +196,9 @@ const TestimonialCard = ({
       initial={false}
       onClick={() => handleMove(position)}
       className={`
-      absolute left-1/2 top-1/2 cursor-pointer p-8 transition-colors duration-500 flex flex-col justify-between
+      absolute left-1/2 top-1/2 cursor-pointer p-8 transition-colors duration-500 flex flex-col justify-between overflow-hidden
       ${isActive ? `z-10 ${activeBg}` : `z-0 ${inactiveBg}`}
+      ${isVisible ? "pointer-events-auto" : "pointer-events-none"}
       `}
       style={{
         borderWidth: BORDER_SIZE,
@@ -176,11 +208,17 @@ const TestimonialCard = ({
       animate={{
         width: cardSize,
         height: cardHeight, // Taller than wide to fit longer quotes
-        x: `calc(-50% + ${position * (cardSize / SPREAD_DIVISOR)}px)`,
-        y: `calc(-50% + ${
-          isActive ? CENTER_STAGGER : position % 2 ? STAGGER : -STAGGER
-        }px)`,
-        rotate: isActive ? 0 : position % 2 ? ROTATE_DEG : -ROTATE_DEG,
+        x: isVisible
+          ? `calc(-50% + ${position * (cardSize / SPREAD_DIVISOR)}px)`
+          : `calc(-50% + ${Math.sign(position || 1) * cardSize * 1.8}px)`,
+        y: isVisible
+          ? `calc(-50% + ${
+              isActive ? CENTER_STAGGER : position % 2 ? STAGGER : -STAGGER
+            }px)`
+          : "calc(-50% + 0px)",
+        rotate: isVisible ? (isActive ? 0 : position % 2 ? ROTATE_DEG : -ROTATE_DEG) : 0,
+        opacity: isVisible ? 1 : 0,
+        scale: isVisible ? 1 : 0.92,
         boxShadow: isActive
           ? `0px 8px 0px 4px ${shadowColor}`
           : "0px 0px 0px 0px transparent",
@@ -204,26 +242,56 @@ const TestimonialCard = ({
         }}
       />
 
-      <div>
-        <div className="mb-6 relative h-16 w-16">
-          <Image
-            src={testimonial.imgSrc}
-            alt={`Avatar of ${testimonial.by}`}
-            fill
-            sizes="64px"
-            className="object-cover "
-          />
+      <div className="flex min-h-0 flex-1 flex-col">
+        <div className="mb-6 flex items-center gap-4">
+          <div className="relative h-16 w-16 shrink-0">
+            <Image
+              src={testimonial.imgSrc}
+              alt={`Avatar of ${testimonial.by}`}
+              fill
+              sizes="64px"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <h2
+              className={`font-clash-display text-lg font-semibold ${
+                isActive ? "text-black" : "text-[#f2f2f2]"
+              }`}
+            >
+              {testimonial.name}
+            </h2>
+            <p
+              className={`font-satoshi text-xs uppercase tracking-wider ${
+                isActive ? "text-gray-900" : "text-gray-400"
+              }`}
+            >
+              {testimonial.title}
+            </p>
+          </div>
         </div>
-        <h3
-          className={`font-satoshi text-base sm:text-lg lg:text-lg font-medium leading-relaxed ${
-            isActive ? activeText : inactiveText
-          }`}
-        >
-          "{testimonial.testimonial}"
-        </h3>
+        <div className="relative min-h-0 flex-1">
+          <h3
+            className={`h-full whitespace-pre-line font-satoshi text-base sm:text-lg lg:text-lg font-medium leading-relaxed ${
+              isActive
+                ? `${activeText} no-scrollbar overscroll-contain overflow-y-auto pr-2`
+                : `${inactiveText} overflow-hidden`
+            }`}
+            onWheelCapture={handleQuoteWheel}
+            onTouchMoveCapture={(e) => {
+              if (!isActive) return;
+              e.stopPropagation();
+            }}
+          >
+            "{testimonial.testimonial}"
+          </h3>
+          {!isActive && (
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#040b22] to-transparent" />
+          )}
+        </div>
       </div>
       <p
-        className={`mt-6 text-base italic font-bold ${
+        className={`mt-4 shrink-0 text-base italic font-bold ${
           isActive ? "text-gray-900" : "text-gray-500"
         }`}
       >

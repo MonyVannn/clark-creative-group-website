@@ -13,22 +13,20 @@ const teamMembers = [
     id: "01",
     name: "Roger Clark",
     position: "SYSTEMS + SPACE",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    image: "/rog.png",
     linkedin: "#",
-    bio1: "ROGER SPENT YEARS AS A LICENSED ARCHITECT DESIGNING LEGACY HOMES AND WELLNESS SANCTUARIES. SPACES WHERE EVERY DETAIL CARRIED INTENTION. HE LEARNED SOMETHING MOST PEOPLE SENSE BUT NEVER NAME: THE RIGHT ENVIRONMENT CHANGES HOW YOU THINK, HOW YOU PERFORM, HOW YOU LIVE.",
-    bio2: "HE BRINGS THAT THINKING TO BUSINESS NOW. STRATEGY, SYSTEMS, SPACE — CONNECTED INTO ONE ARCHITECTURE. WHEN THINGS FEEL SCATTERED, HE'S THE ONE WHO LAYS IT ALL OUT AND SHOWS YOU HOW THE PIECES FIT.",
-    bio3: "ARCHITECT BY TRAINING. SYSTEMS THINKER BY NATURE. THE PERSON WHO SEES THE WHOLE BOARD.",
+    bio1: "Roger spent years as a licensed architect designing legacy homes and wellness sanctuaries. Spaces where every detail carried intention. He learned something most people sense but never name: the right environment changes how you think, how you perform, how you live.",
+    bio2: "He brings that thinking to business now. Strategy, systems, space — connected into one architecture. When things feel scattered, he's the one who lays it all out and shows you how the pieces fit.",
+    bio3: "Architect by training. Systems thinker by nature. The person who sees the whole board.",
   },
   {
     id: "02",
     name: "Hattie Clark",
     position: "STORY + VOICE",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
+    image: "/hat.png",
     linkedin: "#",
-    bio1: "HATTIE FINDS THE TRUTH UNDERNEATH WHAT YOU'RE BUILDING AND GIVES IT THE WORDS IT DESERVES. SHE LISTENS TO THE HALF-FORMED THING YOU'RE STRUGGLING TO EXPLAIN AND HANDS IT BACK CLEAR, HONEST, AND READY TO USE.",
-    bio2: "FOUNDERS WALK AWAY FROM CONVERSATIONS WITH HATTIE WITH TWO THINGS: CLARITY ON THEIR MESSAGE, AND THE NAME OF THE EXACT PERSON THEY NEED TO TALK TO NEXT.",
+    bio1: "Hattie finds the truth underneath what you're building and gives it the words it deserves. She listens to the half-formed thing you're struggling to explain and hands it back clear, honest, and ready to use.",
+    bio2: "Founders walk away from conversations with Hattie with two things: clarity on their message, and the name of the exact person they need to talk to next.",
     bio3: "",
   },
 ];
@@ -173,7 +171,7 @@ export default function TeamSection() {
               </div>
 
               {/* Typography Block */}
-              <div className="w-full  md:w-[65%] lg:w-[70%] font-mono uppercase text-sm text-justify md:text-xl leading-9 tracking-[0.05em] space-y-8 pr-0 lg:pr-12 opacity-90">
+              <div className="w-full  md:w-[65%] lg:w-[70%] font-satoshi text-sm text-justify md:text-xl leading-9 tracking-[0.05em] space-y-8 pr-0 lg:pr-12 opacity-90">
                 <CopyReveal
                   as="div"
                   blockColor="#e5e5e5"

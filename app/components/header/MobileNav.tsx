@@ -7,7 +7,8 @@ import React, {
   useState,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
+import { usePageTransition } from "../transitions/TransitionProvider";
 
 export const Nav = () => {
   const [active, setActive] = useState(false);
@@ -15,27 +16,44 @@ export const Nav = () => {
   return (
     <>
       <HamburgerButton active={active} setActive={setActive} />
-      <AnimatePresence>{active && <LinksOverlay />}</AnimatePresence>
+      <AnimatePresence>
+        {active && <LinksOverlay setActive={setActive} />}
+      </AnimatePresence>
     </>
   );
 };
 
-const LinksOverlay = () => {
+const LinksOverlay = ({
+  setActive,
+}: {
+  setActive: Dispatch<SetStateAction<boolean>>;
+}) => {
+  const { navigateTo } = usePageTransition();
+
+  const handleNavigate = (href: string) => {
+    setActive(false);
+    navigateTo(href);
+  };
+
   return (
-    <nav className="fixed right-4 top-4 z-40 h-[calc(100vh_-_32px)] w-[calc(100%_-_32px)] overflow-hidden bg-[#040b22]">
+    <nav className="fixed right-4 top-4 z-40 h-[calc(100vh-32px)] w-[calc(100%-32px)] overflow-hidden bg-[#040b22]">
       <Logo />
-      <LinksContainer />
-      <FooterCTAs />
+      <LinksContainer onNavigate={handleNavigate} />
+      <FooterCTAs onNavigate={handleNavigate} />
     </nav>
   );
 };
 
-const LinksContainer = () => {
+const LinksContainer = ({
+  onNavigate,
+}: {
+  onNavigate: (href: string) => void;
+}) => {
   return (
     <motion.div className="space-y-4 p-12 pl-4 md:pl-20">
       {LINKS.map((l, idx) => {
         return (
-          <NavLink key={l.title} href={l.href} idx={idx}>
+          <NavLink key={l.title} href={l.href} idx={idx} onNavigate={onNavigate}>
             {l.title}
           </NavLink>
         );
@@ -48,11 +66,15 @@ const NavLink = ({
   children,
   href,
   idx,
+  onNavigate,
 }: {
   children: ReactNode;
   href: string;
   idx: number;
+  onNavigate: (href: string) => void;
 }) => {
+  const isInternalPath = href.startsWith("/");
+
   return (
     <motion.a
       initial={{ opacity: 0, y: -8 }}
@@ -67,6 +89,11 @@ const NavLink = ({
       }}
       exit={{ opacity: 0, y: -8 }}
       href={href}
+      onClick={(e) => {
+        if (!isInternalPath) return;
+        e.preventDefault();
+        onNavigate(href);
+      }}
       className="font-satoshi block text-5xl font-semibold text-[#f6f8ff] transition-colors hover:text-[#f6f8ff]/50 md:text-7xl"
     >
       {children}.
@@ -156,7 +183,11 @@ const HamburgerButton = ({
   );
 };
 
-const FooterCTAs = () => {
+const FooterCTAs = ({
+  onNavigate,
+}: {
+  onNavigate: (href: string) => void;
+}) => {
   return (
     <>
       <div className="absolute bottom-6 left-6 flex gap-4 md:flex-col">
@@ -195,6 +226,7 @@ const FooterCTAs = () => {
           },
         }}
         exit={{ opacity: 0, y: 8 }}
+        onClick={() => onNavigate("/contact")}
         className="cursor-pointer absolute bottom-2 right-2 flex items-center gap-2 rounded-full bg-[#f6f8ff] px-3 py-3 text-4xl uppercase text-[#040b22] transition-colors hover:bg-[#f6f8ff]/50 hover:text-[#040b22] md:bottom-4 md:right-4 md:px-6 md:text-2xl"
       >
         <span className="hidden md:block">contact us</span> <FiArrowRight />

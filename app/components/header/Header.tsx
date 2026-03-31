@@ -6,12 +6,13 @@ import { Nav } from "./MobileNav";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { usePageTransition } from "../transitions/TransitionProvider";
 
 const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT" },
   { href: "/services", label: "SERVICES" },
-  { href: "#", label: "PORTAL" },
+  { href: "https://app.ccg-automation.com/", label: "PORTAL" },
 ];
 
 function NavLink({
@@ -19,18 +20,29 @@ function NavLink({
   children,
   active,
   isDarkTheme,
+  onNavigate,
 }: {
   href: string;
   children: string;
   active?: boolean;
   isDarkTheme: boolean;
+  onNavigate: (href: string) => void;
 }) {
   const activeColor = isDarkTheme ? "text-white" : "text-[#606060]";
   const inactiveColor = isDarkTheme ? "text-gray-400" : "text-[#a0a0a0]";
   const underlineColor = isDarkTheme ? "bg-[#f2f2f2]" : "bg-[#606060]";
+  const isInternalPath = href.startsWith("/");
 
   return (
-    <Link href={href} className="block overflow-hidden">
+    <Link
+      href={href}
+      onClick={(e) => {
+        if (!isInternalPath) return;
+        e.preventDefault();
+        onNavigate(href);
+      }}
+      className="block overflow-hidden"
+    >
       <motion.div
         whileHover={{ y: -20 }}
         transition={{ ease: "backInOut", duration: 0.5 }}
@@ -62,6 +74,7 @@ function NavLink({
 export default function Header() {
   const { isDarkTheme } = useTheme();
   const pathname = usePathname();
+  const { navigateTo } = usePageTransition();
 
   return (
     <header
@@ -69,7 +82,14 @@ export default function Header() {
     >
       <div className="px-6 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Brand */}
-        <Link href="/" className="shrink-0 flex items-center gap-2">
+        <Link
+          href="/"
+          onClick={(e) => {
+            e.preventDefault();
+            navigateTo("/");
+          }}
+          className="shrink-0 flex items-center gap-2"
+        >
           <Image
             src="/logo.png"
             alt="Clark Creative Group"
@@ -101,6 +121,7 @@ export default function Header() {
               href={link.href}
               active={pathname === link.href}
               isDarkTheme={isDarkTheme}
+              onNavigate={navigateTo}
             >
               {link.label}
             </NavLink>
@@ -111,6 +132,10 @@ export default function Header() {
         <div className="shrink-0 hidden lg:flex">
           <Link
             href="/contact"
+            onClick={(e) => {
+              e.preventDefault();
+              navigateTo("/contact");
+            }}
             className={`px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
               isDarkTheme
                 ? "bg-[#ffc878] text-[#040b22]"

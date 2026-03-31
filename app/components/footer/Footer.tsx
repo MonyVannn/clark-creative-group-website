@@ -3,11 +3,13 @@
 import { useState } from "react";
 import Spline from "@splinetool/react-spline";
 import { FiArrowRight } from "react-icons/fi";
+import { usePageTransition } from "../transitions/TransitionProvider";
 
 const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT" },
   { href: "/services", label: "SERVICES" },
+  { href: "https://app.ccg-automation.com/", label: "PORTAL" },
   { href: "/contact", label: "CONTACT" },
 ];
 
@@ -47,6 +49,7 @@ function FooterCTA({
 }
 
 export default function Footer() {
+  const { navigateTo } = usePageTransition();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -231,6 +234,11 @@ export default function Footer() {
               <a
                 key={link.label}
                 href={link.href}
+                onClick={(e) => {
+                  if (!link.href.startsWith("/")) return;
+                  e.preventDefault();
+                  navigateTo(link.href);
+                }}
                 className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-[#f6f8ff]"
               >
                 {link.label}

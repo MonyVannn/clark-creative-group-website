@@ -29,6 +29,15 @@
   font-family: var(--font-newtitle);
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .container-wide {
   width: 100%;
   margin-inline: auto;
