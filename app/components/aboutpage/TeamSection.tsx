@@ -6,14 +6,24 @@ import { useTheme } from "../contexts/ThemeContext";
 import SplitText from "../ui/SplitText";
 import RectangleSketch from "../ui/RectangleSketch";
 import CopyReveal from "../ui/CopyReveal";
+import HattieProfile from "./HattieProfile";
+import RogerProfile from "./RogerProfile";
 
 // Mock data for the team members
-const teamMembers = [
+const teamMembers: {
+  id: string;
+  name: string;
+  position: string;
+  linkedin: string;
+  bio1: string;
+  bio2: string;
+  bio3: string;
+  image?: string;
+}[] = [
   {
     id: "01",
     name: "Roger Clark",
     position: "SYSTEMS + SPACE",
-    image: "/rog.png",
     linkedin: "#",
     bio1: "Roger spent years as a licensed architect designing legacy homes and wellness sanctuaries. Spaces where every detail carried intention. He learned something most people sense but never name: the right environment changes how you think, how you perform, how you live.",
     bio2: "He brings that thinking to business now. Strategy, systems, space — connected into one architecture. When things feel scattered, he's the one who lays it all out and shows you how the pieces fit.",
@@ -23,7 +33,6 @@ const teamMembers = [
     id: "02",
     name: "Hattie Clark",
     position: "STORY + VOICE",
-    image: "/hat.png",
     linkedin: "#",
     bio1: "Hattie finds the truth underneath what you're building and gives it the words it deserves. She listens to the half-formed thing you're struggling to explain and hands it back clear, honest, and ready to use.",
     bio2: "Founders walk away from conversations with Hattie with two things: clarity on their message, and the name of the exact person they need to talk to next.",
@@ -90,20 +99,36 @@ export default function TeamSection() {
               <div
                 className={`w-full md:w-[35%] lg:w-[30%] p-10 aspect-square border-b md:border-b-0 md:border-r shrink-0 ${borderColor} ${transition}`}
               >
-                <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
+                <div className="relative w-full h-full min-h-0 flex items-center justify-center">
                   <motion.div
-                    initial={{ y: "100%" }}
-                    whileInView={{ y: 0 }}
+                    initial={{ y: "100%", opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 100 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
-                    className="relative w-full h-full"
+                    className="relative h-full w-full min-h-0 flex items-center justify-center"
                   >
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-top"
-                    />
+                    {member.id === "01" ? (
+                      <RogerProfile
+                        role="img"
+                        aria-label={member.name}
+                        className="h-full w-full "
+                        preserveAspectRatio="xMidYMid meet"
+                      />
+                    ) : member.id === "02" ? (
+                      <HattieProfile
+                        role="img"
+                        aria-label={member.name}
+                        className="h-full w-full "
+                        preserveAspectRatio="xMidYMid meet"
+                      />
+                    ) : (
+                      <Image
+                        src={member.image!}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    )}
                   </motion.div>
                 </div>
               </div>
