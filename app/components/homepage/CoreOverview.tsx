@@ -9,11 +9,13 @@ import { useTheme } from "../contexts/ThemeContext";
 import SpaceSketchModel from "../ui/CoreOverview/SpaceSketchModel";
 import StorySketchModel from "../ui/CoreOverview/StorySketchModel";
 import SystemSketchModel from "../ui/CoreOverview/SystemSketchModel";
+import { usePreloader } from "../PreloaderContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CoreOverview() {
   const { isDarkTheme } = useTheme();
+  const { isPreloaderComplete } = usePreloader();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const sublineRef = useRef<HTMLParagraphElement>(null);
@@ -21,6 +23,8 @@ export default function CoreOverview() {
 
   useGSAP(
     () => {
+      if (!isPreloaderComplete) return;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -68,7 +72,7 @@ export default function CoreOverview() {
         );
       });
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [isPreloaderComplete] },
   );
 
   return (

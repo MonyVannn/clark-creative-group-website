@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { LenisProvider } from "./components/layout/LenisProvider";
 import TransitionProvider from "./components/transitions/TransitionProvider";
+import LoadingScreen from "./components/LoadingScreen";
+import { PreloaderProvider } from "./components/PreloaderContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,7 +43,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${clashDisplay.variable} ${satoshi.variable} antialiased`}
       >
         <LenisProvider>
-          <TransitionProvider>{children}</TransitionProvider>
+          <PreloaderProvider>
+            <LoadingScreen>
+              <TransitionProvider>{children}</TransitionProvider>
+            </LoadingScreen>
+          </PreloaderProvider>
         </LenisProvider>
       </body>
     </html>

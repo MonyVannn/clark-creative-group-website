@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
 import SplitType from "split-type";
+import { usePreloader } from "../PreloaderContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,9 +36,12 @@ export default function CopyReveal({
   const splitRef = useRef<SplitType | null>(null);
   const linesRef = useRef<HTMLElement[]>([]);
   const blocksRef = useRef<HTMLDivElement[]>([]);
+  const { isPreloaderComplete } = usePreloader();
 
   useGSAP(
     () => {
+      if (!isPreloaderComplete) return;
+
       const el = containerRef.current;
       if (!el) return;
 
@@ -144,6 +148,7 @@ export default function CopyReveal({
         stagger,
         duration,
         textAlign,
+        isPreloaderComplete,
       ],
     },
   );

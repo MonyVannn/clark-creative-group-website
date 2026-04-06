@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Spline from "@splinetool/react-spline";
 import { FiArrowRight } from "react-icons/fi";
 import { usePageTransition } from "../transitions/TransitionProvider";
 

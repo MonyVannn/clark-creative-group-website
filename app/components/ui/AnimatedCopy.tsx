@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useEffect, useRef } from "react";
 import SplitType from "split-type";
+import { usePreloader } from "../PreloaderContext";
 
 interface AnimatedCopyProps {
   children: React.ReactNode;
@@ -20,9 +21,12 @@ export default function AnimatedCopy({
 }: AnimatedCopyProps) {
   const ref = useRef<HTMLElement>(null);
   const splitRef = useRef<SplitType | null>(null);
+  const { isPreloaderComplete } = usePreloader();
 
   useGSAP(
     () => {
+      if (!isPreloaderComplete) return;
+
       const el = ref.current;
       if (!el) return;
 
@@ -56,7 +60,7 @@ export default function AnimatedCopy({
         stagger: 0.1,
       });
     },
-    { scope: ref, dependencies: [] },
+    { scope: ref, dependencies: [isPreloaderComplete] },
   );
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText as GSAPSplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { usePreloader } from "../PreloaderContext";
 
 gsap.registerPlugin(ScrollTrigger, GSAPSplitText, useGSAP);
 
@@ -43,6 +44,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   const animationCompletedRef = useRef(false);
   const onCompleteRef = useRef(onLetterAnimationComplete);
   const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
+  const { isPreloaderComplete } = usePreloader();
 
   // Keep callback ref updated
   useEffect(() => {
@@ -61,6 +63,7 @@ const SplitText: React.FC<SplitTextProps> = ({
 
   useGSAP(
     () => {
+      if (!isPreloaderComplete) return;
       if (!ref.current || !text || !fontsLoaded) return;
       // Prevent re-animation if already completed
       if (animationCompletedRef.current) return;
@@ -157,6 +160,7 @@ const SplitText: React.FC<SplitTextProps> = ({
         threshold,
         rootMargin,
         fontsLoaded,
+        isPreloaderComplete,
       ],
       scope: ref,
     },

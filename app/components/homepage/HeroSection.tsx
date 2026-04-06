@@ -8,19 +8,23 @@ import AnimatedCopy from "../ui/AnimatedCopy";
 import Hexa from "../ui/HeroSectionHomepage/Hexa";
 import Link from "next/link";
 import { usePageTransition } from "../transitions/TransitionProvider";
+import { usePreloader } from "../PreloaderContext";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
   const { navigateTo } = usePageTransition();
+  const { isPreloaderComplete } = usePreloader();
   const sectionRef = useRef<HTMLElement>(null);
-  const splineRef = useRef<HTMLDivElement>(null);
+  const hexaRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
+      if (!isPreloaderComplete) return;
+
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
-        gsap.to(splineRef.current, {
+        gsap.to(hexaRef.current, {
           left: "80%",
           top: "110%",
           opacity: 0.6,
@@ -34,7 +38,7 @@ export default function HeroSection() {
         });
       });
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [isPreloaderComplete] },
   );
 
   return (
@@ -42,9 +46,9 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative min-h-dvh py-20 md:py-0 overflow-x-clip"
     >
-      {/* Spline 3D background - viewport-scaled, smaller at xl for 1440x900 */}
+      {/* Hexa 3D background - viewport-scaled, smaller at xl for 1440x900 */}
       <div
-        ref={splineRef}
+        ref={hexaRef}
         className="pointer-events-none absolute left-1/2 bottom-20 md:top-2/3 2xl:top-2/3 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(300px,40vh)] h-[min(400px,40vh)] md:w-[min(600px,55vh)] md:h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)] flex items-center justify-center"
       >
         <Hexa className="w-full h-full" />
