@@ -4,14 +4,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import CopyReveal from "../ui/CopyReveal";
-import { FaServicestack } from "react-icons/fa6";
 import SplitText from "../ui/SplitText";
 import { useTheme } from "../contexts/ThemeContext";
 import SpaceSketchModel from "../ui/CoreOverview/SpaceSketchModel";
 import StorySketchModel from "../ui/CoreOverview/StorySketchModel";
 import SystemSketchModel from "../ui/CoreOverview/SystemSketchModel";
-import HexaBackground from "../ui/CoreOverview/HexaBackground";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -122,7 +119,7 @@ export default function CoreOverview() {
                 className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
                   isDarkTheme ? "text-white" : "text-[#0a191f]"
                 }`}
-                textAlign="left"
+                textAlign="center"
                 delay={50}
                 duration={1.25}
                 ease="power3.out"
@@ -134,10 +131,10 @@ export default function CoreOverview() {
 
               <SplitText
                 text="Your environment shapes everything. Not just the room — the website, the community, the entire world you and your customers move through. We design those environments. Physical. Digital. Social. When the container matches the ambition, momentum is natural."
-                className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
-                textAlign="left"
+                textAlign="center"
                 delay={20}
                 duration={1}
                 ease="power3.out"
@@ -148,7 +145,7 @@ export default function CoreOverview() {
               />
 
               <ul
-                className={`feature-list font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`feature-list font-satoshi text-center pl-5 text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >
@@ -176,7 +173,7 @@ export default function CoreOverview() {
                 className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
                   isDarkTheme ? "text-white" : "text-[#0a191f]"
                 }`}
-                textAlign="left"
+                textAlign="center"
                 delay={50}
                 duration={1.25}
                 ease="power3.out"
@@ -188,10 +185,10 @@ export default function CoreOverview() {
 
               <SplitText
                 text="The story you tell about your business is the business. We gather the truths underneath — sit with founders, listen to what's really there — and craft a narrative the right people can't ignore. Clear voice. Real message. The kind of story people repeat without being asked."
-                className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
-                textAlign="left"
+                textAlign="center"
                 delay={20}
                 duration={1}
                 ease="power3.out"
@@ -202,7 +199,7 @@ export default function CoreOverview() {
               />
 
               <ul
-                className={`feature-list font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`feature-list font-satoshi pl-5 text-sm leading-relaxed text-center md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >
@@ -230,7 +227,7 @@ export default function CoreOverview() {
                 className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
                   isDarkTheme ? "text-white" : "text-[#0a191f]"
                 }`}
-                textAlign="left"
+                textAlign="center"
                 delay={50}
                 duration={1.25}
                 ease="power3.out"
@@ -242,10 +239,10 @@ export default function CoreOverview() {
 
               <SplitText
                 text="Business systems multiply your best work. Every day. We build automation, AI tools, and operational architecture designed around how you actually work — custom AI workflows for key team members, dashboards that show real numbers, communication rhythms that hold a growing company together."
-                className={`font-satoshi text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
-                textAlign="left"
+                textAlign="center"
                 delay={20}
                 duration={1}
                 ease="power3.out"
@@ -256,7 +253,7 @@ export default function CoreOverview() {
               />
 
               <ul
-                className={`feature-list font-satoshi list-disc pl-5 text-sm leading-relaxed md:text-base transition-colors duration-1400 ${
+                className={`feature-list font-satoshi text-center pl-5 text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >

@@ -129,8 +129,8 @@ export default function ContactFormsSection() {
                   layout
                   transition={{
                     type: "spring",
-                    damping: 15,
-                    stiffness: 250,
+                    damping: 20,
+                    stiffness: 150,
                   }}
                   className="pointer-events-none h-full w-1/2 rounded-none bg-[#ffc878]"
                 />

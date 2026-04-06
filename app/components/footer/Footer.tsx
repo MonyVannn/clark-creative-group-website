@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT" },
   { href: "/services", label: "SERVICES" },
-  { href: "https://app.ccg-automation.com/", label: "PORTAL" },
   { href: "/contact", label: "CONTACT" },
 ];
 

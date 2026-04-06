@@ -85,7 +85,7 @@ export default function TestimonialSection() {
               text="Here's what other subscribers had to say about Clark Creative Group."
               tag="p"
               splitType="words"
-              className="font-satoshi text-lg lg:text-xl max-w-sm font-light transition-colors duration-1000 text-gray-400"
+              className="font-satoshi max-w-2xl text-base font-medium md:text-lg text-gray-400"
               textAlign="center"
               delay={40}
             />

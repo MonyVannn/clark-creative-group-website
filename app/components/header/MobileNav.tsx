@@ -53,7 +53,12 @@ const LinksContainer = ({
     <motion.div className="space-y-4 p-12 pl-4 md:pl-20">
       {LINKS.map((l, idx) => {
         return (
-          <NavLink key={l.title} href={l.href} idx={idx} onNavigate={onNavigate}>
+          <NavLink
+            key={l.title}
+            href={l.href}
+            idx={idx}
+            onNavigate={onNavigate}
+          >
             {l.title}
           </NavLink>
         );
@@ -183,11 +188,7 @@ const HamburgerButton = ({
   );
 };
 
-const FooterCTAs = ({
-  onNavigate,
-}: {
-  onNavigate: (href: string) => void;
-}) => {
+const FooterCTAs = ({ onNavigate }: { onNavigate: (href: string) => void }) => {
   return (
     <>
       <div className="absolute bottom-6 left-6 flex gap-4 md:flex-col">
@@ -248,24 +249,12 @@ const LINKS = [
     title: "Services",
     href: "/services",
   },
-  {
-    title: "Portal",
-    href: "/",
-  },
 ];
 
 const SOCIAL_CTAS = [
   {
-    Component: SiInstagram,
-    href: "#",
-  },
-  {
     Component: SiLinkedin,
-    href: "#",
-  },
-  {
-    Component: SiYoutube,
-    href: "#",
+    href: "https://www.linkedin.com/company/clarkcreative-group/",
   },
 ];
 
