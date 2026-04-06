@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import SpaceSketchModel from "../ui/CoreOverview/SpaceSketchModel";
 import StorySketchModel from "../ui/CoreOverview/StorySketchModel";
 import SystemSketchModel from "../ui/CoreOverview/SystemSketchModel";
@@ -40,7 +41,7 @@ const ShuffleCards = ({ onActiveCardChange }: ShuffleCardsProps) => {
   return (
     <div
       ref={containerRef}
-      className="flex items-center justify-center w-full min-h-[500px] text-slate-50"
+      className="flex flex-col items-center justify-center w-full min-h-[560px] text-slate-50 gap-6"
     >
       <div className="relative h-[450px] w-[350px]">
         <Card
@@ -67,6 +68,24 @@ const ShuffleCards = ({ onActiveCardChange }: ShuffleCardsProps) => {
           position={order[2]}
           revealLayout={hasEnteredView}
         />
+      </div>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => handleShuffle("right")}
+          aria-label="Previous card"
+          className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-[#f2f2f2]/50 text-slate-100 transition-colors hover:bg-[#f2f2f2]/10"
+        >
+          <FiArrowLeft className="h-5 w-5" aria-hidden />
+        </button>
+        <button
+          type="button"
+          onClick={() => handleShuffle("left")}
+          aria-label="Next card"
+          className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-[#f2f2f2]/50 text-slate-100 transition-colors hover:bg-[#f2f2f2]/10"
+        >
+          <FiArrowRight className="h-5 w-5" aria-hidden />
+        </button>
       </div>
     </div>
   );
@@ -107,6 +126,14 @@ const Card = ({
     mousePosRef.current = 0;
   };
 
+  const onCardClick = () => {
+    if (position === "middle") {
+      handleShuffle("right");
+    } else if (position === "back") {
+      handleShuffle("left");
+    }
+  };
+
   const x =
     position === "front" ? "0%" : position === "middle" ? "-55%" : "55%";
   const rotateZ =
@@ -136,11 +163,12 @@ const Card = ({
       }}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
+      onClick={onCardClick}
       transition={{
         duration: 0.35,
       }}
       className={`absolute inset-0 m-auto flex flex-col h-[450px] w-[350px] select-none items-center justify-center space-y-6 border-2 border-[#f2f2f2] bg-[#040b22]/70 p-6 shadow-xl backdrop-blur-md ${
-        draggable ? "cursor-grab active:cursor-grabbing" : ""
+        draggable ? "cursor-grab active:cursor-grabbing" : "cursor-pointer"
       }`}
     >
       <div className="h-56 w-56 pointer-events-none mb-2">

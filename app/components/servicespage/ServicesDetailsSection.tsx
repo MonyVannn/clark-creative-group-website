@@ -109,7 +109,7 @@ export default function ServicesDetailsSection() {
       <div className="flex flex-col lg:flex-row relative items-center lg:items-start lg:gap-8 xl:gap-10">
         {/* Left Column: ShuffleCards */}
         <div className="w-full lg:w-[65%] lg:min-w-0 lg:shrink-0 flex items-center justify-center relative z-20">
-          <RotationLine className="scale-50 absolute -bottom-32" />
+          <RotationLine className="scale-50 absolute hidden md:block md:-bottom-18" />
           <div className="flex items-center justify-center transform scale-[0.6] sm:scale-[0.7] md:scale-[0.65] lg:scale-[0.75] xl:scale-[0.9] origin-center z-10 w-full h-full">
             <ShuffleCards onActiveCardChange={setActiveIndex} />
           </div>
@@ -119,10 +119,10 @@ export default function ServicesDetailsSection() {
         <div
           className={`w-full lg:w-[35%] lg:min-w-0 flex flex-col relative z-10 ${transition}`}
         >
-          <RectangleSketch className="absolute -bottom-52 left-1/2 -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-0 w-150 h-150 opacity-20 pointer-events-none rotate-90" />
+          {/* <RectangleSketch className="absolute -bottom-52 left-1/2 -translate-x-1/2 lg:left-auto lg:right-0 lg:translate-x-0 w-150 h-150 opacity-20 pointer-events-none rotate-90" /> */}
 
           {/* Content Area */}
-          <div className="flex-1 flex flex-col justify-start relative min-h-[650px] md:min-h-[700px] lg:min-h-0">
+          <div className="flex-1 flex flex-col justify-start relative h-[650px] md:min-h-[700px]">
             <div className="flex-1 flex flex-col items-center justify-center text-center lg:items-start lg:justify-start lg:text-left z-10 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
