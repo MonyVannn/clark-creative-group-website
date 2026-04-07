@@ -5,6 +5,7 @@ import { LenisProvider } from "./components/layout/LenisProvider";
 import TransitionProvider from "./components/transitions/TransitionProvider";
 import LoadingScreen from "./components/LoadingScreen";
 import { PreloaderProvider } from "./components/PreloaderContext";
+import JsonLd from "./components/seo/JsonLd";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,8 +29,25 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Clark Creative Group",
-  description: "Personal Website for CCG",
+  metadataBase: new URL("https://clarkcreativegroup.com"),
+  title: {
+    default: "Clark Creative Group",
+    template: "%s | Clark Creative Group",
+  },
+  description:
+    "A creative advisory for founders. We design brands, build business systems, and connect the whole picture — Space, Story, System.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Clark Creative Group",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -42,6 +60,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${clashDisplay.variable} ${satoshi.variable} antialiased`}
       >
+        <JsonLd />
         <LenisProvider>
           <PreloaderProvider>
             <LoadingScreen>
