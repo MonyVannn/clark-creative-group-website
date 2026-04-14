@@ -39,9 +39,15 @@ export default function MessageForm() {
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
+    setSubmitSuccess(false);
+
     const newErrors: Record<string, string> = {};
     if (!formState.firstName.trim())
       newErrors.firstName = "First name is required";
@@ -50,13 +56,31 @@ export default function MessageForm() {
     if (!formState.email.trim()) newErrors.email = "Email is required";
     if (!formState.message.trim()) newErrors.message = "Message is required";
     setErrors(newErrors);
-    if (Object.keys(newErrors).length === 0) {
-      setFormState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        message: "",
+    if (Object.keys(newErrors).length > 0) return;
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
       });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        setSubmitError(
+          data?.error ?? "Something went wrong. Please try again.",
+        );
+        return;
+      }
+
+      setSubmitSuccess(true);
+      setFormState({ firstName: "", lastName: "", email: "", message: "" });
+    } catch {
+      setSubmitError("Network error. Please check your connection and retry.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -194,6 +218,24 @@ export default function MessageForm() {
             )}
           </motion.div>
 
+          {submitError && (
+            <motion.p
+              variants={revealItem}
+              className="font-satoshi text-xs text-[#ff9a9a]"
+            >
+              {submitError}
+            </motion.p>
+          )}
+
+          {submitSuccess && (
+            <motion.p
+              variants={revealItem}
+              className="font-satoshi text-xs text-[#a8ffcb]"
+            >
+              Message sent — we&apos;ll be in touch soon.
+            </motion.p>
+          )}
+
           <motion.div
             variants={revealItem}
             className="flex items-center justify-between gap-4 pt-1"
@@ -203,9 +245,10 @@ export default function MessageForm() {
             </p>
             <button
               type="submit"
-              className="group inline-flex cursor-pointer items-center justify-between gap-2.5 rounded-none border border-[#f6f8ff]/25 bg-[#040b22] px-4 py-2.5 font-satoshi text-sm text-[#f6f8ff]/90 transition-colors hover:border-[#ffc878] hover:text-[#f6f8ff]"
+              disabled={isSubmitting}
+              className="group inline-flex cursor-pointer items-center justify-between gap-2.5 rounded-none border border-[#f6f8ff]/25 bg-[#040b22] px-4 py-2.5 font-satoshi text-sm text-[#f6f8ff]/90 transition-colors hover:border-[#ffc878] hover:text-[#f6f8ff] disabled:pointer-events-none disabled:opacity-50"
             >
-              <span>Send message</span>
+              <span>{isSubmitting ? "Sending…" : "Send message"}</span>
               <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-[#f6f8ff]/10 transition-colors group-hover:bg-[#ffc878]">
                 <FiArrowRight className="h-3.5 w-3.5 text-[#f6f8ff] transition-colors group-hover:text-[#040b22]" />
               </span>

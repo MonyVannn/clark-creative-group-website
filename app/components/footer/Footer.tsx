@@ -56,16 +56,56 @@ export default function Footer() {
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
+    setSubmitSuccess(false);
+
     const newErrors: Record<string, string> = {};
     if (!formState.name.trim()) newErrors.name = "Name is required";
     if (!formState.email.trim()) newErrors.email = "Email is required";
+    else if (!formState.email.includes("@"))
+      newErrors.email = "Enter a valid email";
     if (!formState.message.trim()) newErrors.message = "Message is required";
     setErrors(newErrors);
-    if (Object.keys(newErrors).length === 0) {
-      // UI only - no backend
+    if (Object.keys(newErrors).length > 0) return;
+
+    const trimmedName = formState.name.trim();
+    const space = trimmedName.indexOf(" ");
+    const firstName =
+      space === -1 ? trimmedName : trimmedName.slice(0, space).trim();
+    const lastName =
+      space === -1 ? "—" : trimmedName.slice(space + 1).trim() || "—";
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: formState.email.trim(),
+          message: formState.message.trim(),
+          phone: formState.phone.trim() || undefined,
+          company: formState.company.trim() || undefined,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        setSubmitError(
+          data?.error ?? "Something went wrong. Please try again.",
+        );
+        return;
+      }
+
+      setSubmitSuccess(true);
       setFormState({
         name: "",
         email: "",
@@ -73,6 +113,10 @@ export default function Footer() {
         company: "",
         message: "",
       });
+    } catch {
+      setSubmitError("Network error. Please check your connection and retry.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -202,12 +246,23 @@ export default function Footer() {
                   <p className="mt-1 text-xs text-red-400">{errors.message}</p>
                 )}
               </div>
+              {submitError && (
+                <p className="font-satoshi text-xs text-[#ff9a9a]">
+                  {submitError}
+                </p>
+              )}
+              {submitSuccess && (
+                <p className="font-satoshi text-xs text-[#a8ffcb]">
+                  Message sent — we&apos;ll be in touch soon.
+                </p>
+              )}
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="group flex items-center gap-3 text-sm font-medium tracking-wide text-[#f6f8ff] transition-opacity hover:opacity-80"
+                  disabled={isSubmitting}
+                  className="group flex items-center gap-3 text-sm font-medium tracking-wide text-[#f6f8ff] transition-opacity hover:opacity-80 disabled:pointer-events-none disabled:opacity-50"
                 >
-                  <span>Let&apos;s Talk</span>
+                  <span>{isSubmitting ? "Sending…" : "Let's Talk"}</span>
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f6f8ff]/60 transition-colors group-hover:border-[#f6f8ff]">
                     <FiArrowRight className="h-3.5 w-3.5" />
                   </span>

@@ -130,6 +130,9 @@ function buildSlotsForDay() {
   return slots;
 }
 
+const inputClass =
+  "w-full rounded-none border border-[#f6f8ff]/20 bg-[#040b22]/70 px-4 py-3 font-satoshi text-sm text-[#f6f8ff] placeholder:text-[#f6f8ff]/35 outline-none transition-colors focus:border-[#ffc878]";
+
 export default function BookCallPanel() {
   const today = useMemo(() => startOfDay(new Date()), []);
   const initialDate = useMemo(() => getNextAvailableDate(today), [today]);
@@ -144,6 +147,16 @@ export default function BookCallPanel() {
   });
   const [timeZone, setTimeZone] = useState<string>("America/Guayaquil");
   const [hourFormat, setHourFormat] = useState<"12h" | "24h">("12h");
+
+  const [contactForm, setContactForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const year = viewDate.getFullYear();
   const month = viewDate.getMonth();
@@ -198,6 +211,62 @@ export default function BookCallPanel() {
       }).format(selectedDate)
     : null;
 
+  const canSubmit =
+    !!selectedDate && !!selectedSlot && !isSubmitting && !submitSuccess;
+
+  const handleSubmit = async () => {
+    setSubmitError(null);
+
+    const errs: Record<string, string> = {};
+    if (!contactForm.firstName.trim())
+      errs.firstName = "First name is required";
+    if (!contactForm.lastName.trim()) errs.lastName = "Last name is required";
+    if (!contactForm.email.trim() || !contactForm.email.includes("@"))
+      errs.email = "A valid email is required";
+    if (!selectedDate) errs.date = "Select a date";
+    if (!selectedSlot) errs.slot = "Select a time slot";
+    setFieldErrors(errs);
+    if (Object.keys(errs).length > 0) return;
+
+    setIsSubmitting(true);
+    try {
+      const dateStr = [
+        selectedDate!.getFullYear(),
+        String(selectedDate!.getMonth() + 1).padStart(2, "0"),
+        String(selectedDate!.getDate()).padStart(2, "0"),
+      ].join("-");
+
+      const res = await fetch("/api/request-call", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: contactForm.firstName,
+          lastName: contactForm.lastName,
+          email: contactForm.email,
+          date: dateStr,
+          hour: selectedSlot!.hour,
+          minute: selectedSlot!.minute,
+          timeZone,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        setSubmitError(
+          data?.error ?? "Something went wrong. Please try again.",
+        );
+        return;
+      }
+
+      setSubmitSuccess(true);
+    } catch {
+      setSubmitError("Network error. Please check your connection and retry.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <motion.div
       className="mt-6 overflow-hidden rounded-none border border-[#f6f8ff]/20 bg-[#0a1228]/90"
@@ -234,22 +303,6 @@ export default function BookCallPanel() {
                 className="h-3 w-3 rounded-none bg-[conic-gradient(from_180deg,#24d366_0deg,#fbbc05_140deg,#4285f4_260deg,#ea4335_360deg)]"
               />
               <span>Google Meet</span>
-            </div>
-            <div className="relative">
-              <FiGlobe className="pointer-events-none absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f6f8ff]/60" />
-              <select
-                value={timeZone}
-                onChange={(e) => setTimeZone(e.target.value)}
-                className="w-full cursor-pointer appearance-none bg-transparent pl-7 pr-6 font-satoshi text-sm text-[#f6f8ff]/85 outline-none"
-                aria-label="Select time zone"
-              >
-                {TIMEZONES.map((tz) => (
-                  <option key={tz} value={tz}>
-                    {tz}
-                  </option>
-                ))}
-              </select>
-              <FiChevronDown className="pointer-events-none absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f6f8ff]/60" />
             </div>
           </div>
         </motion.aside>
@@ -330,90 +383,206 @@ export default function BookCallPanel() {
                 : "Choose a date and time"}
             </p>
           </div>
-        </motion.section>
 
-        <motion.section variants={revealItem} className="p-6 text-[#f6f8ff] sm:p-7">
-          <div className="flex items-start justify-between">
-            <h4 className="font-satoshi text-xl font-medium tracking-tight text-[#f6f8ff] md:text-2xl">
-              {selectedDayLabel} {selectedDayDate}
-            </h4>
-            <div className="inline-flex bg-[#040b22]">
-              <button
-                type="button"
-                onClick={() => setHourFormat("12h")}
-                className={`cursor-pointer rounded-none px-3 py-1.5 font-satoshi text-sm transition-colors ${
-                  hourFormat === "12h"
-                    ? "bg-[#ffc878] text-[#040b22]"
-                    : "text-[#f6f8ff]/70 hover:text-[#f6f8ff]"
-                }`}
+          <div className="mt-5 space-y-3">
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label
+                  htmlFor="call-first-name"
+                  className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+                >
+                  First name *
+                </label>
+                <input
+                  id="call-first-name"
+                  type="text"
+                  placeholder="Jane"
+                  value={contactForm.firstName}
+                  onChange={(e) =>
+                    setContactForm((s) => ({ ...s, firstName: e.target.value }))
+                  }
+                  className={inputClass}
+                  autoComplete="given-name"
+                />
+                {fieldErrors.firstName && (
+                  <p className="mt-1 font-satoshi text-xs text-[#ff9a9a]">
+                    {fieldErrors.firstName}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label
+                  htmlFor="call-last-name"
+                  className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+                >
+                  Last name *
+                </label>
+                <input
+                  id="call-last-name"
+                  type="text"
+                  placeholder="Doe"
+                  value={contactForm.lastName}
+                  onChange={(e) =>
+                    setContactForm((s) => ({ ...s, lastName: e.target.value }))
+                  }
+                  className={inputClass}
+                  autoComplete="family-name"
+                />
+                {fieldErrors.lastName && (
+                  <p className="mt-1 font-satoshi text-xs text-[#ff9a9a]">
+                    {fieldErrors.lastName}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="call-email"
+                className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
               >
-                12h
-              </button>
-              <button
-                type="button"
-                onClick={() => setHourFormat("24h")}
-                className={`cursor-pointer rounded-none px-3 py-1.5 font-satoshi text-sm transition-colors ${
-                  hourFormat === "24h"
-                    ? "bg-[#ffc878] text-[#040b22]"
-                    : "text-[#f6f8ff]/70 hover:text-[#f6f8ff]"
-                }`}
-              >
-                24h
-              </button>
+                Email *
+              </label>
+              <input
+                id="call-email"
+                type="email"
+                placeholder="you@company.com"
+                value={contactForm.email}
+                onChange={(e) =>
+                  setContactForm((s) => ({ ...s, email: e.target.value }))
+                }
+                className={inputClass}
+                autoComplete="email"
+              />
+              {fieldErrors.email && (
+                <p className="mt-1 font-satoshi text-xs text-[#ff9a9a]">
+                  {fieldErrors.email}
+                </p>
+              )}
             </div>
           </div>
+        </motion.section>
 
-          <ul
-            data-lenis-prevent
-            data-lenis-prevent-wheel
-            data-lenis-prevent-touch
-            className="mt-5 h-[260px] space-y-3 overflow-y-auto overscroll-y-contain pr-1"
-          >
-            {slots.map((slot) => {
-              const active =
-                selectedSlot?.hour === slot.hour &&
-                selectedSlot?.minute === slot.minute;
-              return (
-                <li key={`${slot.hour}-${slot.minute}`}>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setSelectedSlot({
-                        hour: slot.hour,
-                        minute: slot.minute,
-                      })
-                    }
-                    className={`w-full cursor-pointer rounded-none border px-4 py-2.5 text-left font-satoshi text-xl leading-none transition-colors ${
-                      active
-                        ? "border-[#ffc878] bg-[#ffc878]/15 text-[#f6f8ff]"
-                        : "border-[#f6f8ff]/35 bg-[#040b22]/80 text-[#f6f8ff] hover:border-[#f6f8ff]/60 hover:bg-[#f6f8ff]/10"
-                    }`}
-                  >
-                    {formatSlot(slot.hour, slot.minute)}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+        <motion.section
+          variants={revealItem}
+          className="p-6 text-[#f6f8ff] sm:p-7 justify-between flex flex-col"
+        >
+          <div>
+            <div className="flex items-start justify-between">
+              <h4 className="font-satoshi text-xl font-medium tracking-tight text-[#f6f8ff] md:text-2xl">
+                {selectedDayLabel} {selectedDayDate}
+              </h4>
+              <div className="inline-flex bg-[#040b22]">
+                <button
+                  type="button"
+                  onClick={() => setHourFormat("12h")}
+                  className={`cursor-pointer rounded-none px-3 py-1.5 font-satoshi text-sm transition-colors ${
+                    hourFormat === "12h"
+                      ? "bg-[#ffc878] text-[#040b22]"
+                      : "text-[#f6f8ff]/70 hover:text-[#f6f8ff]"
+                  }`}
+                >
+                  12h
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setHourFormat("24h")}
+                  className={`cursor-pointer rounded-none px-3 py-1.5 font-satoshi text-sm transition-colors ${
+                    hourFormat === "24h"
+                      ? "bg-[#ffc878] text-[#040b22]"
+                      : "text-[#f6f8ff]/70 hover:text-[#f6f8ff]"
+                  }`}
+                >
+                  24h
+                </button>
+              </div>
+            </div>
 
-          <p className="font-satoshi mt-5 text-xs text-[#f6f8ff]/60">
-            Time zone: {formatTimeZoneLabel(timeZone)}
-          </p>
-          <button
-            type="button"
-            disabled={!selectedDate || !selectedSlot}
-            className="group mt-4 inline-flex w-full cursor-pointer items-center justify-between gap-2.5 rounded-none border border-[#f6f8ff]/25 bg-[#040b22] px-4 py-3 font-satoshi text-sm font-medium text-[#f6f8ff]/90 transition-colors hover:border-[#ffc878] hover:text-[#f6f8ff] disabled:cursor-not-allowed disabled:border-[#f6f8ff]/15 disabled:text-[#f6f8ff]/40"
-            aria-label={
-              selectedDateLabel && selectedSlotLabel
-                ? `Book call for ${selectedDateLabel} at ${selectedSlotLabel}`
-                : "Select a date and time to book a call"
-            }
-          >
-            <span>Book call</span>
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-[#f6f8ff]/10 transition-colors group-hover:bg-[#ffc878] group-disabled:bg-[#f6f8ff]/5">
-              <FiArrowRight className="h-3.5 w-3.5 text-[#f6f8ff] transition-colors group-hover:text-[#040b22] group-disabled:text-[#f6f8ff]/45" />
-            </span>
-          </button>
+            <ul
+              data-lenis-prevent
+              data-lenis-prevent-wheel
+              data-lenis-prevent-touch
+              className="mt-5 h-[260px] space-y-3 overflow-y-auto overscroll-y-contain pr-1"
+            >
+              {slots.map((slot) => {
+                const active =
+                  selectedSlot?.hour === slot.hour &&
+                  selectedSlot?.minute === slot.minute;
+                return (
+                  <li key={`${slot.hour}-${slot.minute}`}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSelectedSlot({
+                          hour: slot.hour,
+                          minute: slot.minute,
+                        })
+                      }
+                      className={`w-full cursor-pointer rounded-none border px-4 py-2.5 text-left font-satoshi text-xl leading-none transition-colors ${
+                        active
+                          ? "border-[#ffc878] bg-[#ffc878]/15 text-[#f6f8ff]"
+                          : "border-[#f6f8ff]/35 bg-[#040b22]/80 text-[#f6f8ff] hover:border-[#f6f8ff]/60 hover:bg-[#f6f8ff]/10"
+                      }`}
+                    >
+                      {formatSlot(slot.hour, slot.minute)}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="relative mt-5">
+              <FiGlobe className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f6f8ff]/60" />
+              <select
+                value={timeZone}
+                onChange={(e) => setTimeZone(e.target.value)}
+                className="w-full cursor-pointer appearance-none rounded-none border border-[#f6f8ff]/35 bg-[#040b22]/80 py-2.5 pl-9 pr-8 font-satoshi text-sm text-[#f6f8ff] outline-none transition-colors hover:border-[#f6f8ff]/60 hover:bg-[#f6f8ff]/10 focus:border-[#ffc878]"
+                aria-label="Select time zone"
+              >
+                {TIMEZONES.map((tz) => (
+                  <option key={tz} value={tz} className="bg-[#0a1228] text-[#f6f8ff]">
+                    {formatTimeZoneLabel(tz)}
+                  </option>
+                ))}
+              </select>
+              <FiChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f6f8ff]/60" />
+            </div>
+          </div>
+          <div>
+            {submitError && (
+              <p className="mt-4 font-satoshi text-xs text-[#ff9a9a]">
+                {submitError}
+              </p>
+            )}
+
+            {submitSuccess && (
+              <p className="mt-4 font-satoshi text-xs text-[#a8ffcb]">
+                Request sent — we&apos;ll be in touch soon.
+              </p>
+            )}
+
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={!canSubmit}
+              className="group mt-4 inline-flex w-full cursor-pointer items-center justify-between gap-2.5 rounded-none border border-[#f6f8ff]/25 bg-[#040b22] px-4 py-2 font-satoshi text-sm font-medium text-[#f6f8ff]/90 transition-colors hover:border-[#ffc878] hover:text-[#f6f8ff] disabled:cursor-not-allowed disabled:border-[#f6f8ff]/15 disabled:text-[#f6f8ff]/40"
+              aria-label={
+                selectedDateLabel && selectedSlotLabel
+                  ? `Request call for ${selectedDateLabel} at ${selectedSlotLabel}`
+                  : "Select a date and time to request a call"
+              }
+            >
+              <span>
+                {isSubmitting
+                  ? "Sending…"
+                  : submitSuccess
+                    ? "Request sent"
+                    : "Request call"}
+              </span>
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-[#f6f8ff]/10 transition-colors group-hover:bg-[#ffc878] group-disabled:bg-[#f6f8ff]/5">
+                <FiArrowRight className="h-3.5 w-3.5 text-[#f6f8ff] transition-colors group-hover:text-[#040b22] group-disabled:text-[#f6f8ff]/45" />
+              </span>
+            </button>
+          </div>
         </motion.section>
       </div>
     </motion.div>

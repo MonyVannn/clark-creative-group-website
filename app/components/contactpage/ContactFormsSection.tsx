@@ -78,8 +78,8 @@ export default function ContactFormsSection() {
           variants={revealItem}
           className="font-satoshi text-lg md:text-xl leading-relaxed text-[#f6f8ff]/80"
         >
-          Send a message or book a discovery call—we&apos;ll follow up with next
-          steps.
+          Send a message or request a discovery call—we&apos;ll follow up with
+          next steps.
         </motion.p>
 
         <motion.div
@@ -118,7 +118,7 @@ export default function ContactFormsSection() {
                     : "text-[#f6f8ff]/80 hover:text-[#f6f8ff]"
                 }`}
               >
-                Book a call
+                Request a call
               </button>
               <div
                 className={`absolute inset-0 z-0 flex ${
