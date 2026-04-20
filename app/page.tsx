@@ -4,6 +4,8 @@ import HeroSection from "./components/homepage/HeroSection";
 import IntroSection from "./components/homepage/IntroSection";
 import TargetAudienceSection from "./components/homepage/TargetAudienceSection";
 import CoreOverview from "./components/homepage/CoreOverview";
+import WholePictureSection from "./components/homepage/WholePictureSection";
+import HowWeWorkSection from "./components/homepage/HowWeWorkSection";
 import TestimonialSection from "./components/homepage/TestimonialSection";
 import Footer from "./components/footer/Footer";
 import { ThemeProvider } from "./components/contexts/ThemeContext";
@@ -12,11 +14,11 @@ import Line from "./components/ui/Line";
 export const metadata: Metadata = {
   title: "Clark Creative Group | Creative Advisory for Founders",
   description:
-    "Creators of visionary lives and businesses. We design brands, build business systems, and connect the whole picture — Space, Story, System.",
+    "Creators of visionary lives and businesses. We design brands, build business systems, and connect the whole picture, Space, Story, System.",
   openGraph: {
     title: "Clark Creative Group | Creative Advisory for Founders",
     description:
-      "A creative advisory for founders. Brand design, business systems, and strategy — all connected.",
+      "A creative advisory for founders. Brand design, business systems, and strategy, all connected.",
     url: "/",
   },
 };
@@ -34,6 +36,8 @@ export default function Home() {
             <HeroSection />
             <IntroSection />
             <CoreOverview />
+            <WholePictureSection />
+            <HowWeWorkSection />
             <TestimonialSection />
           </div>
           <TargetAudienceSection />

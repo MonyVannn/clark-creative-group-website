@@ -104,7 +104,7 @@ export async function POST(request: Request) {
       from,
       to,
       replyTo: trimmedEmail,
-      subject: `Call request: ${trimmedFirst} ${trimmedLast} — ${shortDate}`,
+      subject: `Call request: ${trimmedFirst} ${trimmedLast}, ${shortDate}`,
       text: lines.join("\n"),
     });
 

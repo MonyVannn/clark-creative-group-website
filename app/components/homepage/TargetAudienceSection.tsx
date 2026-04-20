@@ -14,7 +14,7 @@ export default function TargetAudienceSection() {
       data-color="#f2f2f2"
       className="relative w-full px-6 py-28 lg:py-40 md:px-12 lg:px-16"
     >
-      <SquareSketch className="absolute top-20 2xl:left-1/5 opacity-35 w-64 h-64 md:w-120 md:h-120 rotate-12" />
+      <SquareSketch className="absolute bottom-0 right-10 opacity-35 w-64 h-64 md:w-120 md:h-120 rotate-45" />
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 md:gap-12 lg:gap-14">
         <SplitText
           text="Who is this for."
@@ -36,7 +36,7 @@ export default function TargetAudienceSection() {
         >
           The landscape is shifting. Founders who build the next generation of
           businesses aren&apos;t hiring five vendors and hoping the pieces fit.
-          They&apos;re working with partners who see the whole picture — and
+          They&apos;re working with partners who see the whole picture, and
           design every part to work together.
         </CopyReveal>
 
@@ -51,7 +51,7 @@ export default function TargetAudienceSection() {
           textAlign="left"
         >
           If you build, grow, and create. If you have a vision and the will to
-          make it real — whether that&apos;s a{" "}
+          make it real, whether that&apos;s a{" "}
           <span className="font-clash-display font-medium underline decoration-white/40 underline-offset-4">
             regenerative farm
           </span>
@@ -64,7 +64,7 @@ export default function TargetAudienceSection() {
             construction business ready to scale
           </span>
           , or something entirely new. If you believe your business can be an
-          extension of your values and you&apos;re ready to build it that way —
+          extension of your values and you&apos;re ready to build it that way.
           <span className="mt-4 block font-clash-display font-medium md:text-xl lg:text-4xl">
             you&apos;re in the right place.
           </span>

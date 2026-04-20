@@ -105,65 +105,11 @@ export default function CoreOverview() {
         {/* 3-column card grid */}
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 gap-8 lg:grid-cols-3 md:gap-6 lg:gap-8 space-y-20 lg:space-y-0"
+          className="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_auto_auto] md:gap-6 lg:gap-x-8 lg:gap-y-3 space-y-20 lg:space-y-0"
         >
-          {/* Space Card */}
-          <article
-            className={`flex flex-col md:flex-row lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
-          >
-            {/* Model container for Space */}
-            <div className="w-full md:w-1/2 lg:w-full h-72 lg:h-120 ">
-              {/* Model layer */}
-              <SpaceSketchModel className="w-full h-full" />
-            </div>
-
-            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
-              <SplitText
-                text="01. Space"
-                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
-                  isDarkTheme ? "text-white" : "text-[#0a191f]"
-                }`}
-                textAlign="center"
-                delay={50}
-                duration={1.25}
-                ease="power3.out"
-                splitType="chars"
-                from={{ opacity: 0, y: 40 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-              />
-
-              <SplitText
-                text="Your environment shapes everything. Not just the room — the website, the community, the entire world you and your customers move through. We design those environments. Physical. Digital. Social. When the container matches the ambition, momentum is natural."
-                className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
-                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                }`}
-                textAlign="center"
-                delay={20}
-                duration={1}
-                ease="power3.out"
-                splitType="lines"
-                from={{ opacity: 0, y: 40 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-              />
-
-              <ul
-                className={`feature-list font-satoshi text-center pl-5 text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
-                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                }`}
-              >
-                <li>Architectural Design & Consulting</li>
-                <li>Brand Environment Audits</li>
-                <li>Website & Digital Presence Architecture</li>
-                <li>Workspace & Studio Design Direction</li>
-              </ul>
-            </div>
-          </article>
-
           {/* Story Card */}
           <article
-            className={`flex flex-col md:flex-row lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400`}
+            className={`flex flex-col md:flex-row lg:grid lg:grid-rows-subgrid lg:row-span-5 gap-6 p-6 lg:p-8 transition-colors duration-1400`}
           >
             {/* Model container for Story */}
             <div className="w-full md:w-1/2 lg:w-full h-72 lg:h-120 order-0 md:order-2 lg:order-0">
@@ -171,9 +117,9 @@ export default function CoreOverview() {
               <StorySketchModel className="w-full h-full" />
             </div>
 
-            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
+            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:contents">
               <SplitText
-                text="02. Story"
+                text="Story"
                 className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
                   isDarkTheme ? "text-white" : "text-[#0a191f]"
                 }`}
@@ -186,38 +132,160 @@ export default function CoreOverview() {
                 to={{ opacity: 1, y: 0 }}
                 threshold={0.1}
               />
-
-              <SplitText
-                text="The story you tell about your business is the business. We gather the truths underneath — sit with founders, listen to what's really there — and craft a narrative the right people can't ignore. Clear voice. Real message. The kind of story people repeat without being asked."
-                className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
-                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+              {/* <SplitText
+                text="How your business feels"
+                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 ${
+                  isDarkTheme ? "text-white" : "text-[#0a191f]"
                 }`}
                 textAlign="center"
-                delay={20}
-                duration={1}
+                delay={50}
+                duration={1.25}
                 ease="power3.out"
-                splitType="lines"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              /> */}
+
+              <div className="flex w-full flex-col gap-2">
+                <p
+                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
+                >
+                  Promise: A space that knows what it's for.
+                </p>
+                <SplitText
+                  text="Your environment shapes everything. The spaces surrounding your business, physical, digital, and experiential, all influence how people perceive your brand, trust your work, and engage with what you offer. We help bring intentionality to those environments so they reflect the level of what you're building."
+                  className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
+                  textAlign="left"
+                  delay={20}
+                  duration={1}
+                  ease="power3.out"
+                  splitType="lines"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                />
+              </div>
+
+              <ul
+                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 ${
+                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                }`}
+              >
+                <li className="list-none font-bold text-left">Services:</li>
+                <li className="ml-5 text-left">
+                  Founder Narrative Development
+                </li>
+                <li className="ml-5 text-left">
+                  Architectural Design and Consulting
+                </li>
+                <li className="ml-5 text-left">Spatial Brand Strategy</li>
+                <li className="ml-5 text-left">
+                  Workspace and Studio Design Direction
+                </li>
+                <li className="ml-5 text-left">Experience Concepting</li>
+                <li className="ml-5 text-left">
+                  Physical Experience Alignment
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          {/* Space Card */}
+          <article
+            className={`flex flex-col md:flex-row lg:grid lg:grid-rows-subgrid lg:row-span-5 gap-6 p-6 lg:p-8 transition-colors duration-1400`}
+          >
+            {/* Model container for Space */}
+            <div className="w-full md:w-1/2 lg:w-full h-72 lg:h-120 ">
+              {/* Model layer */}
+              <SpaceSketchModel className="w-full h-full" />
+            </div>
+
+            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:contents">
+              <SplitText
+                text="Space"
+                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
+                  isDarkTheme ? "text-white" : "text-[#0a191f]"
+                }`}
+                textAlign="center"
+                delay={50}
+                duration={1.25}
+                ease="power3.out"
+                splitType="chars"
                 from={{ opacity: 0, y: 40 }}
                 to={{ opacity: 1, y: 0 }}
                 threshold={0.1}
               />
+              {/* <SplitText
+                text="How your business communicates"
+                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 ${
+                  isDarkTheme ? "text-white" : "text-[#0a191f]"
+                }`}
+                textAlign="center"
+                delay={50}
+                duration={1.25}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+              /> */}
+
+              <div className="flex w-full flex-col gap-2">
+                <p
+                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
+                >
+                  Promise: A brand that knows what it is, and what it isn't.
+                </p>
+                <SplitText
+                  text="The story you tell about your business is the business. If your message is unclear, your value gets missed. We help founders articulate what they do, why it matters, and how to communicate it in a way that builds trust. From brand positioning to investor-facing narrative, we shape the story that helps your business resonate."
+                  className={`font-satoshi text-sm text-justify leading-relaxed md:text-lg transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
+                  textAlign="left"
+                  delay={20}
+                  duration={1}
+                  ease="power3.out"
+                  splitType="lines"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                />
+              </div>
 
               <ul
-                className={`feature-list font-satoshi pl-5 text-sm leading-relaxed text-center md:text-lg transition-colors duration-1400 ${
+                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >
-                <li>Brand Strategy & Voice</li>
-                <li>Founder Story Development</li>
-                <li>Investor & Stakeholder Narratives</li>
-                <li>Content Strategy & Messaging Frameworks</li>
+                <li className="list-none font-bold text-left">Services:</li>
+                <li className="ml-5 text-left">
+                  Founder Narrative Development
+                </li>
+                <li className="ml-5 text-left">Pitch Deck Storytelling</li>
+                <li className="ml-5 text-left">Brand Positioning</li>
+                <li className="ml-5 text-left">
+                  Offer Clarity and Market Framing
+                </li>
+                <li className="ml-5 text-left">
+                  Website Copy and Creative Direction
+                </li>
+                <li className="ml-5 text-left">
+                  Content Strategy and Messaging Frameworks
+                </li>
               </ul>
             </div>
           </article>
 
           {/* System Card */}
           <article
-            className={`flex flex-col md:flex-row lg:flex-col gap-6 p-6 lg:p-8 transition-colors duration-1400 overflow-hidden`}
+            className={`flex flex-col md:flex-row lg:grid lg:grid-rows-subgrid lg:row-span-5 gap-6 p-6 lg:p-8 transition-colors duration-1400 overflow-hidden`}
           >
             {/* Model container for System */}
             <div className="w-full md:w-1/2 lg:w-full h-72 lg:h-120 ">
@@ -225,9 +293,9 @@ export default function CoreOverview() {
               <SystemSketchModel className="w-full h-full" />
             </div>
 
-            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:w-full">
+            <div className="flex flex-col gap-3 w-full md:w-1/2 lg:contents">
               <SplitText
-                text="03. System"
+                text="System"
                 className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
                   isDarkTheme ? "text-white" : "text-[#0a191f]"
                 }`}
@@ -240,31 +308,60 @@ export default function CoreOverview() {
                 to={{ opacity: 1, y: 0 }}
                 threshold={0.1}
               />
-
-              <SplitText
-                text="Business systems multiply your best work. Every day. We build automation, AI tools, and operational architecture designed around how you actually work — custom AI workflows for key team members, dashboards that show real numbers, communication rhythms that hold a growing company together."
-                className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
-                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+              {/* <SplitText
+                text="How your business functions"
+                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 ${
+                  isDarkTheme ? "text-white" : "text-[#0a191f]"
                 }`}
                 textAlign="center"
-                delay={20}
-                duration={1}
+                delay={50}
+                duration={1.25}
                 ease="power3.out"
-                splitType="lines"
+                splitType="chars"
                 from={{ opacity: 0, y: 40 }}
                 to={{ opacity: 1, y: 0 }}
                 threshold={0.1}
-              />
+              /> */}
+
+              <div className="flex w-full flex-col gap-2">
+                <p
+                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
+                >
+                  Promise: A business that knows what to do without you.
+                </p>
+                <SplitText
+                  text="A strong voice can create attention but systems create persistent momentum. We build operations that support growth, reduce friction, and create a more functional business behind the scenes. This is where strategy becomes execution."
+                  className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
+                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
+                  }`}
+                  textAlign="left"
+                  delay={20}
+                  duration={1}
+                  ease="power3.out"
+                  splitType="lines"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                />
+              </div>
 
               <ul
-                className={`feature-list font-satoshi text-center pl-5 text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
+                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 ${
                   isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
                 }`}
               >
-                <li>Business Automation & AI Integration</li>
-                <li>CRM & Operations Architecture</li>
-                <li>Growth Dashboards & KPI Systems</li>
-                <li>Team Workflow & Communication Design</li>
+                <li className="list-none font-bold text-left">Services:</li>
+                <li className="ml-5 text-left">
+                  Business "Second Brain" Design
+                </li>
+                <li className="ml-5 text-left">Client Journey Design</li>
+                <li className="ml-5 text-left">
+                  Lead Capture and Follow-Up Systems
+                </li>
+                <li className="ml-5 text-left">CRM and Workflow Strategy</li>
+                <li className="ml-5 text-left">Internal Process Design</li>
               </ul>
             </div>
           </article>

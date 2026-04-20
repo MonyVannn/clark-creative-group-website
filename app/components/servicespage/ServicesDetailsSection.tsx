@@ -103,7 +103,7 @@ export default function ServicesDetailsSection() {
           splitType="lines"
           textAlign="left"
           className={`font-satoshi text-lg md:text-xl leading-relaxed  ${transition}`}
-          text="Our services connect your space, your story, and your systems—transforming how you work, communicate, and grow. Explore each core pillar below to see how we bring clarity and strength to every part of your business."
+          text="Our services connect your space, your story, and your systems. They transform how you work, communicate, and grow. Explore each core pillar below to see how we bring clarity and strength to every part of your business."
         />
       </div>
       <div className="flex flex-col lg:flex-row relative items-center lg:items-start lg:gap-8 xl:gap-10">

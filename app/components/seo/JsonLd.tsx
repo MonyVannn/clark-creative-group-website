@@ -8,7 +8,7 @@ const organizationSchema = {
   logo: `${BASE_URL}/logo.png`,
   email: "contact@clarkcreativegroup.com",
   description:
-    "A creative advisory for founders. We design brands, build business systems, and connect the whole picture — Space, Story, System.",
+    "A creative advisory for founders. We design brands, build business systems, and connect the whole picture, Space, Story, System.",
   sameAs: [
     "https://www.linkedin.com/company/clarkcreative-group/",
   ],

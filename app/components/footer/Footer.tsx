@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { usePageTransition } from "../transitions/TransitionProvider";
+import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "HOME" },
@@ -12,39 +13,6 @@ const navLinks = [
 ];
 
 const socialPlatforms = ["LinkedIn", "Instagram"];
-
-function FooterCTA({
-  children,
-  href,
-  onClick,
-}: {
-  children: string;
-  href?: string;
-  onClick?: () => void;
-}) {
-  const className =
-    "group flex items-center gap-3 text-sm font-medium tracking-wide text-[#f6f8ff] transition-opacity hover:opacity-80 cursor-pointer";
-  const content = (
-    <>
-      <span>{children}</span>
-      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f6f8ff]/60 transition-colors group-hover:border-[#f6f8ff]">
-        <FiArrowRight className="h-3.5 w-3.5" />
-      </span>
-    </>
-  );
-  if (href) {
-    return (
-      <a href={href} className={className}>
-        {content}
-      </a>
-    );
-  }
-  return (
-    <button type="button" onClick={onClick} className={className}>
-      {content}
-    </button>
-  );
-}
 
 export default function Footer() {
   const { navigateTo } = usePageTransition();
@@ -79,7 +47,7 @@ export default function Footer() {
     const firstName =
       space === -1 ? trimmedName : trimmedName.slice(0, space).trim();
     const lastName =
-      space === -1 ? "—" : trimmedName.slice(space + 1).trim() || "—";
+      space === -1 ? "-" : trimmedName.slice(space + 1).trim() || "-";
 
     setIsSubmitting(true);
     try {
@@ -135,8 +103,20 @@ export default function Footer() {
             </p>
             <h3 className="font-satoshi w-2/3 -mt-5 md:-mt-10 text-neutral-400">
               We partner with a small number of founders at a time. Every
-              engagement gets our full attention and our full creativity.
+              engagement gets our full attention and our full creativity. If
+              you&apos;re building something that doesn&apos;t fit neatly into
+              one category, we might be your people.
             </h3>
+            <Link
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo("/contact");
+              }}
+              className="self-start cursor-pointer bg-[#ffc878] hover:bg-[#ffc878]/80 px-5 py-2.5 font-satoshi text-xs font-bold uppercase text-[#191919] tracking-widest transition-colors duration-300"
+            >
+              Let&apos;s Talk
+            </Link>
             <div className="flex flex-col gap-8 md:flex-row lg:flex-col">
               <div>
                 <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-[#f6f8ff]">
@@ -253,7 +233,7 @@ export default function Footer() {
               )}
               {submitSuccess && (
                 <p className="font-satoshi text-xs text-[#a8ffcb]">
-                  Message sent — we&apos;ll be in touch soon.
+                  Message sent. We&apos;ll be in touch soon.
                 </p>
               )}
               <div className="flex justify-end">

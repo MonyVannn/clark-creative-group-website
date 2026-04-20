@@ -22,8 +22,8 @@ export default function AboutHeroSection() {
 
         <div className="font-satoshi text-center md:text-right font-medium uppercase text-[#f2f2f2] text-sm md:text-base leading-relaxed tracking-wider space-y-6 max-w-sm md:max-w-lg lg:max-w-2xl xl:max-w-2xl mt-20 md:mt-40 mb-12">
           <AnimatedCopy as="span" className="block">
-            Clark Creative Group started when Roger and Hattie Clark — childhood
-            friends turned life partners — decided to take everything they knew
+            Clark Creative Group started when Roger and Hattie Clark, childhood
+            friends turned life partners, decided to take everything they knew
             about design, narrative, and strategy, and put it to work for
             founders who think the way they do.
           </AnimatedCopy>

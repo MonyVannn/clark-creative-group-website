@@ -49,7 +49,7 @@ export default function AnimatedCopy({
       const words = splitRef.current.words;
       if (!words?.length) return;
 
-      // Never set y:0% before the tween — that was causing a flash of full text.
+      // Never set y:0% before the tween; that was causing a flash of full text.
       // Start below the mask, then slide up (no gsap.from after a set to visible).
       gsap.set(words, { y: "100%" });
       gsap.set(el, { opacity: 1 });

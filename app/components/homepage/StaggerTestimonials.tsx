@@ -295,7 +295,7 @@ const TestimonialCard = ({
           isActive ? "text-gray-900" : "text-gray-500"
         }`}
       >
-        — {testimonial.by}
+        {testimonial.by}
       </p>
     </motion.div>
   );

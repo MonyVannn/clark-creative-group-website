@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Clark Creative Group",
   },
   description:
-    "A creative advisory for founders. We design brands, build business systems, and connect the whole picture — Space, Story, System.",
+    "A creative advisory for founders. We design brands, build business systems, and connect the whole picture, Space, Story, System.",
   openGraph: {
     type: "website",
     locale: "en_US",

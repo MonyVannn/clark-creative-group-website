@@ -556,7 +556,7 @@ export default function BookCallPanel() {
 
             {submitSuccess && (
               <p className="mt-4 font-satoshi text-xs text-[#a8ffcb]">
-                Request sent — we&apos;ll be in touch soon.
+                Request sent. We&apos;ll be in touch soon.
               </p>
             )}
 

@@ -232,7 +232,7 @@ export default function MessageForm() {
               variants={revealItem}
               className="font-satoshi text-xs text-[#a8ffcb]"
             >
-              Message sent — we&apos;ll be in touch soon.
+              Message sent. We&apos;ll be in touch soon.
             </motion.p>
           )}
 

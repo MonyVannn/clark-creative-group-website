@@ -49,7 +49,7 @@ export default function HeroSection() {
       {/* Hexa 3D background - viewport-scaled, smaller at xl for 1440x900 */}
       <div
         ref={hexaRef}
-        className="pointer-events-none absolute left-1/2 bottom-20 md:top-2/3 2xl:top-2/3 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(300px,40vh)] h-[min(400px,40vh)] md:w-[min(600px,55vh)] md:h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)] flex items-center justify-center"
+        className="pointer-events-none absolute left-1/2 bottom-20 md:top-3/5 2xl:top-2/3 -translate-y-1/2 -translate-x-1/2 z-50 w-[min(300px,40vh)] h-[min(400px,40vh)] md:w-[min(600px,55vh)] md:h-[min(700px,70vh)] xl:w-[min(480px,54vh)] xl:h-[min(800px,75vh)] 2xl:w-[min(700px,65vh)] 2xl:h-[min(800px,75vh)] flex items-center justify-center"
       >
         <Hexa className="w-full h-full" />
       </div>
@@ -60,40 +60,50 @@ export default function HeroSection() {
         <div className="absolute left-0 right-0 md:top-10 z-20 flex w-full flex-col px-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-12 xl:top-[clamp(2rem,6vh,6rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12">
           {/* Heading column */}
           <div className="md:min-w-0 md:flex-1">
-            <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-[#f6f8ff] lg:text-8xl xl:text-7xl 2xl:text-8xl">
+            <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-[#f6f8ff] lg:text-7xl xl:text-6xl 2xl:text-7xl">
               <AnimatedCopy as="span" className="block">
-                Creators of
+                Partners of founders
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                Visionary Lives
+                building visions
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                and Businesses.
+                bigger than
+              </AnimatedCopy>
+              <AnimatedCopy as="span" className="block">
+                themselves.
               </AnimatedCopy>
             </h1>
             {/* {Mobile & Tablet} */}
             <h1 className="font-clash-display lg:hidden text-center md:text-left text-4xl font-semibold leading-[1.3] text-[#f6f8ff] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
-                Creators of
+                Partners of founders
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                Visionary Lives
+                building visions
               </AnimatedCopy>
               <AnimatedCopy as="span" className="block">
-                and Businesses.
+                bigger than themselves.
               </AnimatedCopy>
             </h1>
           </div>
 
           {/* Description + buttons column */}
-          <div className="flex flex-col gap-6 lg:w-80 lg:shrink-0 lg:gap-8 xl:w-72 xl:gap-6 2xl:w-80 2xl:gap-8">
+          <div className="flex flex-col gap-6 lg:w-80 2xl:w-120 lg:shrink-0 lg:gap-8 xl:gap-6 2xl:gap-8">
             <AnimatedCopy
               as="p"
-              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-tight text-[#f6f8ff] md:text-xl xl:text-lg 2xl:text-xl mt-10"
+              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-wide text-[#f6f8ff] md:text-xl xl:text-base 2xl:text-xl mt-10"
             >
-              A creative advisory for founders. We design brands, build business
-              systems, and connect the whole picture.
+              Our work sits at the intersection of brand, business design, and
+              strategic implementation, helping your company become
             </AnimatedCopy>
+            <AnimatedCopy
+              as="p"
+              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-wide text-[#f6f8ff] md:text-xl xl:text-base 2xl:text-xl"
+            >
+              more clear, more compelling, and more operationally sound.
+            </AnimatedCopy>
+
             <div className="flex flex-wrap flex-col gap-4 xl:gap-3 items-center md:items-baseline">
               <Link
                 href="/services"

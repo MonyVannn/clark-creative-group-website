@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Clark Creative Group",
     description:
-      "Founded by Roger and Hattie Clark — a creative advisory built on clarity, environment, and momentum for founders.",
+      "Founded by Roger and Hattie Clark, a creative advisory built on clarity, environment, and momentum for founders.",
     url: "/about",
   },
 };

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Clark Creative Group",
     description:
-      "Let's start with a conversation — thirty minutes about your vision, your business, and where to create momentum.",
+      "Let's start with a conversation. Thirty minutes about your vision, your business, and where to create momentum.",
     url: "/contact",
   },
 };

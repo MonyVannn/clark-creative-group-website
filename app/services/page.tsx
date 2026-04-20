@@ -10,7 +10,7 @@ import HowWeWorkSection from "../components/servicespage/HowWeWorkSection";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore our service offerings across Space, Story, and System — from brand identity and content strategy to operational workflows, CRM, and automation.",
+    "Explore our service offerings across Space, Story, and System, from brand identity and content strategy to operational workflows, CRM, and automation.",
   openGraph: {
     title: "Services | Clark Creative Group",
     description:

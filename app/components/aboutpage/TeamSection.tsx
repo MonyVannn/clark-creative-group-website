@@ -23,20 +23,20 @@ const teamMembers: {
   {
     id: "01",
     name: "Roger Clark",
-    position: "SYSTEMS + SPACE",
+    position: "Award winning designer with a systems mind",
     linkedin: "https://www.linkedin.com/in/roger-clark-30a2a0b0/",
-    bio1: "Roger spent years as a licensed architect designing legacy homes and wellness sanctuaries. Spaces where every detail carried intention. He learned something most people sense but never name: the right environment changes how you think, how you perform, how you live.",
-    bio2: "He brings that thinking to business now. Strategy, systems, space — connected into one architecture. When things feel scattered, he's the one who lays it all out and shows you how the pieces fit.",
-    bio3: "Architect by training. Systems thinker by nature. The person who sees the whole board.",
+    bio1: "Roger is grounded, resourceful, systematic.",
+    bio2: "With past experience designing legacy residential compounds and wellness sanctuaries, Roger favors design that responds to its context and where every decision serves the whole.",
+    bio3: "A business needs to respond to its founder the same way. At CCG, he brings a design lens to the entire business to weave story, space, and system into one thread.",
   },
   {
     id: "02",
     name: "Hattie Clark",
-    position: "STORY + VOICE",
+    position: "Story + Voice + Connection",
     linkedin: "https://www.linkedin.com/in/hattie-clark-5a8161105/",
-    bio1: "Hattie finds the truth underneath what you're building and gives it the words it deserves. She listens to the half-formed thing you're struggling to explain and hands it back clear, honest, and ready to use.",
-    bio2: "Founders walk away from conversations with Hattie with two things: clarity on their message, and the name of the exact person they need to talk to next.",
-    bio3: "",
+    bio1: "She asks the questions most people don't, listens to the half-formed version of what you're trying to say, and hands it back in a way that actually lands. Clear. Honest. Usable.",
+    bio2: "Founders usually walk away from conversations with her with two things: clarity on their message, and a clearer sense of what to do next. She reflects the story back to you clearly and helps shape where it goes next. As a natural connector, she often knows exactly who or what could strengthen what you're building.",
+    bio3: "If you're interested in having Hattie host you on a podcast or lead an in-person brand experience, you can note that in the contact form.",
   },
 ];
 
