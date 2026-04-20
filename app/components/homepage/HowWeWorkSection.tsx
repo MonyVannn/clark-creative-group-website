@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import { useTheme } from "../contexts/ThemeContext";
 import { usePreloader } from "../PreloaderContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,7 +54,6 @@ const TIERS: Tier[] = [
 ];
 
 export default function HowWeWorkSection() {
-  const { isDarkTheme } = useTheme();
   const { isPreloaderComplete } = usePreloader();
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -104,10 +102,10 @@ export default function HowWeWorkSection() {
     { scope: sectionRef, dependencies: [isPreloaderComplete] },
   );
 
-  const mutedText = isDarkTheme ? "text-gray-400" : "text-[#606060]";
-  const strongText = isDarkTheme ? "text-white" : "text-[#0a191f]";
-  const bodyText = isDarkTheme ? "text-gray-300" : "text-[#0a191f]";
-  const dividerColor = isDarkTheme ? "border-white" : "border-black/10";
+  const mutedText = "text-muted-foreground";
+  const strongText = "text-foreground";
+  const bodyText = "text-muted-foreground";
+  const dividerColor = "border-border/25";
 
   return (
     <section
@@ -145,7 +143,7 @@ export default function HowWeWorkSection() {
           {TIERS.map((tier) => (
             <article
               key={tier.title}
-              className={`flex flex-col gap-5 border-t-6 pt-8 transition-colors duration-1400 lg:grid lg:grid-rows-subgrid lg:row-span-4 lg:gap-0 ${dividerColor}`}
+              className={`flex flex-col gap-5 border-t-6 border-t-accent pt-8 transition-colors duration-1400 lg:grid lg:grid-rows-subgrid lg:row-span-4 lg:gap-0 ${dividerColor}`}
             >
               <h3
                 className={`font-clash-display text-2xl font-semibold md:text-3xl transition-colors duration-1400 ${strongText}`}

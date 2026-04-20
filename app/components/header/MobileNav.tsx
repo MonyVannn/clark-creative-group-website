@@ -36,7 +36,7 @@ const LinksOverlay = ({
   };
 
   return (
-    <nav className="fixed right-4 top-4 z-40 h-[calc(100vh-32px)] w-[calc(100%-32px)] overflow-hidden bg-[#040b22]">
+    <nav className="fixed right-4 top-4 z-40 h-[calc(100vh-32px)] w-[calc(100%-32px)] overflow-hidden bg-background">
       <Logo />
       <LinksContainer onNavigate={handleNavigate} />
       <FooterCTAs onNavigate={handleNavigate} />
@@ -99,7 +99,7 @@ const NavLink = ({
         e.preventDefault();
         onNavigate(href);
       }}
-      className="font-satoshi block text-5xl font-semibold text-[#f6f8ff] transition-colors hover:text-[#f6f8ff]/50 md:text-7xl"
+      className="font-satoshi block text-5xl font-semibold text-foreground transition-colors hover:text-foreground/50 md:text-7xl"
     >
       {children}.
     </motion.a>
@@ -118,9 +118,9 @@ const Logo = () => {
       }}
       exit={{ opacity: 0, y: -12 }}
       href="#"
-      className="grid h-20 w-20 place-content-center rounded-br-xl rounded-tl-xl bg-[#f6f8ff] transition-colors hover:bg-violet-50"
+      className="grid h-20 w-20 place-content-center rounded-br-xl rounded-tl-xl bg-foreground transition-colors hover:bg-violet-50"
     >
-      <h1 className="font-clash-display text-5xl font-black text-[#040b22]">
+      <h1 className="font-clash-display text-5xl font-black text-accent-foreground">
         C
       </h1>
     </motion.a>
@@ -167,20 +167,20 @@ const HamburgerButton = ({
         <motion.span
           variants={HAMBURGER_VARIANTS.top}
           // 3. Add md: classes for the top line
-          className="absolute block h-1 w-6 md:w-10 bg-[#f6f8ff]"
+          className="absolute block h-1 w-6 md:w-10 bg-foreground"
           style={{ y: "-50%", left: "50%", x: "-50%" }}
         />
         <motion.span
           variants={HAMBURGER_VARIANTS.middle}
           // Add md: classes for the middle line
-          className="absolute block h-1 w-6 md:w-10 bg-[#f6f8ff]"
+          className="absolute block h-1 w-6 md:w-10 bg-foreground"
           style={{ left: "50%", x: "-50%", top: "50%", y: "-50%" }}
         />
         <motion.span
           custom={isMobile} // Pass isMobile to the bottom line variants
           variants={HAMBURGER_VARIANTS.bottom}
           // Add md: classes for the bottom line
-          className="absolute block h-1 w-3 md:w-5 bg-[#f6f8ff]"
+          className="absolute block h-1 w-3 md:w-5 bg-foreground"
           style={{ x: "-50%", y: "50%" }}
         />
       </motion.button>
@@ -209,7 +209,7 @@ const FooterCTAs = ({ onNavigate }: { onNavigate: (href: string) => void }) => {
               }}
               exit={{ opacity: 0, y: -8 }}
             >
-              <l.Component className="text-xl text-[#f6f8ff] transition-colors hover:text-[#f6f8ff]/50 cursor-pointer" />
+              <l.Component className="text-xl text-foreground transition-colors hover:text-foreground/50 cursor-pointer" />
             </motion.a>
           );
         })}
@@ -228,7 +228,7 @@ const FooterCTAs = ({ onNavigate }: { onNavigate: (href: string) => void }) => {
         }}
         exit={{ opacity: 0, y: 8 }}
         onClick={() => onNavigate("/contact")}
-        className="cursor-pointer absolute bottom-2 right-2 flex items-center gap-2 rounded-full bg-[#f6f8ff] px-3 py-3 text-4xl uppercase text-[#040b22] transition-colors hover:bg-[#f6f8ff]/50 hover:text-[#040b22] md:bottom-4 md:right-4 md:px-6 md:text-2xl"
+        className="cursor-pointer absolute bottom-2 right-2 flex items-center gap-2 rounded-full bg-foreground px-3 py-3 text-4xl uppercase text-accent-foreground transition-colors hover:bg-foreground/50 hover:text-accent-foreground md:bottom-4 md:right-4 md:px-6 md:text-2xl"
       >
         <span className="hidden md:block">contact us</span> <FiArrowRight />
       </motion.button>

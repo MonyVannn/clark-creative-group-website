@@ -1,5 +1,6 @@
 "use client";
 
+import { theme } from "@/app/lib/theme";
 import { motion } from "framer-motion";
 import SplitText from "../ui/SplitText";
 import {
@@ -66,7 +67,7 @@ const staggerItems: StaggerTestimonialItem[] = testimonialsData.map((t) => ({
 export default function TestimonialSection() {
   return (
     <section
-      data-color="#f2f2f2"
+      data-color={theme.foreground}
       className="w-full h-full py-12 flex flex-col items-center justify-center overflow-x-hidden"
     >
       <div className="w-full px-6 lg:px-24 mx-auto flex flex-col items-center justify-center">
@@ -75,7 +76,7 @@ export default function TestimonialSection() {
             text="Case Studies"
             tag="h2"
             splitType="words, chars"
-            className="font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 text-white"
+            className="font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 text-foreground"
             textAlign="center"
             delay={20}
           />
@@ -85,7 +86,7 @@ export default function TestimonialSection() {
               text="Here's what other subscribers had to say about Clark Creative Group."
               tag="p"
               splitType="words"
-              className="font-satoshi max-w-2xl text-base font-medium md:text-lg text-gray-400"
+              className="font-satoshi max-w-2xl text-base font-medium md:text-lg text-muted-foreground"
               textAlign="center"
               delay={40}
             />

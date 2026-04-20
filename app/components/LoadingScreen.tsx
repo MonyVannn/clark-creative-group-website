@@ -132,7 +132,7 @@ export default function LoadingScreen({
             className="fixed inset-0 z-200 flex flex-col justify-end overflow-hidden"
             style={{
               background:
-                "linear-gradient(to bottom, #01030d, #040b22, #07153b)",
+                "linear-gradient(to bottom, #01030d, var(--background), #07153b)",
             }}
           >
             {/* CSS Noise Fallback layer */}
@@ -157,16 +157,16 @@ export default function LoadingScreen({
 
             {/* Left Bar Indicator */}
             <div
-              className="absolute left-0 bottom-0 w-1 md:w-2 bg-[#ffc878]"
+              className="absolute left-0 bottom-0 w-1 md:w-2 bg-accent"
               style={{ height: `${displayProgress}%` }}
             />
 
             {/* Content */}
             <div className="pl-6 md:pl-12 pb-12 z-10 pointer-events-none flex flex-col justify-end">
-              <h1 className="font-clash-display text-4xl md:text-6xl lg:text-7xl xl:text-[8rem] 2xl:text-[12rem] font-bold text-[#f6f8ff] tracking-tight m-0 leading-none">
+              <h1 className="font-clash-display text-4xl md:text-6xl lg:text-7xl xl:text-[8rem] 2xl:text-[12rem] font-bold text-foreground tracking-tight m-0 leading-none">
                 CLARK CREATIVE
               </h1>
-              <div className="font-satoshi text-6xl md:text-8xl lg:text-[10rem] xl:text-[14rem] font-bold text-[#ffc878] m-0 leading-none mt-2 md:mt-4">
+              <div className="font-satoshi text-6xl md:text-8xl lg:text-[10rem] xl:text-[14rem] font-bold text-accent m-0 leading-none mt-2 md:mt-4">
                 {currentPercentage}%
               </div>
             </div>

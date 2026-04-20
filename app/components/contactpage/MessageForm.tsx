@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 
 const inputClass =
-  "w-full rounded-none border border-[#f6f8ff]/20 bg-[#040b22]/70 px-4 py-3 font-satoshi text-sm text-[#f6f8ff] placeholder:text-[#f6f8ff]/35 outline-none transition-colors focus:border-[#ffc878]";
+  "w-full rounded-none border border-border/20 bg-background/70 px-4 py-3 font-satoshi text-sm text-foreground placeholder:text-foreground/35 outline-none transition-colors focus:border-accent";
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -86,7 +86,7 @@ export default function MessageForm() {
 
   return (
     <motion.div
-      className="mt-6 overflow-hidden rounded-none border border-[#f6f8ff]/20 bg-[#0a1228]/90"
+      className="mt-6 overflow-hidden rounded-none border border-border/20 bg-elevated/90"
       variants={revealContainer}
       initial="hidden"
       animate="show"
@@ -94,11 +94,11 @@ export default function MessageForm() {
       <div className="grid lg:grid-cols-[0.95fr_1.25fr]">
         <motion.aside
           variants={revealItem}
-          className="border-b border-[#f6f8ff]/10 p-6 text-[#f6f8ff] sm:p-7 lg:border-b-0 lg:border-r"
+          className="border-b border-border/10 p-6 text-foreground sm:p-7 lg:border-b-0 lg:border-r"
         >
           <motion.h4
             variants={revealItem}
-            className="font-clash-display text-2xl leading-tight text-[#f6f8ff] md:text-3xl"
+            className="font-clash-display text-2xl leading-tight text-foreground md:text-3xl"
           >
             Send a
             <br />
@@ -106,7 +106,7 @@ export default function MessageForm() {
           </motion.h4>
           <motion.p
             variants={revealItem}
-            className="font-satoshi mt-4 max-w-[30ch] text-sm leading-7 text-[#f6f8ff]/70"
+            className="font-satoshi mt-4 max-w-[30ch] text-sm leading-7 text-muted-foreground"
           >
             Tell us about your goals, timeline, and what you need. We usually
             respond within one business day.
@@ -122,7 +122,7 @@ export default function MessageForm() {
             <motion.div variants={revealItem}>
               <label
                 htmlFor="contact-first-name"
-                className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+                className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-muted-foreground"
               >
                 First name *
               </label>
@@ -138,7 +138,7 @@ export default function MessageForm() {
                 autoComplete="given-name"
               />
               {errors.firstName && (
-                <p className="mt-2 font-satoshi text-xs text-[#ff9a9a]">
+                <p className="mt-2 font-satoshi text-xs text-destructive">
                   {errors.firstName}
                 </p>
               )}
@@ -146,7 +146,7 @@ export default function MessageForm() {
             <motion.div variants={revealItem}>
               <label
                 htmlFor="contact-last-name"
-                className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+                className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-muted-foreground"
               >
                 Last name *
               </label>
@@ -162,7 +162,7 @@ export default function MessageForm() {
                 autoComplete="family-name"
               />
               {errors.lastName && (
-                <p className="mt-2 font-satoshi text-xs text-[#ff9a9a]">
+                <p className="mt-2 font-satoshi text-xs text-destructive">
                   {errors.lastName}
                 </p>
               )}
@@ -172,7 +172,7 @@ export default function MessageForm() {
           <motion.div variants={revealItem}>
             <label
               htmlFor="contact-email"
-              className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+              className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-muted-foreground"
             >
               Email *
             </label>
@@ -188,7 +188,7 @@ export default function MessageForm() {
               autoComplete="email"
             />
             {errors.email && (
-              <p className="mt-2 font-satoshi text-xs text-[#ff9a9a]">
+              <p className="mt-2 font-satoshi text-xs text-destructive">
                 {errors.email}
               </p>
             )}
@@ -197,7 +197,7 @@ export default function MessageForm() {
           <motion.div variants={revealItem}>
             <label
               htmlFor="contact-message"
-              className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+              className="font-satoshi mb-2 block text-xs uppercase tracking-[0.14em] text-muted-foreground"
             >
               Message *
             </label>
@@ -212,7 +212,7 @@ export default function MessageForm() {
               className={`${inputClass} min-h-[170px] resize-y py-3.5`}
             />
             {errors.message && (
-              <p className="mt-2 font-satoshi text-xs text-[#ff9a9a]">
+              <p className="mt-2 font-satoshi text-xs text-destructive">
                 {errors.message}
               </p>
             )}
@@ -221,7 +221,7 @@ export default function MessageForm() {
           {submitError && (
             <motion.p
               variants={revealItem}
-              className="font-satoshi text-xs text-[#ff9a9a]"
+              className="font-satoshi text-xs text-destructive"
             >
               {submitError}
             </motion.p>
@@ -230,7 +230,7 @@ export default function MessageForm() {
           {submitSuccess && (
             <motion.p
               variants={revealItem}
-              className="font-satoshi text-xs text-[#a8ffcb]"
+              className="font-satoshi text-xs text-success"
             >
               Message sent. We&apos;ll be in touch soon.
             </motion.p>
@@ -240,17 +240,17 @@ export default function MessageForm() {
             variants={revealItem}
             className="flex items-center justify-between gap-4 pt-1"
           >
-            <p className="font-satoshi text-xs text-[#f6f8ff]/55">
+            <p className="font-satoshi text-xs text-muted-foreground">
               We keep your details private and never share them.
             </p>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="group inline-flex cursor-pointer items-center justify-between gap-2.5 rounded-none border border-[#f6f8ff]/25 bg-[#040b22] px-4 py-2.5 font-satoshi text-sm text-[#f6f8ff]/90 transition-colors hover:border-[#ffc878] hover:text-[#f6f8ff] disabled:pointer-events-none disabled:opacity-50"
+              className="group inline-flex cursor-pointer items-center justify-between gap-2.5 rounded-none border border-border/25 bg-background px-4 py-2.5 font-satoshi text-sm text-foreground/90 transition-colors hover:border-accent hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
             >
               <span>{isSubmitting ? "Sending…" : "Send message"}</span>
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-[#f6f8ff]/10 transition-colors group-hover:bg-[#ffc878]">
-                <FiArrowRight className="h-3.5 w-3.5 text-[#f6f8ff] transition-colors group-hover:text-[#040b22]" />
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-foreground/10 transition-colors group-hover:bg-accent">
+                <FiArrowRight className="h-3.5 w-3.5 text-foreground transition-colors group-hover:text-accent-foreground" />
               </span>
             </button>
           </motion.div>

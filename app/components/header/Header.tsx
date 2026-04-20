@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTheme } from "../contexts/ThemeContext";
 import { Nav } from "./MobileNav";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -18,18 +17,16 @@ function NavLink({
   href,
   children,
   active,
-  isDarkTheme,
   onNavigate,
 }: {
   href: string;
   children: string;
   active?: boolean;
-  isDarkTheme: boolean;
   onNavigate: (href: string) => void;
 }) {
-  const activeColor = isDarkTheme ? "text-white" : "text-[#606060]";
-  const inactiveColor = isDarkTheme ? "text-gray-400" : "text-[#a0a0a0]";
-  const underlineColor = isDarkTheme ? "bg-[#f2f2f2]" : "bg-[#606060]";
+  const activeColor = "text-foreground";
+  const inactiveColor = "text-muted-foreground";
+  const underlineColor = "bg-foreground";
   const isInternalPath = href.startsWith("/");
 
   return (
@@ -71,7 +68,6 @@ function NavLink({
 }
 
 export default function Header() {
-  const { isDarkTheme } = useTheme();
   const pathname = usePathname();
   const { navigateTo } = usePageTransition();
 
@@ -96,16 +92,12 @@ export default function Header() {
             height={32}
           />
           <span
-            className={`font-clash-display hidden md:block font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
-              isDarkTheme ? "text-[#f6f8ff]" : "text-[#0a191f]"
-            }`}
+            className={`font-clash-display hidden md:block font-semibold tracking-wide transition-colors duration-1400 md:text-xl text-foreground`}
           >
             CLARK CREATIVE GROUP
           </span>
           <span
-            className={`font-clash-display md:hidden text-2xl font-semibold tracking-wide transition-colors duration-1400 md:text-xl ${
-              isDarkTheme ? "text-[#f6f8ff]" : "text-[#0a191f]"
-            }`}
+            className={`font-clash-display md:hidden text-2xl font-semibold tracking-wide transition-colors duration-1400 md:text-xl text-foreground`}
           >
             CLARK CREATIVE
           </span>
@@ -119,7 +111,6 @@ export default function Header() {
               key={link.label}
               href={link.href}
               active={pathname === link.href}
-              isDarkTheme={isDarkTheme}
               onNavigate={navigateTo}
             >
               {link.label}
@@ -135,11 +126,7 @@ export default function Header() {
               e.preventDefault();
               navigateTo("/contact");
             }}
-            className={`px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 ${
-              isDarkTheme
-                ? "bg-[#ffc878] text-[#040b22]"
-                : "bg-[#0a191f] text-[#f6f8ff]"
-            }`}
+            className={`px-5 py-2.5 text-sm font-semibold tracking-wide transition-all duration-1400 hover:opacity-90 bg-accent text-accent-foreground`}
           >
             CONTACT US
           </Link>

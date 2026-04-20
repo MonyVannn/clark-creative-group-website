@@ -3,14 +3,12 @@
 import { motion } from "framer-motion";
 
 export const VisionStyleCard = ({
-  isDarkTheme,
   title,
   title2,
   description,
   src,
   index = 0,
 }: {
-  isDarkTheme: boolean;
   title: string;
   title2: string;
   description: string;
@@ -18,9 +16,9 @@ export const VisionStyleCard = ({
   index?: number;
 }) => {
   const hoverBg = "hover:bg-neutral-900";
-  const hoverText = "group-hover:text-[#ffc878]";
-  const mutedText = "text-neutral-400";
-  const descHoverText = "group-hover:text-[#f2f2f2]";
+  const hoverText = "group-hover:text-accent";
+  const mutedText = "text-muted-foreground";
+  const descHoverText = "group-hover:text-foreground";
 
   return (
     <motion.div
@@ -53,13 +51,13 @@ export const VisionStyleCard = ({
         }}
       />
 
-      <Corners isDarkTheme={isDarkTheme} />
+      <Corners />
     </motion.div>
   );
 };
 
-const Corners = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
-  const cornerColor = "bg-[#ffc878]";
+const Corners = () => {
+  const cornerColor = "bg-accent";
 
   return (
     <>

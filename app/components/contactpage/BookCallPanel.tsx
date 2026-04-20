@@ -131,7 +131,7 @@ function buildSlotsForDay() {
 }
 
 const inputClass =
-  "w-full rounded-none border border-[#f6f8ff]/20 bg-[#040b22]/70 px-4 py-3 font-satoshi text-sm text-[#f6f8ff] placeholder:text-[#f6f8ff]/35 outline-none transition-colors focus:border-[#ffc878]";
+  "w-full rounded-none border border-border/20 bg-background/70 px-4 py-3 font-satoshi text-sm text-foreground placeholder:text-foreground/35 outline-none transition-colors focus:border-accent";
 
 export default function BookCallPanel() {
   const today = useMemo(() => startOfDay(new Date()), []);
@@ -269,7 +269,7 @@ export default function BookCallPanel() {
 
   return (
     <motion.div
-      className="mt-6 overflow-hidden rounded-none border border-[#f6f8ff]/20 bg-[#0a1228]/90"
+      className="mt-6 overflow-hidden rounded-none border border-border/20 bg-elevated/90"
       variants={revealContainer}
       initial="hidden"
       animate="show"
@@ -277,24 +277,24 @@ export default function BookCallPanel() {
       <div className="grid lg:grid-cols-[1.05fr_1.45fr_1fr]">
         <motion.aside
           variants={revealItem}
-          className="border-b border-[#f6f8ff]/10 p-6 text-[#f6f8ff] md:p-7 lg:border-b-0 lg:border-r"
+          className="border-b border-border/10 p-6 text-foreground md:p-7 lg:border-b-0 lg:border-r"
         >
-          <h3 className="font-clash-display text-2xl leading-tight text-[#f6f8ff] md:text-3xl">
+          <h3 className="font-clash-display text-2xl leading-tight text-foreground md:text-3xl">
             30 Min Discovery
             <br />
             Call
           </h3>
-          <p className="font-satoshi mt-4 max-w-[30ch] text-sm leading-7 text-[#f6f8ff]/70">
+          <p className="font-satoshi mt-4 max-w-[30ch] text-sm leading-7 text-muted-foreground">
             A quick video call to get to know each other, and hear a little bit
             about your project.
           </p>
-          <p className="font-satoshi mt-4 max-w-[30ch] text-sm leading-7 text-[#f6f8ff]/70">
+          <p className="font-satoshi mt-4 max-w-[30ch] text-sm leading-7 text-muted-foreground">
             We welcome any questions you may have.
           </p>
 
-          <div className="mt-8 space-y-4 font-satoshi text-sm text-[#f6f8ff]/85">
+          <div className="mt-8 space-y-4 font-satoshi text-sm text-foreground/85">
             <div className="flex items-center gap-3">
-              <FiClock className="h-4 w-4 text-[#f6f8ff]/60" />
+              <FiClock className="h-4 w-4 text-muted-foreground" />
               <span>30m</span>
             </div>
             <div className="flex items-center gap-3">
@@ -309,17 +309,17 @@ export default function BookCallPanel() {
 
         <motion.section
           variants={revealItem}
-          className="border-b border-[#f6f8ff]/10 p-6 text-[#f6f8ff] sm:p-7 lg:border-b-0 lg:border-r"
+          className="border-b border-border/10 p-6 text-foreground sm:p-7 lg:border-b-0 lg:border-r"
         >
           <div className="mb-5 flex items-center justify-between">
-            <h4 className="font-satoshi text-xl font-medium tracking-tight text-[#f6f8ff] md:text-2xl">
+            <h4 className="font-satoshi text-xl font-medium tracking-tight text-foreground md:text-2xl">
               {monthTitle}
             </h4>
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={() => goMonth(-1)}
-                className="cursor-pointer rounded-none p-2 text-[#f6f8ff]/70 transition-colors hover:bg-[#f6f8ff]/10 hover:text-[#f6f8ff]"
+                className="cursor-pointer rounded-none p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground"
                 aria-label="Previous month"
               >
                 <FiChevronLeft className="h-5 w-5" />
@@ -327,7 +327,7 @@ export default function BookCallPanel() {
               <button
                 type="button"
                 onClick={() => goMonth(1)}
-                className="cursor-pointer rounded-none p-2 text-[#f6f8ff]/70 transition-colors hover:bg-[#f6f8ff]/10 hover:text-[#f6f8ff]"
+                className="cursor-pointer rounded-none p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground"
                 aria-label="Next month"
               >
                 <FiChevronRight className="h-5 w-5" />
@@ -335,7 +335,7 @@ export default function BookCallPanel() {
             </div>
           </div>
 
-          <div className="grid grid-cols-7 gap-y-1 text-center font-satoshi text-xs tracking-wide text-[#f6f8ff]/45">
+          <div className="grid grid-cols-7 gap-y-1 text-center font-satoshi text-xs tracking-wide text-muted-foreground">
             {WEEKDAYS.map((d) => (
               <div key={d} className="pb-1 font-medium uppercase">
                 {d}
@@ -362,10 +362,10 @@ export default function BookCallPanel() {
                   }}
                   className={`mx-auto flex h-10 w-10 items-center justify-center rounded-none font-satoshi text-[15px] transition-colors ${
                     isSelected
-                      ? "bg-[#ffc878] text-[#040b22]"
+                      ? "bg-accent text-accent-foreground"
                       : isAvailable
-                        ? "cursor-pointer bg-[#f6f8ff]/10 text-[#f6f8ff] hover:bg-[#f6f8ff]/20"
-                        : "cursor-not-allowed text-[#f6f8ff]/30"
+                        ? "cursor-pointer bg-foreground/10 text-foreground hover:bg-foreground/20"
+                        : "cursor-not-allowed text-foreground/30"
                   }`}
                 >
                   {cell.getDate()}
@@ -373,11 +373,11 @@ export default function BookCallPanel() {
               );
             })}
           </div>
-          <div className="mt-6 rounded-none border border-[#f6f8ff]/15 bg-[#040b22]/55 px-4 py-3">
-            <p className="font-satoshi text-[11px] uppercase tracking-[0.14em] text-[#f6f8ff]/45">
+          <div className="mt-6 rounded-none border border-border/15 bg-background/55 px-4 py-3">
+            <p className="font-satoshi text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               Selected slot
             </p>
-            <p className="font-satoshi mt-1.5 text-sm text-[#f6f8ff]/90">
+            <p className="font-satoshi mt-1.5 text-sm text-foreground/90">
               {selectedDateLabel && selectedSlotLabel
                 ? `${selectedDateLabel}, ${selectedSlotLabel}`
                 : "Choose a date and time"}
@@ -389,7 +389,7 @@ export default function BookCallPanel() {
               <div>
                 <label
                   htmlFor="call-first-name"
-                  className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+                  className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-muted-foreground"
                 >
                   First name *
                 </label>
@@ -405,7 +405,7 @@ export default function BookCallPanel() {
                   autoComplete="given-name"
                 />
                 {fieldErrors.firstName && (
-                  <p className="mt-1 font-satoshi text-xs text-[#ff9a9a]">
+                  <p className="mt-1 font-satoshi text-xs text-destructive">
                     {fieldErrors.firstName}
                   </p>
                 )}
@@ -413,7 +413,7 @@ export default function BookCallPanel() {
               <div>
                 <label
                   htmlFor="call-last-name"
-                  className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+                  className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-muted-foreground"
                 >
                   Last name *
                 </label>
@@ -429,7 +429,7 @@ export default function BookCallPanel() {
                   autoComplete="family-name"
                 />
                 {fieldErrors.lastName && (
-                  <p className="mt-1 font-satoshi text-xs text-[#ff9a9a]">
+                  <p className="mt-1 font-satoshi text-xs text-destructive">
                     {fieldErrors.lastName}
                   </p>
                 )}
@@ -438,7 +438,7 @@ export default function BookCallPanel() {
             <div>
               <label
                 htmlFor="call-email"
-                className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-[#f6f8ff]/55"
+                className="font-satoshi mb-1.5 block text-xs uppercase tracking-[0.14em] text-muted-foreground"
               >
                 Email *
               </label>
@@ -454,7 +454,7 @@ export default function BookCallPanel() {
                 autoComplete="email"
               />
               {fieldErrors.email && (
-                <p className="mt-1 font-satoshi text-xs text-[#ff9a9a]">
+                <p className="mt-1 font-satoshi text-xs text-destructive">
                   {fieldErrors.email}
                 </p>
               )}
@@ -464,21 +464,21 @@ export default function BookCallPanel() {
 
         <motion.section
           variants={revealItem}
-          className="p-6 text-[#f6f8ff] sm:p-7 justify-between flex flex-col"
+          className="p-6 text-foreground sm:p-7 justify-between flex flex-col"
         >
           <div>
             <div className="flex items-start justify-between">
-              <h4 className="font-satoshi text-xl font-medium tracking-tight text-[#f6f8ff] md:text-2xl">
+              <h4 className="font-satoshi text-xl font-medium tracking-tight text-foreground md:text-2xl">
                 {selectedDayLabel} {selectedDayDate}
               </h4>
-              <div className="inline-flex bg-[#040b22]">
+              <div className="inline-flex bg-background">
                 <button
                   type="button"
                   onClick={() => setHourFormat("12h")}
                   className={`cursor-pointer rounded-none px-3 py-1.5 font-satoshi text-sm transition-colors ${
                     hourFormat === "12h"
-                      ? "bg-[#ffc878] text-[#040b22]"
-                      : "text-[#f6f8ff]/70 hover:text-[#f6f8ff]"
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   12h
@@ -488,8 +488,8 @@ export default function BookCallPanel() {
                   onClick={() => setHourFormat("24h")}
                   className={`cursor-pointer rounded-none px-3 py-1.5 font-satoshi text-sm transition-colors ${
                     hourFormat === "24h"
-                      ? "bg-[#ffc878] text-[#040b22]"
-                      : "text-[#f6f8ff]/70 hover:text-[#f6f8ff]"
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   24h
@@ -519,8 +519,8 @@ export default function BookCallPanel() {
                       }
                       className={`w-full cursor-pointer rounded-none border px-4 py-2.5 text-left font-satoshi text-xl leading-none transition-colors ${
                         active
-                          ? "border-[#ffc878] bg-[#ffc878]/15 text-[#f6f8ff]"
-                          : "border-[#f6f8ff]/35 bg-[#040b22]/80 text-[#f6f8ff] hover:border-[#f6f8ff]/60 hover:bg-[#f6f8ff]/10"
+                          ? "border-accent bg-accent/15 text-foreground"
+                          : "border-border/35 bg-background/80 text-foreground hover:border-border/60 hover:bg-foreground/10"
                       }`}
                     >
                       {formatSlot(slot.hour, slot.minute)}
@@ -531,31 +531,31 @@ export default function BookCallPanel() {
             </ul>
 
             <div className="relative mt-5">
-              <FiGlobe className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f6f8ff]/60" />
+              <FiGlobe className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <select
                 value={timeZone}
                 onChange={(e) => setTimeZone(e.target.value)}
-                className="w-full cursor-pointer appearance-none rounded-none border border-[#f6f8ff]/35 bg-[#040b22]/80 py-2.5 pl-9 pr-8 font-satoshi text-sm text-[#f6f8ff] outline-none transition-colors hover:border-[#f6f8ff]/60 hover:bg-[#f6f8ff]/10 focus:border-[#ffc878]"
+                className="w-full cursor-pointer appearance-none rounded-none border border-border/35 bg-background/80 py-2.5 pl-9 pr-8 font-satoshi text-sm text-foreground outline-none transition-colors hover:border-border/60 hover:bg-foreground/10 focus:border-accent"
                 aria-label="Select time zone"
               >
                 {TIMEZONES.map((tz) => (
-                  <option key={tz} value={tz} className="bg-[#0a1228] text-[#f6f8ff]">
+                  <option key={tz} value={tz} className="bg-elevated text-foreground">
                     {formatTimeZoneLabel(tz)}
                   </option>
                 ))}
               </select>
-              <FiChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#f6f8ff]/60" />
+              <FiChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             </div>
           </div>
           <div>
             {submitError && (
-              <p className="mt-4 font-satoshi text-xs text-[#ff9a9a]">
+              <p className="mt-4 font-satoshi text-xs text-destructive">
                 {submitError}
               </p>
             )}
 
             {submitSuccess && (
-              <p className="mt-4 font-satoshi text-xs text-[#a8ffcb]">
+              <p className="mt-4 font-satoshi text-xs text-success">
                 Request sent. We&apos;ll be in touch soon.
               </p>
             )}
@@ -564,7 +564,7 @@ export default function BookCallPanel() {
               type="button"
               onClick={handleSubmit}
               disabled={!canSubmit}
-              className="group mt-4 inline-flex w-full cursor-pointer items-center justify-between gap-2.5 rounded-none border border-[#f6f8ff]/25 bg-[#040b22] px-4 py-2 font-satoshi text-sm font-medium text-[#f6f8ff]/90 transition-colors hover:border-[#ffc878] hover:text-[#f6f8ff] disabled:cursor-not-allowed disabled:border-[#f6f8ff]/15 disabled:text-[#f6f8ff]/40"
+              className="group mt-4 inline-flex w-full cursor-pointer items-center justify-between gap-2.5 rounded-none border border-border/25 bg-background px-4 py-2 font-satoshi text-sm font-medium text-foreground/90 transition-colors hover:border-accent hover:text-foreground disabled:cursor-not-allowed disabled:border-border/15 disabled:text-foreground/40"
               aria-label={
                 selectedDateLabel && selectedSlotLabel
                   ? `Request call for ${selectedDateLabel} at ${selectedSlotLabel}`
@@ -578,8 +578,8 @@ export default function BookCallPanel() {
                     ? "Request sent"
                     : "Request call"}
               </span>
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-[#f6f8ff]/10 transition-colors group-hover:bg-[#ffc878] group-disabled:bg-[#f6f8ff]/5">
-                <FiArrowRight className="h-3.5 w-3.5 text-[#f6f8ff] transition-colors group-hover:text-[#040b22] group-disabled:text-[#f6f8ff]/45" />
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-foreground/10 transition-colors group-hover:bg-accent group-disabled:bg-foreground/5">
+                <FiArrowRight className="h-3.5 w-3.5 text-foreground transition-colors group-hover:text-accent-foreground group-disabled:text-foreground/45" />
               </span>
             </button>
           </div>

@@ -8,7 +8,7 @@ import MessageForm from "./MessageForm";
 type TabId = "message" | "book";
 
 const TAB_BUTTON_CLASSES =
-  "relative z-10 cursor-pointer rounded-none px-5 py-2.5 font-satoshi text-sm font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#f6f8ff]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#040b22]";
+  "relative z-10 cursor-pointer rounded-none px-5 py-2.5 font-satoshi text-sm font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const EASE_IN: [number, number, number, number] = [0.4, 0, 1, 1];
@@ -76,7 +76,7 @@ export default function ContactFormsSection() {
         </motion.h2>
         <motion.p
           variants={revealItem}
-          className="font-satoshi text-lg md:text-xl leading-relaxed text-[#f6f8ff]/80"
+          className="font-satoshi text-lg md:text-xl leading-relaxed text-muted-foreground"
         >
           Send a message or request a discovery call, and we&apos;ll follow up with
           next steps.
@@ -88,7 +88,7 @@ export default function ContactFormsSection() {
           role="tablist"
           aria-label="Choose contact type"
         >
-          <div className="inline-flex rounded-none border border-[#f6f8ff]/20 p-1">
+          <div className="inline-flex rounded-none border border-border/20 p-1">
             <div className="relative flex w-fit items-center rounded-none">
               <button
                 type="button"
@@ -99,8 +99,8 @@ export default function ContactFormsSection() {
                 onClick={() => setTab("message")}
                 className={`${TAB_BUTTON_CLASSES} ${
                   tab === "message"
-                    ? "text-[#040b22]"
-                    : "text-[#f6f8ff]/80 hover:text-[#f6f8ff]"
+                    ? "text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 Message
@@ -114,8 +114,8 @@ export default function ContactFormsSection() {
                 onClick={() => setTab("book")}
                 className={`${TAB_BUTTON_CLASSES} ${
                   tab === "book"
-                    ? "text-[#040b22]"
-                    : "text-[#f6f8ff]/80 hover:text-[#f6f8ff]"
+                    ? "text-accent-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 Request a call
@@ -132,7 +132,7 @@ export default function ContactFormsSection() {
                     damping: 20,
                     stiffness: 150,
                   }}
-                  className="pointer-events-none h-full w-1/2 rounded-none bg-[#ffc878]"
+                  className="pointer-events-none h-full w-1/2 rounded-none bg-accent"
                 />
               </div>
             </div>

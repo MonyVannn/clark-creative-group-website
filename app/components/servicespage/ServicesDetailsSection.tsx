@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import ShuffleCards from "./ShuffleCards";
-import { useTheme } from "../contexts/ThemeContext";
 import SquareSketch from "../ui/SquareSketch";
 import SplitText from "../ui/SplitText";
 import RectangleSketch from "../ui/RectangleSketch";
@@ -77,11 +76,10 @@ const copyItem = {
 
 export default function ServicesDetailsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { isDarkTheme } = useTheme();
 
   const activeService = SERVICES_DATA[activeIndex] || SERVICES_DATA[0];
 
-  const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#f2f2f2]";
+  const textColor = "text-foreground";
   const transition = "transition-colors duration-1000";
 
   return (

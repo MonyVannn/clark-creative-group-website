@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Header from "../components/header/Header";
-import { ThemeProvider } from "../components/contexts/ThemeContext";
 import Line from "../components/ui/Line";
 import Footer from "../components/footer/Footer";
 import AboutHeroSection from "../components/aboutpage/AboutHeroSection";
@@ -21,18 +20,16 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <ThemeProvider>
-      <main className="min-h-screen">
-        <Header />
-        <div className="relative min-h-screen overflow-x-hidden">
-          <div className="relative z-10 px-8 md:px-6 lg:px-16">
-            <AboutHeroSection />
-            <TeamSection />
-            <VisionSection />
-          </div>
+    <main className="min-h-screen">
+      <Header />
+      <div className="relative min-h-screen overflow-x-hidden">
+        <div className="relative z-10 px-8 md:px-6 lg:px-16">
+          <AboutHeroSection />
+          <TeamSection />
+          <VisionSection />
         </div>
-        <Footer />
-      </main>
-    </ThemeProvider>
+      </div>
+      <Footer />
+    </main>
   );
 }

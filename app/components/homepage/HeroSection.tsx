@@ -60,7 +60,7 @@ export default function HeroSection() {
         <div className="absolute left-0 right-0 md:top-10 z-20 flex w-full flex-col px-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12 lg:px-12 xl:top-[clamp(2rem,6vh,6rem)] xl:gap-8 2xl:top-[clamp(6rem,12vh,12rem)] 2xl:gap-12">
           {/* Heading column */}
           <div className="md:min-w-0 md:flex-1">
-            <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-[#f6f8ff] lg:text-7xl xl:text-6xl 2xl:text-7xl">
+            <h1 className="font-clash-display hidden lg:block text-5xl font-semibold leading-[1.3] text-foreground lg:text-7xl xl:text-6xl 2xl:text-7xl">
               <AnimatedCopy as="span" className="block">
                 Partners of founders
               </AnimatedCopy>
@@ -75,7 +75,7 @@ export default function HeroSection() {
               </AnimatedCopy>
             </h1>
             {/* {Mobile & Tablet} */}
-            <h1 className="font-clash-display lg:hidden text-center md:text-left text-4xl font-semibold leading-[1.3] text-[#f6f8ff] md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
+            <h1 className="font-clash-display lg:hidden text-center md:text-left text-4xl font-semibold leading-[1.3] text-foreground md:text-7xl lg:text-8xl xl:text-7xl 2xl:text-8xl">
               <AnimatedCopy as="span" className="block">
                 Partners of founders
               </AnimatedCopy>
@@ -92,14 +92,14 @@ export default function HeroSection() {
           <div className="flex flex-col gap-6 lg:w-80 2xl:w-120 lg:shrink-0 lg:gap-8 xl:gap-6 2xl:gap-8">
             <AnimatedCopy
               as="p"
-              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-wide text-[#f6f8ff] md:text-xl xl:text-base 2xl:text-xl mt-10"
+              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-wide text-muted-foreground md:text-xl xl:text-base 2xl:text-xl mt-10"
             >
               Our work sits at the intersection of brand, business design, and
               strategic implementation, helping your company become
             </AnimatedCopy>
             <AnimatedCopy
               as="p"
-              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-wide text-[#f6f8ff] md:text-xl xl:text-base 2xl:text-xl"
+              className="font-satoshi text-center md:text-left text-sm font-medium uppercase leading-relaxed tracking-wide text-muted-foreground md:text-xl xl:text-base 2xl:text-xl"
             >
               more clear, more compelling, and more operationally sound.
             </AnimatedCopy>
@@ -111,7 +111,7 @@ export default function HeroSection() {
                   e.preventDefault();
                   navigateTo("/services");
                 }}
-                className="w-64 bg-[#ffc878] px-6 py-3 text-center font-satoshi font-bold text-sm uppercase tracking-wider text-[#040b22] transition-colors hover:bg-[#ffc878]/80 cursor-pointer xl:w-full xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-full 2xl:px-6 2xl:py-3 2xl:text-sm"
+                className="w-64 bg-accent px-6 py-3 text-center font-satoshi font-bold text-sm uppercase tracking-wider text-accent-foreground transition-colors hover:bg-accent/80 cursor-pointer xl:w-full xl:px-5 xl:py-2.5 xl:text-xs 2xl:w-full 2xl:px-6 2xl:py-3 2xl:text-sm"
               >
                 Explore Services
               </Link>

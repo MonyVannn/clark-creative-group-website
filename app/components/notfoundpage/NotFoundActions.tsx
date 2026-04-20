@@ -14,7 +14,7 @@ export default function NotFoundActions() {
           e.preventDefault();
           navigateTo("/");
         }}
-        className="w-full bg-[#ffc878] px-8 py-3 text-center font-satoshi text-sm font-bold uppercase tracking-[0.2em] transition-colors duration-300 hover:bg-[#ffc878]/80 sm:w-auto"
+        className="w-full bg-accent px-8 py-3 text-center font-satoshi text-sm font-bold uppercase tracking-[0.2em] text-accent-foreground transition-colors duration-300 hover:bg-accent/80 sm:w-auto"
       >
         Back Home
       </Link>
@@ -24,7 +24,7 @@ export default function NotFoundActions() {
           e.preventDefault();
           navigateTo("/contact");
         }}
-        className="w-full border border-[#ffc878] px-8 py-3 text-center font-satoshi text-sm font-semibold uppercase tracking-[0.2em] text-[#ffc878] transition-colors duration-300 hover:bg-[#ffc878] hover:text-[#f2f2f2] sm:w-auto"
+        className="w-full border border-accent px-8 py-3 text-center font-satoshi text-sm font-semibold uppercase tracking-[0.2em] text-accent transition-colors duration-300 hover:bg-accent hover:text-accent-foreground sm:w-auto"
       >
         Contact
       </Link>

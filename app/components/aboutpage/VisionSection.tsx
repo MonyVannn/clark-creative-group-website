@@ -1,22 +1,21 @@
 "use client";
 
+import { theme } from "@/app/lib/theme";
 import { useRef } from "react";
-import { useTheme } from "../contexts/ThemeContext";
 import { motion } from "framer-motion";
 import SplitText from "../ui/SplitText";
 import { VisionStyleCard } from "../ui/VisionStyleCard";
 
 export default function VisionSection() {
-  const { isDarkTheme } = useTheme();
   const sectionRef = useRef<HTMLElement>(null);
-  const textColor = "text-[#f6f8ff]";
-  const mutedTextColor = "text-neutral-400";
+  const textColor = "text-foreground";
+  const mutedTextColor = "text-muted-foreground";
   const transition = "transition-colors duration-1000";
 
   return (
     <section
       ref={sectionRef}
-      data-color="#191919"
+      data-color={theme.accentForeground}
       className="relative py-32 max-w-7xl mx-auto lg:py-48 flex flex-col justify-center "
     >
       <motion.div
@@ -41,15 +40,15 @@ export default function VisionSection() {
         />
       </div>
 
-      <GridCards isDarkTheme={isDarkTheme} />
+      <GridCards />
     </section>
   );
 }
 
-const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
+const GridCards = () => {
   const borderColor = "border-neutral-700";
   const divideColor = "divide-neutral-700";
-  const textColor = "text-[#f2f2f2]";
+  const textColor = "text-foreground";
 
   return (
     <div
@@ -59,7 +58,6 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
         className={`grid grid-cols-1 divide-y ${divideColor} border ${borderColor} md:grid-cols-2 md:divide-x md:divide-y-0 transition-colors duration-1000`}
       >
         <VisionStyleCard
-          isDarkTheme={isDarkTheme}
           index={0}
           title="You move faster when you know exactly"
           title2=" where you are and where you're headed."
@@ -67,7 +65,6 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
           src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
         <VisionStyleCard
-          isDarkTheme={isDarkTheme}
           index={1}
           title="Your environment shapes "
           title2="your outcome."
@@ -79,7 +76,6 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
         className={`grid grid-cols-1 divide-y ${divideColor} border-x border-b ${borderColor} md:grid-cols-2 md:divide-x md:divide-y-0 transition-colors duration-1000`}
       >
         <VisionStyleCard
-          isDarkTheme={isDarkTheme}
           index={2}
           title="Business and life can run on "
           title2="the same frequency."
@@ -87,7 +83,6 @@ const GridCards = ({ isDarkTheme }: { isDarkTheme: boolean }) => {
           src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=2379&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         />
         <VisionStyleCard
-          isDarkTheme={isDarkTheme}
           index={3}
           title="Use what"
           title2=" you have."

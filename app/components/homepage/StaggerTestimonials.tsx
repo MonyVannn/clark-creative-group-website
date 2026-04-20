@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
+import { theme } from "@/app/lib/theme";
 
 const BORDER_SIZE = 2;
 const CORNER_CLIP = 50;
@@ -123,13 +124,13 @@ export const StaggerTestimonials = ({ items }: StaggerTestimonialsProps) => {
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-8 z-20">
         <button
           onClick={() => handleMove(-1)}
-          className="cursor-pointer grid h-14 w-14 place-content-center text-3xl transition-colors border border-gray-600 text-gray-300 hover:bg-[#ffc878] hover:text-black rounded-full"
+          className="cursor-pointer grid h-14 w-14 place-content-center text-3xl transition-colors border border-muted-foreground/35 text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-full"
         >
           <FiArrowLeft />
         </button>
         <button
           onClick={() => handleMove(1)}
-          className="cursor-pointer grid h-14 w-14 place-content-center text-3xl transition-colors border border-gray-600 text-gray-300 hover:bg-[#ffc878] hover:text-black rounded-full"
+          className="cursor-pointer grid h-14 w-14 place-content-center text-3xl transition-colors border border-muted-foreground/35 text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-full"
         >
           <FiArrowRight />
         </button>
@@ -183,12 +184,12 @@ const TestimonialCard = ({
     e.stopPropagation();
   };
 
-  const activeBg = "bg-[#ffc878]";
-  const activeText = "text-black";
-  const inactiveBg = "bg-[#040b22]";
-  const inactiveText = "text-gray-300";
+  const activeBg = "bg-accent";
+  const activeText = "text-accent-foreground";
+  const inactiveBg = "bg-background";
+  const inactiveText = "text-muted-foreground";
 
-  const borderColor = isActive ? "#ffffff" : "#374151";
+  const borderColor = isActive ? theme.foreground : theme.cardBorderMuted;
   const shadowColor = "rgba(255,255,255,0.15)";
 
   return (
@@ -232,7 +233,7 @@ const TestimonialCard = ({
     >
       <span
         className={`absolute block origin-top-right rotate-45 object-cover ${
-          isActive ? "bg-[#ffffff]" : "bg-[#374151]"
+          isActive ? "bg-foreground" : "bg-card-border-muted"
         }`}
         style={{
           right: -BORDER_SIZE,
@@ -256,14 +257,14 @@ const TestimonialCard = ({
           <div>
             <h2
               className={`font-clash-display text-lg font-semibold ${
-                isActive ? "text-black" : "text-[#f2f2f2]"
+                isActive ? "text-accent-foreground" : "text-foreground"
               }`}
             >
               {testimonial.name}
             </h2>
             <p
               className={`font-satoshi text-xs uppercase tracking-wider ${
-                isActive ? "text-gray-900" : "text-gray-400"
+                isActive ? "text-accent-foreground/85" : "text-muted-foreground"
               }`}
             >
               {testimonial.title}
@@ -286,13 +287,13 @@ const TestimonialCard = ({
             "{testimonial.testimonial}"
           </h3>
           {!isActive && (
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#040b22] to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-background to-transparent" />
           )}
         </div>
       </div>
       <p
         className={`mt-4 shrink-0 text-base italic font-bold ${
-          isActive ? "text-gray-900" : "text-gray-500"
+          isActive ? "text-accent-foreground" : "text-muted-foreground"
         }`}
       >
         {testimonial.by}

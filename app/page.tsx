@@ -8,7 +8,6 @@ import WholePictureSection from "./components/homepage/WholePictureSection";
 import HowWeWorkSection from "./components/homepage/HowWeWorkSection";
 import TestimonialSection from "./components/homepage/TestimonialSection";
 import Footer from "./components/footer/Footer";
-import { ThemeProvider } from "./components/contexts/ThemeContext";
 import Line from "./components/ui/Line";
 
 export const metadata: Metadata = {
@@ -25,25 +24,23 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <ThemeProvider>
-      <main className="relative min-h-screen bg-transparent">
-        {/* Header */}
-        <Header />
-        <div className="relative min-h-screen">
-          {/* Grid area - white visible outside via parent padding */}
+    <main className="relative min-h-screen bg-transparent">
+      {/* Header */}
+      <Header />
+      <div className="relative min-h-screen">
+        {/* Grid area - white visible outside via parent padding */}
 
-          <div className="relative z-10  lg:px-16">
-            <HeroSection />
-            <IntroSection />
-            <CoreOverview />
-            <WholePictureSection />
-            <HowWeWorkSection />
-            <TestimonialSection />
-          </div>
-          <TargetAudienceSection />
+        <div className="relative z-10  lg:px-16">
+          <HeroSection />
+          <IntroSection />
+          <CoreOverview />
+          <WholePictureSection />
+          <HowWeWorkSection />
+          <TestimonialSection />
         </div>
-        <Footer />
-      </main>
-    </ThemeProvider>
+        <TargetAudienceSection />
+      </div>
+      <Footer />
+    </main>
   );
 }

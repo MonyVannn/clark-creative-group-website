@@ -74,7 +74,7 @@ const ShuffleCards = ({ onActiveCardChange }: ShuffleCardsProps) => {
           type="button"
           onClick={() => handleShuffle("right")}
           aria-label="Previous card"
-          className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-[#f2f2f2]/50 text-slate-100 transition-colors hover:bg-[#f2f2f2]/10"
+          className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-border/50 text-muted-foreground transition-colors hover:bg-foreground/10"
         >
           <FiArrowLeft className="h-5 w-5" aria-hidden />
         </button>
@@ -82,7 +82,7 @@ const ShuffleCards = ({ onActiveCardChange }: ShuffleCardsProps) => {
           type="button"
           onClick={() => handleShuffle("left")}
           aria-label="Next card"
-          className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-[#f2f2f2]/50 text-slate-100 transition-colors hover:bg-[#f2f2f2]/10"
+          className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-border/50 text-muted-foreground transition-colors hover:bg-foreground/10"
         >
           <FiArrowRight className="h-5 w-5" aria-hidden />
         </button>
@@ -167,7 +167,7 @@ const Card = ({
       transition={{
         duration: 0.35,
       }}
-      className={`absolute inset-0 m-auto flex flex-col h-[450px] w-[350px] select-none items-center justify-center space-y-6 border-2 border-[#f2f2f2] bg-[#040b22]/70 p-6 shadow-xl backdrop-blur-md ${
+      className={`absolute inset-0 m-auto flex flex-col h-[450px] w-[350px] select-none items-center justify-center space-y-6 border-2 border-border bg-background/70 p-6 shadow-xl backdrop-blur-md ${
         draggable ? "cursor-grab active:cursor-grabbing" : "cursor-pointer"
       }`}
     >

@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import SplitText from "../ui/SplitText";
-import { useTheme } from "../contexts/ThemeContext";
 import SpaceSketchModel from "../ui/CoreOverview/SpaceSketchModel";
 import StorySketchModel from "../ui/CoreOverview/StorySketchModel";
 import SystemSketchModel from "../ui/CoreOverview/SystemSketchModel";
@@ -14,7 +13,6 @@ import { usePreloader } from "../PreloaderContext";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CoreOverview() {
-  const { isDarkTheme } = useTheme();
   const { isPreloaderComplete } = usePreloader();
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
@@ -85,17 +83,13 @@ export default function CoreOverview() {
         <div className="flex flex-col gap-2">
           <h2
             ref={headlineRef}
-            className={`font-clash-display text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl transition-colors duration-1400 ${
-              isDarkTheme ? "text-white" : "text-[#0a191f]"
-            }`}
+            className={`font-clash-display text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl transition-colors duration-1400 text-foreground`}
           >
             Three Pillars.
           </h2>
           <p
             ref={sublineRef}
-            className={`font-satoshi max-w-2xl text-base font-medium md:text-lg transition-colors duration-1400 ${
-              isDarkTheme ? "text-gray-400" : "text-[#606060]"
-            }`}
+            className={`font-satoshi max-w-2xl text-base font-medium md:text-lg transition-colors duration-1400 text-muted-foreground`}
           >
             Brand, systems, and strategy are not three separate problems. They
             are one architecture. We design them together.
@@ -120,9 +114,7 @@ export default function CoreOverview() {
             <div className="flex flex-col gap-3 w-full md:w-1/2 lg:contents">
               <SplitText
                 text="Story"
-                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
-                  isDarkTheme ? "text-white" : "text-[#0a191f]"
-                }`}
+                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 text-foreground`}
                 textAlign="center"
                 delay={50}
                 duration={1.25}
@@ -134,9 +126,7 @@ export default function CoreOverview() {
               />
               {/* <SplitText
                 text="How your business feels"
-                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 ${
-                  isDarkTheme ? "text-white" : "text-[#0a191f]"
-                }`}
+                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 text-foreground`}
                 textAlign="center"
                 delay={50}
                 duration={1.25}
@@ -149,17 +139,13 @@ export default function CoreOverview() {
 
               <div className="flex w-full flex-col gap-2">
                 <p
-                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
+                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 text-muted-foreground`}
                 >
                   Promise: A space that knows what it's for.
                 </p>
                 <SplitText
-                  text="Your environment shapes everything. The spaces surrounding your business, physical, digital, and experiential, all influence how people perceive your brand, trust your work, and engage with what you offer. We help bring intentionality to those environments so they reflect the level of what you're building."
-                  className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
+                  text="The story you tell about your business is the business. If your message is unclear, your value gets missed. We help founders articulate what they do, why it matters, and how to communicate it in a way that builds trust. From brand positioning to investor-facing narrative, we shape the story that helps your business resonate."
+                  className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 text-muted-foreground`}
                   textAlign="left"
                   delay={20}
                   duration={1}
@@ -172,9 +158,7 @@ export default function CoreOverview() {
               </div>
 
               <ul
-                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 ${
-                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                }`}
+                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 text-muted-foreground`}
               >
                 <li className="list-none font-bold text-left">Services:</li>
                 <li className="ml-5 text-left">
@@ -208,9 +192,7 @@ export default function CoreOverview() {
             <div className="flex flex-col gap-3 w-full md:w-1/2 lg:contents">
               <SplitText
                 text="Space"
-                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
-                  isDarkTheme ? "text-white" : "text-[#0a191f]"
-                }`}
+                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 text-foreground`}
                 textAlign="center"
                 delay={50}
                 duration={1.25}
@@ -222,9 +204,7 @@ export default function CoreOverview() {
               />
               {/* <SplitText
                 text="How your business communicates"
-                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 ${
-                  isDarkTheme ? "text-white" : "text-[#0a191f]"
-                }`}
+                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 text-foreground`}
                 textAlign="center"
                 delay={50}
                 duration={1.25}
@@ -237,17 +217,13 @@ export default function CoreOverview() {
 
               <div className="flex w-full flex-col gap-2">
                 <p
-                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
+                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 text-muted-foreground`}
                 >
                   Promise: A brand that knows what it is, and what it isn't.
                 </p>
                 <SplitText
-                  text="The story you tell about your business is the business. If your message is unclear, your value gets missed. We help founders articulate what they do, why it matters, and how to communicate it in a way that builds trust. From brand positioning to investor-facing narrative, we shape the story that helps your business resonate."
-                  className={`font-satoshi text-sm text-justify leading-relaxed md:text-lg transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
+                  text="Your environment shapes everything. The spaces surrounding your business, physical, digital, and experiential, all influence how people perceive your brand, trust your work, and engage with what you offer. We help bring intentionality to those environments so they reflect the level of what you're building."
+                  className={`font-satoshi text-sm text-justify leading-relaxed md:text-lg transition-colors duration-1400 text-muted-foreground`}
                   textAlign="left"
                   delay={20}
                   duration={1}
@@ -260,9 +236,7 @@ export default function CoreOverview() {
               </div>
 
               <ul
-                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 ${
-                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                }`}
+                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 text-muted-foreground`}
               >
                 <li className="list-none font-bold text-left">Services:</li>
                 <li className="ml-5 text-left">
@@ -296,9 +270,7 @@ export default function CoreOverview() {
             <div className="flex flex-col gap-3 w-full md:w-1/2 lg:contents">
               <SplitText
                 text="System"
-                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 ${
-                  isDarkTheme ? "text-white" : "text-[#0a191f]"
-                }`}
+                className={`font-clash-display text-2xl font-semibold md:text-3xl text-left transition-colors duration-1400 text-foreground`}
                 textAlign="center"
                 delay={50}
                 duration={1.25}
@@ -310,9 +282,7 @@ export default function CoreOverview() {
               />
               {/* <SplitText
                 text="How your business functions"
-                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 ${
-                  isDarkTheme ? "text-white" : "text-[#0a191f]"
-                }`}
+                className={`font-clash-display text-lg font-medium md:text-xl text-left transition-colors duration-1400 text-foreground`}
                 textAlign="center"
                 delay={50}
                 duration={1.25}
@@ -325,17 +295,13 @@ export default function CoreOverview() {
 
               <div className="flex w-full flex-col gap-2">
                 <p
-                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
+                  className={`font-satoshi text-left text-sm font-bold md:text-lg transition-colors duration-1400 text-muted-foreground`}
                 >
                   Promise: A business that knows what to do without you.
                 </p>
                 <SplitText
                   text="A strong voice can create attention but systems create persistent momentum. We build operations that support growth, reduce friction, and create a more functional business behind the scenes. This is where strategy becomes execution."
-                  className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 ${
-                    isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                  }`}
+                  className={`font-satoshi text-sm leading-relaxed md:text-lg transition-colors duration-1400 text-muted-foreground`}
                   textAlign="left"
                   delay={20}
                   duration={1}
@@ -348,9 +314,7 @@ export default function CoreOverview() {
               </div>
 
               <ul
-                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 ${
-                  isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-                }`}
+                className={`feature-list font-satoshi text-sm leading-relaxed list-disc md:text-lg transition-colors duration-1400 text-muted-foreground`}
               >
                 <li className="list-none font-bold text-left">Services:</li>
                 <li className="ml-5 text-left">

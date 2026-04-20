@@ -1,8 +1,8 @@
 "use client";
 
+import { theme } from "@/app/lib/theme";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useTheme } from "../contexts/ThemeContext";
 import SplitText from "../ui/SplitText";
 import RectangleSketch from "../ui/RectangleSketch";
 import CopyReveal from "../ui/CopyReveal";
@@ -41,16 +41,12 @@ const teamMembers: {
 ];
 
 export default function TeamSection() {
-  const { isDarkTheme } = useTheme();
-
-  const textColor = isDarkTheme ? "text-[#f2f2f2]" : "text-[#f2f2f2]";
-  const mutedTextColor = isDarkTheme ? "text-neutral-400" : "text-neutral-400";
-  const borderColor = isDarkTheme ? "border-[#e3e6ee]" : "border-[#e3e6ee]";
-  const btnBg = isDarkTheme ? "bg-[#ffc878]" : "bg-[#ffc878]";
-  const btnText = isDarkTheme ? "text-[#191919]" : "text-[#191919]";
-  const btnHover = isDarkTheme
-    ? "hover:bg-[#ffc878]/80"
-    : "hover:bg-[#ffc878]/80";
+  const textColor = "text-foreground";
+  const mutedTextColor = "text-muted-foreground";
+  const borderColor = "border-border-light";
+  const btnBg = "bg-accent";
+  const btnText = "text-accent-foreground";
+  const btnHover = "hover:bg-accent/80";
   const transition = "transition-colors duration-1000";
 
   return (
@@ -178,7 +174,7 @@ export default function TeamSection() {
                   viewBox="0 0 60 60"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className={`transition-colors duration-1000 ${isDarkTheme ? "stroke-[#f2f2f2]" : "stroke-[#191919]"}`}
+                  className={`transition-colors duration-1000 stroke-foreground`}
                 >
                   <path
                     d="M2.5 0V32.5H27"
@@ -199,7 +195,7 @@ export default function TeamSection() {
               <div className="w-full  md:w-[65%] lg:w-[70%] font-satoshi text-sm text-justify md:text-xl leading-9 tracking-[0.05em] space-y-8 pr-0 lg:pr-12 opacity-90">
                 <CopyReveal
                   as="div"
-                  blockColor="#e5e5e5"
+                  blockColor={theme.copyRevealBlock}
                   stagger={0.12}
                   textAlign="left"
                 >
@@ -207,7 +203,7 @@ export default function TeamSection() {
                 </CopyReveal>
                 <CopyReveal
                   as="div"
-                  blockColor="#e5e5e5"
+                  blockColor={theme.copyRevealBlock}
                   stagger={0.12}
                   textAlign="left"
                 >
@@ -216,7 +212,7 @@ export default function TeamSection() {
                 {member.bio3 && (
                   <CopyReveal
                     as="div"
-                    blockColor="#e5e5e5"
+                    blockColor={theme.copyRevealBlock}
                     stagger={0.12}
                     textAlign="left"
                   >

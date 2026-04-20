@@ -80,7 +80,7 @@ export default function TransitionProvider({
             ref={(el) => {
               colRefs.current[idx] = el;
             }}
-            className="h-full w-full bg-[#ffc878]  "
+            className="h-full w-full bg-accent  "
             style={{ transform: "translateY(100%)" }}
           />
         ))}

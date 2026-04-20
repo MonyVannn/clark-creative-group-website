@@ -3,11 +3,36 @@
 :root {
   --background: #040b22;
   --foreground: #f6f8ff;
+  --muted-foreground: #a8b4cc;
+  --accent: #ffc878;
+  --accent-foreground: #040b22;
+  --border: #f6f8ff;
+  --copy-reveal-block: #e5e5e5;
+  --sketch-muted: #d3d3d3;
+  --border-light: #e3e6ee;
+  --elevated: #0a1228;
+  --destructive: #ff9a9a;
+  --success: #a8ffcb;
+  --card-border-muted: #374151;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-elevated: var(--elevated);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-card-border-muted: var(--card-border-muted);
 }
 
 @layer base {
   body {
-    background-color: #040b22;
+    background-color: var(--background);
     background-image: url("/topography.svg");
     background-repeat: repeat;
     background-size: 1000px auto;

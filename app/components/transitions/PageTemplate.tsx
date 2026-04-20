@@ -46,7 +46,7 @@ export const Heading = ({ children }: { children: ReactNode }) => {
   return (
     <h1
       ref={headingRef}
-      className="font-clash-display text-center text-5xl font-semibold tracking-tight text-[#f6f8ff] md:text-7xl"
+      className="font-clash-display text-center text-5xl font-semibold tracking-tight text-foreground md:text-7xl"
     >
       {children}
     </h1>
@@ -74,7 +74,7 @@ export const SubHeading = ({ children }: { children: ReactNode }) => {
   return (
     <p
       ref={subHeadingRef}
-      className="mt-8 text-center font-satoshi text-xl text-[#f6f8ff]/70"
+      className="mt-8 text-center font-satoshi text-xl text-muted-foreground"
     >
       {children}
     </p>

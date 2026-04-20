@@ -89,19 +89,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#040b22] text-[f2f2f2] border-t border-[#f2f2f2] overflow-hidden z-10">
+    <footer className="relative bg-background text-foreground border-t border-border/30 overflow-hidden z-10">
       {/* Main Content */}
       <div className="relative z-10 container-wide mx-auto px-6 py-16 lg:px-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
           {/* Left Column - Contact & Connect */}
           <div className="flex flex-col gap-10 md:gap-12 md:flex-col lg:gap-12">
-            <p className="font-clash-display text-4xl text-[#f6f8ff]-400 font-semibold">
+            <p className="font-clash-display text-4xl text-foreground font-semibold">
               CLARK CREATIVE
             </p>
-            <p className="font-clash-display text-4xl text-[#f6f8ff]-400 font-semibold -mt-10 md:-mt-14">
+            <p className="font-clash-display text-4xl text-foreground font-semibold -mt-10 md:-mt-14">
               GROUP
             </p>
-            <h3 className="font-satoshi w-2/3 -mt-5 md:-mt-10 text-neutral-400">
+            <h3 className="font-satoshi w-2/3 -mt-5 md:-mt-10 text-muted-foreground">
               We partner with a small number of founders at a time. Every
               engagement gets our full attention and our full creativity. If
               you&apos;re building something that doesn&apos;t fit neatly into
@@ -113,21 +113,21 @@ export default function Footer() {
                 e.preventDefault();
                 navigateTo("/contact");
               }}
-              className="self-start cursor-pointer bg-[#ffc878] hover:bg-[#ffc878]/80 px-5 py-2.5 font-satoshi text-xs font-bold uppercase text-[#191919] tracking-widest transition-colors duration-300"
+              className="self-start cursor-pointer bg-accent hover:bg-accent/80 px-5 py-2.5 font-satoshi text-xs font-bold uppercase text-accent-foreground tracking-widest transition-colors duration-300"
             >
               Let&apos;s Talk
             </Link>
             <div className="flex flex-col gap-8 md:flex-row lg:flex-col">
               <div>
-                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-[#f6f8ff]">
+                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-foreground">
                   CONTACT
                 </h3>
-                <p className="mt-2 font-satoshi text-sm text-neutral-400">
+                <p className="mt-2 font-satoshi text-sm text-muted-foreground">
                   contact@clarkcreativegroup.com
                 </p>
               </div>
               <div>
-                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-[#f6f8ff]">
+                <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-foreground">
                   CONNECT
                 </h3>
                 <ul className="mt-2 space-y-1">
@@ -135,7 +135,7 @@ export default function Footer() {
                     <li key={platform}>
                       <a
                         href="#"
-                        className="font-satoshi text-sm text-neutral-400 transition-colors hover:text-[#f6f8ff]"
+                        className="font-satoshi text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {platform}
                       </a>
@@ -148,10 +148,10 @@ export default function Footer() {
 
           {/* Right Column - Inquiry Form */}
           <div>
-            <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-[#f6f8ff]">
+            <h3 className="font-clash-display text-xs font-medium uppercase tracking-widest text-foreground">
               GET IN TOUCH
             </h3>
-            <p className="mt-2 font-satoshi text-sm text-neutral-400">
+            <p className="mt-2 font-satoshi text-sm text-muted-foreground">
               Thirty minutes. Your vision, your business, and where Space,
               Story, or System creates the most momentum.
             </p>
@@ -165,7 +165,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, name: e.target.value }))
                     }
-                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
+                    className="w-full border-b border-border/30 bg-transparent px-0 py-2 font-satoshi text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground"
                   />
                   {errors.name && (
                     <p className="mt-1 text-xs text-red-400">{errors.name}</p>
@@ -179,7 +179,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, email: e.target.value }))
                     }
-                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
+                    className="w-full border-b border-border/30 bg-transparent px-0 py-2 font-satoshi text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground"
                   />
                   {errors.email && (
                     <p className="mt-1 text-xs text-red-400">{errors.email}</p>
@@ -195,7 +195,7 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, phone: e.target.value }))
                     }
-                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
+                    className="w-full border-b border-border/30 bg-transparent px-0 py-2 font-satoshi text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground"
                   />
                 </div>
                 <div>
@@ -206,12 +206,12 @@ export default function Footer() {
                     onChange={(e) =>
                       setFormState((s) => ({ ...s, company: e.target.value }))
                     }
-                    className="w-full border-b border-[#f6f8ff]/30 bg-transparent px-0 py-2 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none transition-colors focus:border-[#f6f8ff]"
+                    className="w-full border-b border-border/30 bg-transparent px-0 py-2 font-satoshi text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-foreground"
                   />
                 </div>
               </div>
               <div>
-                <div className="relative min-h-[180px] rounded border-b border-[#f6f8ff]/30 overflow-hidden">
+                <div className="relative min-h-[180px] rounded border-b border-border/30 overflow-hidden">
                   <textarea
                     placeholder="Message*"
                     value={formState.message}
@@ -219,7 +219,7 @@ export default function Footer() {
                       setFormState((s) => ({ ...s, message: e.target.value }))
                     }
                     rows={4}
-                    className="relative z-10 w-full resize-none border-0 bg-transparent px-0 py-3 font-satoshi text-sm text-[#f6f8ff] placeholder-neutral-500 outline-none"
+                    className="relative z-10 w-full resize-none border-0 bg-transparent px-0 py-3 font-satoshi text-sm text-foreground placeholder:text-muted-foreground outline-none"
                   />
                 </div>
                 {errors.message && (
@@ -227,12 +227,12 @@ export default function Footer() {
                 )}
               </div>
               {submitError && (
-                <p className="font-satoshi text-xs text-[#ff9a9a]">
+                <p className="font-satoshi text-xs text-destructive">
                   {submitError}
                 </p>
               )}
               {submitSuccess && (
-                <p className="font-satoshi text-xs text-[#a8ffcb]">
+                <p className="font-satoshi text-xs text-success">
                   Message sent. We&apos;ll be in touch soon.
                 </p>
               )}
@@ -240,10 +240,10 @@ export default function Footer() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group flex items-center gap-3 text-sm font-medium tracking-wide text-[#f6f8ff] transition-opacity hover:opacity-80 disabled:pointer-events-none disabled:opacity-50"
+                  className="group flex items-center gap-3 text-sm font-medium tracking-wide text-foreground transition-opacity hover:opacity-80 disabled:pointer-events-none disabled:opacity-50"
                 >
                   <span>{isSubmitting ? "Sending…" : "Let's Talk"}</span>
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f6f8ff]/60 transition-colors group-hover:border-[#f6f8ff]">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border/60 transition-colors group-hover:border-foreground">
                     <FiArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </button>
@@ -254,7 +254,7 @@ export default function Footer() {
       </div>
 
       {/* Utility Navigation Bar */}
-      <div className="relative z-10 border-t border-[#f6f8ff]/20 bg-[#040b22]">
+      <div className="relative z-10 border-t border-border/20 bg-background">
         <div className="container-wide mx-auto flex flex-col items-center justify-between gap-4 px-6 py-6 lg:flex-row lg:px-16">
           <a
             href="/privacy"
@@ -262,7 +262,7 @@ export default function Footer() {
               e.preventDefault();
               navigateTo("/privacy");
             }}
-            className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-[#f6f8ff]"
+            className="font-satoshi text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
           >
             Privacy / Cookies Policy
           </a>
@@ -276,7 +276,7 @@ export default function Footer() {
                   e.preventDefault();
                   navigateTo(link.href);
                 }}
-                className="font-satoshi text-xs uppercase tracking-widest text-neutral-400 transition-colors hover:text-[#f6f8ff]"
+                className="font-satoshi text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
               </a>
@@ -289,12 +289,12 @@ export default function Footer() {
       </div>
 
       {/* Technical Fine Print */}
-      <div className="relative z-10 border-t border-[#f6f8ff]/20">
+      <div className="relative z-10 border-t border-border/20">
         <div className="container-wide mx-auto flex flex-col items-center justify-between gap-4 px-6 py-4 lg:flex-row lg:px-16">
-          <p className="max-w-2xl text-center font-satoshi text-[10px] leading-relaxed text-neutral-500 lg:text-left">
+          <p className="max-w-2xl text-center font-satoshi text-[10px] leading-relaxed text-muted-foreground lg:text-left">
             Creators of Visionary Lives and Businesses
           </p>
-          <p className="shrink-0 font-satoshi text-[10px] text-neutral-500">
+          <p className="shrink-0 font-satoshi text-[10px] text-muted-foreground">
             © 2025 Clark Creative Group
           </p>
         </div>

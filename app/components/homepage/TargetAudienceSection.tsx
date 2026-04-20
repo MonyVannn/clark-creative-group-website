@@ -1,17 +1,15 @@
 "use client";
 
+import { theme } from "@/app/lib/theme";
 import CopyReveal from "../ui/CopyReveal";
-import { useTheme } from "../contexts/ThemeContext";
 import Image from "next/image";
 import SplitText from "../ui/SplitText";
 import SquareSketch from "../ui/SquareSketch";
 
 export default function TargetAudienceSection() {
-  const { isDarkTheme } = useTheme();
-
   return (
     <section
-      data-color="#f2f2f2"
+      data-color={theme.foreground}
       className="relative w-full px-6 py-28 lg:py-40 md:px-12 lg:px-16"
     >
       <SquareSketch className="absolute bottom-0 right-10 opacity-35 w-64 h-64 md:w-120 md:h-120 rotate-45" />
@@ -20,17 +18,15 @@ export default function TargetAudienceSection() {
           text="Who is this for."
           tag="h2"
           splitType="words, chars"
-          className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 ${isDarkTheme ? "text-[#f2f2f2]" : "text-[#191919]"}`}
+          className={`font-clash-display font-semibold text-5xl lg:text-6xl leading-tight transition-colors duration-1000 text-foreground`}
           textAlign="left"
           delay={20}
         />
 
         <CopyReveal
           as="div"
-          className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug ${
-            isDarkTheme ? "text-neutral-100" : "text-[#040b22]"
-          }`}
-          blockColor="#e5e5e5"
+          className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug text-muted-foreground`}
+          blockColor={theme.copyRevealBlock}
           stagger={0.12}
           textAlign="left"
         >
@@ -42,25 +38,23 @@ export default function TargetAudienceSection() {
 
         <CopyReveal
           as="div"
-          className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug ${
-            isDarkTheme ? "text-neutral-200" : "text-[#040b22]"
-          }`}
-          blockColor="#e5e5e5"
+          className={`font-satoshi text-lg md:text-xl lg:text-2xl leading-relaxed md:leading-relaxed lg:leading-snug text-muted-foreground`}
+          blockColor={theme.copyRevealBlock}
           stagger={0.1}
           delay={0.2}
           textAlign="left"
         >
           If you build, grow, and create. If you have a vision and the will to
           make it real, whether that&apos;s a{" "}
-          <span className="font-clash-display font-medium underline decoration-white/40 underline-offset-4">
+          <span className="font-clash-display font-medium underline decoration-foreground/40 underline-offset-4">
             regenerative farm
           </span>
           , a{" "}
-          <span className="font-clash-display font-medium underline decoration-white/40 underline-offset-4">
+          <span className="font-clash-display font-medium underline decoration-foreground/40 underline-offset-4">
             food company with a mission
           </span>
           , a{" "}
-          <span className="font-clash-display font-medium underline decoration-white/40 underline-offset-4">
+          <span className="font-clash-display font-medium underline decoration-foreground/40 underline-offset-4">
             construction business ready to scale
           </span>
           , or something entirely new. If you believe your business can be an

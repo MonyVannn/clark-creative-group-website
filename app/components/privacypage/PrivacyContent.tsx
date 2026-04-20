@@ -5,24 +5,24 @@ export default function PrivacyContent() {
     <section className="mx-auto max-w-3xl py-32 md:py-36">
       <div className="space-y-10">
         <header className="space-y-4">
-          <p className="font-satoshi text-xs uppercase tracking-[0.2em] text-[#f6f8ff]/60">
+          <p className="font-satoshi text-xs uppercase tracking-[0.2em] text-muted-foreground">
             Privacy & Cookies
           </p>
-          <h1 className="font-clash-display text-4xl font-semibold tracking-tight text-[#f6f8ff] md:text-6xl">
+          <h1 className="font-clash-display text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
             Privacy / Cookies Policy
           </h1>
-          <p className="font-satoshi text-base leading-relaxed text-[#f6f8ff]/75 md:text-lg">
+          <p className="font-satoshi text-base leading-relaxed text-muted-foreground md:text-lg">
             This page explains what information we collect, how we use it, and
             how cookies are handled when you visit Clark Creative Group.
           </p>
-          <p className="font-satoshi text-sm text-[#f6f8ff]/55">
+          <p className="font-satoshi text-sm text-muted-foreground">
             Last updated: March 31, 2026
           </p>
         </header>
 
-        <div className="space-y-8 font-satoshi text-sm leading-relaxed text-[#f6f8ff]/80 md:text-base">
+        <div className="space-y-8 font-satoshi text-sm leading-relaxed text-muted-foreground md:text-base">
           <section className={sectionClassName}>
-            <h2 className="font-clash-display text-2xl font-medium text-[#f6f8ff] md:text-3xl">
+            <h2 className="font-clash-display text-2xl font-medium text-foreground md:text-3xl">
               1) Information we collect
             </h2>
             <p>
@@ -38,7 +38,7 @@ export default function PrivacyContent() {
           </section>
 
           <section className={sectionClassName}>
-            <h2 className="font-clash-display text-2xl font-medium text-[#f6f8ff] md:text-3xl">
+            <h2 className="font-clash-display text-2xl font-medium text-foreground md:text-3xl">
               2) How we use your information
             </h2>
             <p>
@@ -52,7 +52,7 @@ export default function PrivacyContent() {
           </section>
 
           <section className={sectionClassName}>
-            <h2 className="font-clash-display text-2xl font-medium text-[#f6f8ff] md:text-3xl">
+            <h2 className="font-clash-display text-2xl font-medium text-foreground md:text-3xl">
               3) Cookies
             </h2>
             <p>
@@ -72,7 +72,7 @@ export default function PrivacyContent() {
           </section>
 
           <section className={sectionClassName}>
-            <h2 className="font-clash-display text-2xl font-medium text-[#f6f8ff] md:text-3xl">
+            <h2 className="font-clash-display text-2xl font-medium text-foreground md:text-3xl">
               4) Third-party links and services
             </h2>
             <p>
@@ -83,7 +83,7 @@ export default function PrivacyContent() {
           </section>
 
           <section className={sectionClassName}>
-            <h2 className="font-clash-display text-2xl font-medium text-[#f6f8ff] md:text-3xl">
+            <h2 className="font-clash-display text-2xl font-medium text-foreground md:text-3xl">
               5) Contact us
             </h2>
             <p>
@@ -93,7 +93,7 @@ export default function PrivacyContent() {
           </section>
         </div>
 
-        <p className="border-t border-[#f6f8ff]/15 pt-6 font-satoshi text-xs leading-relaxed text-[#f6f8ff]/50">
+        <p className="border-t border-border/15 pt-6 font-satoshi text-xs leading-relaxed text-muted-foreground">
           This policy is provided as general website information and is not
           legal advice.
         </p>

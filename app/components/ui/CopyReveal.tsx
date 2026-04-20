@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useRef } from "react";
 import SplitType from "split-type";
 import { usePreloader } from "../PreloaderContext";
+import { theme } from "@/app/lib/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +26,7 @@ export default function CopyReveal({
   children,
   animateOnScroll = true,
   delay = 0,
-  blockColor = "#f2f2f2",
+  blockColor = theme.copyRevealBlock,
   stagger = 0.15,
   duration = 0.75,
   className = "",

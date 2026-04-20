@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { useRef } from "react";
-import { useTheme } from "../contexts/ThemeContext";
 import { usePreloader } from "../PreloaderContext";
 import { usePageTransition } from "../transitions/TransitionProvider";
 import SquareSketch from "../ui/SquareSketch";
@@ -20,7 +19,6 @@ const AUDIENCE = [
 ];
 
 export default function WholePictureSection() {
-  const { isDarkTheme } = useTheme();
   const { isPreloaderComplete } = usePreloader();
   const { navigateTo } = usePageTransition();
 
@@ -101,25 +99,19 @@ export default function WholePictureSection() {
         <div className="flex flex-col gap-4">
           <span
             ref={eyebrowRef}
-            className={`font-satoshi text-xs font-medium uppercase tracking-[0.25em] transition-colors duration-1400 ${
-              isDarkTheme ? "text-gray-400" : "text-[#606060]"
-            }`}
+            className={`font-satoshi text-xs font-medium uppercase tracking-[0.25em] transition-colors duration-1400 text-muted-foreground`}
           >
             The Whole Picture
           </span>
           <h2
             ref={headlineRef}
-            className={`font-clash-display text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl transition-colors duration-1400 ${
-              isDarkTheme ? "text-white" : "text-[#0a191f]"
-            }`}
+            className={`font-clash-display text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl transition-colors duration-1400 text-foreground`}
           >
             A business that knows itself.
           </h2>
           <p
             ref={subheadRef}
-            className={`font-satoshi max-w-2xl text-base font-medium md:text-lg transition-colors duration-1400 ${
-              isDarkTheme ? "text-gray-400" : "text-[#606060]"
-            }`}
+            className={`font-satoshi max-w-2xl text-base font-medium md:text-lg transition-colors duration-1400 text-muted-foreground`}
           >
             Story, space, and system, woven into one thread.
           </p>
@@ -127,9 +119,7 @@ export default function WholePictureSection() {
 
         <div
           ref={bodyRef}
-          className={`font-satoshi flex flex-col gap-5 text-base leading-relaxed md:text-lg transition-colors duration-1400 ${
-            isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-          }`}
+          className={`font-satoshi flex flex-col gap-5 text-base leading-relaxed md:text-lg transition-colors duration-1400 text-muted-foreground`}
         >
           <p>
             The three pillars work on their own. But when they&apos;re designed
@@ -147,17 +137,13 @@ export default function WholePictureSection() {
         <div className="flex flex-col gap-4">
           <h3
             ref={audienceHeadingRef}
-            className={`font-clash-display text-xl font-semibold md:text-2xl transition-colors duration-1400 ${
-              isDarkTheme ? "text-white" : "text-[#0a191f]"
-            }`}
+            className={`font-clash-display text-xl font-semibold md:text-2xl transition-colors duration-1400 text-foreground`}
           >
             Who this is for:
           </h3>
           <ul
             ref={listRef}
-            className={`font-satoshi flex flex-col gap-2 text-base leading-relaxed list-disc md:text-lg transition-colors duration-1400 ${
-              isDarkTheme ? "text-gray-300" : "text-[#0a191f]"
-            }`}
+            className={`font-satoshi flex flex-col gap-2 text-base leading-relaxed list-disc md:text-lg transition-colors duration-1400 text-muted-foreground`}
           >
             {AUDIENCE.map((item) => (
               <li key={item} className="ml-5">
@@ -174,7 +160,7 @@ export default function WholePictureSection() {
               e.preventDefault();
               navigateTo("/contact");
             }}
-            className="inline-block bg-[#ffc878] px-8 py-4 font-satoshi font-bold uppercase text-sm tracking-widest text-[#040b22] transition-colors duration-300 hover:bg-[#ffc878]/80 cursor-pointer"
+            className="inline-block bg-accent px-8 py-4 font-satoshi font-bold uppercase text-sm tracking-widest text-accent-foreground transition-colors duration-300 hover:bg-accent/80 cursor-pointer"
           >
             Start a Conversation
           </Link>
