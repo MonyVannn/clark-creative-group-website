@@ -1,34 +1,69 @@
 # Clark Creative Group — Website
 
-Marketing site for **Clark Creative Group (CCG)**. This document describes the **visual identity as implemented in this repository** (colors, typography, layout). Values are taken from the code, not from an external brand manual.
+Marketing site for **Clark Creative Group (CCG)** — Next.js App Router, React 19, and Tailwind CSS v4. Production URL: [clarkcreativegroup.com](https://clarkcreativegroup.com).
+
+This README covers **how to run and configure the project**, **routes and APIs**, and **visual identity as implemented in code** (colors, typography, layout). Design values are taken from the repository, not from an external brand manual.
+
+---
+
+## Project overview
+
+| Route | Purpose |
+|-------|---------|
+| `/` | Homepage (hero, core overview, testimonials, CTAs) |
+| `/about` | Team, vision, profiles |
+| `/services` | Services hero, details, how we work |
+| `/contact` | Contact hero, message form, book-a-call panel |
+| `/privacy` | Privacy policy |
+| Custom 404 | [`app/not-found.tsx`](app/not-found.tsx) |
+
+**SEO:** [`app/sitemap.ts`](app/sitemap.ts) and [`app/robots.ts`](app/robots.ts) serve `/sitemap.xml` and `/robots.txt`. Structured data lives in [`app/components/seo/JsonLd.tsx`](app/components/seo/JsonLd.tsx). Site-wide metadata is set in [`app/layout.tsx`](app/layout.tsx).
+
+**App shell:** [`LenisProvider`](app/components/layout/LenisProvider.tsx) (smooth scrolling), [`PreloaderProvider`](app/components/PreloaderContext.tsx) + [`LoadingScreen`](app/components/LoadingScreen.tsx), and [`TransitionProvider`](app/components/transitions/TransitionProvider.tsx) wrap page content for loading and route transitions.
+
+---
+
+## Configuration
+
+Contact and “request a call” flows send email through [Resend](https://resend.com) from API routes. For local testing of forms, set:
+
+| Variable | Purpose |
+|----------|---------|
+| `RESEND_API_KEY` | Resend API key |
+| `RESEND_FROM` | Verified sender address (e.g. `CCG <noreply@yourdomain.com>`) |
+| `CONTACT_TO_EMAIL` | Inbox that receives submissions |
+
+Routes: [`app/api/contact/route.ts`](app/api/contact/route.ts) (message form), [`app/api/request-call/route.ts`](app/api/request-call/route.ts) (booking request).
 
 ---
 
 ## Color palette
 
-Colors are mostly repeated as Tailwind arbitrary values (e.g. `bg-[#040b22]`). A small subset also exists as CSS custom properties in [`app/globals.css`](app/globals.css).
+Semantic colors are defined in **CSS** ([`app/globals.css`](app/globals.css) `:root` + `@theme inline` for Tailwind v4) and mirrored in **TypeScript** ([`app/lib/theme.ts`](app/lib/theme.ts)) for components that need hex in JS (e.g. Three.js, charts). Many components still use Tailwind arbitrary values (`bg-[#040b22]`, etc.); prefer the theme tokens when touching related UI.
 
 | Role | Hex | Notes (where it appears) |
 |------|-----|---------------------------|
-| **Page background** | `#040b22` | Default body background; mobile nav; cards; matches `--background`. |
-| **Primary text (cool white)** | `#f6f8ff` | Headings, body, forms; matches `--foreground`. Often with opacity: `/90`, `/80`, `/75`, `/70`, `/60`, `/55`, `/50`, `/35` for hierarchy and placeholders. |
+| **Page background** | `#040b22` | Default body background; mobile nav; cards; `--background`. |
+| **Primary text (cool white)** | `#f6f8ff` | Headings, body, forms; `--foreground`. Often with opacity: `/90`, `/80`, `/75`, `/70`, `/60`, `/55`, `/50`, `/35` for hierarchy and placeholders. |
+| **Muted foreground** | `#a8b4cc` | Supporting body copy on dark backgrounds; `--muted-foreground`. |
 | **Secondary text (warm white)** | `#f2f2f2` | Hero titles, services/about/contact copy, lines, testimonials, 404. |
-| **Accent / CTA** | `#ffc878` | Primary buttons, page transition overlay, focus rings on inputs, hover accents, carousel controls. Hover: `#ffc878/80`. |
-| **Text on accent** | `#191919` or `#040b22` | Uppercase CTA labels (`#191919` on gold; `#040b22` on gold in some heroes/header). |
+| **Accent / CTA** | `#ffc878` | Primary buttons, page transition overlay, focus rings, hover accents, carousel controls. Hover: `#ffc878/80`. `--accent`. |
+| **Text on accent** | `#040b22` | Uppercase CTA labels on gold; `--accent-foreground`. |
 | **Light theme text** | `#0a191f` | Header logo and nav when not on dark sections. |
 | **Light theme nav** | `#606060` / `#a0a0a0` | Active vs inactive nav on light backgrounds. |
 | **Secondary button (light)** | `#0a191f` bg, `#f6f8ff` text | Header CTA when not using gold. |
-| **Elevated / panel surfaces** | `#0a1228/90` | Contact and booking panels (semi-transparent over base). |
-| **Borders (light neutrals)** | `#e3e6ee`, `#e5e5e5` | Team section borders; sketch blocks. |
+| **Elevated / panel surfaces** | `#0a1228` | Contact and booking panels; `--elevated` (often combined with opacity in UI). |
+| **Copy-reveal blocks** | `#e5e5e5` | Copy reveal wipe animation; `--copy-reveal-block`. |
+| **Sketch strokes (muted)** | `#d3d3d3` | Diagram / sketch lines; `--sketch-muted`. |
+| **Borders (light neutrals)** | `#e3e6ee`, `#e5e5e5` | Team section borders; sketch blocks; `--border-light`. |
 | **Borders (on navy)** | `#f6f8ff` at `/30`, `/25`, `/20`, `/15`, `/10` | Dividers, inputs, footers. |
-| **Form error** | `#ff9a9a` | Validation messages in [`app/components/contactpage/MessageForm.tsx`](app/components/contactpage/MessageForm.tsx). |
+| **Form / validation error** | `#ff9a9a` | Validation messages; `--destructive`. |
+| **Success** | `#a8ffcb` | Positive feedback where used; `--success`. |
+| **Card border (muted)** | `#374151` | Muted card chrome; `--card-border-muted`. |
 | **Testimonial UI** | `#ffffff`, `#374151` | Active vs inactive slide indicators. |
 | **Tailwind neutrals** | `neutral-400`, `neutral-500`, `gray-300`, `gray-400`, `gray-600` | Muted links, placeholders, carousel chrome. |
 
-**CSS variables** (see [`app/globals.css`](app/globals.css)):
-
-- `--background`: `#040b22`
-- `--foreground`: `#f6f8ff`
+**CSS variables** (see [`app/globals.css`](app/globals.css)): `--background`, `--foreground`, `--muted-foreground`, `--accent`, `--accent-foreground`, `--border`, `--copy-reveal-block`, `--sketch-muted`, `--border-light`, `--elevated`, `--destructive`, `--success`, `--card-border-muted`.
 
 ---
 
@@ -38,12 +73,10 @@ Colors are mostly repeated as Tailwind arbitrary values (e.g. `bg-[#040b22]`). A
 
 | Family | Role | Implementation |
 |--------|------|----------------|
-| **Clash Display** | Display headings, section titles, footer column labels | Variable WOFF2: [`public/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff2`](public/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff2). CSS variable: `--font-clash-display`. Use class: `font-clash-display`. |
-| **Satoshi** | Body copy, UI, buttons, forms, navigation | Variable WOFF2: [`public/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2`](public/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2). CSS variable: `--font-satoshi`. Use class: `font-satoshi`. |
-| **Geist Sans** | Loaded globally | CSS variable: `--font-geist-sans` (see [`app/layout.tsx`](app/layout.tsx)). |
-| **Geist Mono** | Loaded globally | CSS variable: `--font-geist-mono`. |
-
-Fonts are registered in [`app/layout.tsx`](app/layout.tsx) via `next/font` and applied to `<body>` through CSS variables.
+| **Clash Display** | Display headings, section titles, footer column labels | Variable WOFF2: [`public/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff2`](public/fonts/ClashDisplay_Complete/Fonts/WEB/fonts/ClashDisplay-Variable.woff2). Registered in [`app/layout.tsx`](app/layout.tsx) with `next/font/local`. CSS variable: `--font-clash-display`. Class: `font-clash-display`. |
+| **Satoshi** | Body copy, UI, buttons, forms, navigation | Variable WOFF2: [`public/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2`](public/fonts/Satoshi_Complete/Fonts/WEB/fonts/Satoshi-Variable.woff2). Same pattern: `--font-satoshi`, class `font-satoshi`. |
+| **Geist Sans** | Loaded globally | `next/font/google` → `--font-geist-sans` in [`app/layout.tsx`](app/layout.tsx). |
+| **Geist Mono** | Loaded globally | `--font-geist-mono`. |
 
 ### Patterns in use
 
@@ -57,7 +90,7 @@ Fonts are registered in [`app/layout.tsx`](app/layout.tsx) via `next/font` and a
 
 - `.font-clash-display` → `var(--font-clash-display)`
 - `.font-satoshi` → `var(--font-satoshi)`
-- `.font-newtitle` → `var(--font-newtitle)` — **the variable `--font-newtitle` is not defined in [`app/layout.tsx`](app/layout.tsx)**; this class is effectively unwired until a font is added.
+- `.font-newtitle` → `var(--font-newtitle)` — **the variable `--font-newtitle` is not defined in [`app/layout.tsx`](app/layout.tsx)**; this class is unused until a font is wired up.
 
 ### Base `body` font
 
@@ -67,7 +100,7 @@ Fonts are registered in [`app/layout.tsx`](app/layout.tsx) via `next/font` and a
 
 ## Background and layout
 
-- **Texture**: Repeating [`public/topography.svg`](public/topography.svg) over the base background color `#040b22` (see [`app/globals.css`](app/globals.css)).
+- **Texture**: Repeating [`public/topography.svg`](public/topography.svg) over the base background (see [`app/globals.css`](app/globals.css)).
 - **Wide container**: `.container-wide` — max width **1280px**, horizontal padding **1.5rem**.
 - **Standard `.container`**: Responsive max widths at 640 / 768 / 1024 / 1280 / 1536px with **1.5rem** horizontal padding (same file).
 
@@ -75,7 +108,7 @@ Fonts are registered in [`app/layout.tsx`](app/layout.tsx) via `next/font` and a
 
 ## Design notes (codebase)
 
-Hex values are duplicated across components rather than centralized in a theme file. A future refactor could map the semantic names above to CSS variables or Tailwind theme tokens and replace repeated arbitrary colors.
+Brand colors are centralized in [`app/globals.css`](app/globals.css) and [`app/lib/theme.ts`](app/lib/theme.ts). Individual components may still use raw hex in class names; new work should prefer the shared tokens where practical.
 
 ---
 
@@ -83,7 +116,7 @@ Hex values are duplicated across components rather than centralized in a theme f
 
 ### Requirements
 
-- Node.js (version compatible with Next.js 16)
+- Node.js (version compatible with Next.js 16; LTS recommended)
 
 ### Commands
 
@@ -101,8 +134,12 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 | `npm run start` | Run production server |
 | `npm run lint` | ESLint |
 
-### Stack (short)
+### Stack
 
-- [Next.js](https://nextjs.org) (App Router), React, TypeScript, Tailwind CSS v4.
+- [Next.js 16](https://nextjs.org) (App Router), React 19, TypeScript, Tailwind CSS v4
+- **Motion / scroll:** [Framer Motion](https://www.framer.com/motion/), [GSAP](https://gsap.com/) + [@gsap/react](https://greensock.com/react/), [Lenis](https://lenis.darkroom.engineering/), [split-type](https://github.com/lukePeavey/SplitType)
+- **3D / canvas:** [Three.js](https://threejs.org/), [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/), [@react-three/drei](https://github.com/pmndrs/drei), [ogl](https://oframe.github.io/ogl-examples/), [unicornstudio-react](https://www.npmjs.com/package/unicornstudio-react)
+- **Other UI:** [lottie-react](https://github.com/Gamote/lottie-react), [react-icons](https://react-icons.github.io/react-icons/)
+- **Email:** [Resend](https://resend.com) (API routes)
 
 For framework details, see the [Next.js documentation](https://nextjs.org/docs).
