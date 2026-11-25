@@ -123,7 +123,7 @@ export default function Footer() {
                   CONTACT
                 </h3>
                 <p className="mt-2 font-satoshi text-sm text-muted-foreground">
-                  contact@clarkcreativegroup.com
+                  contact@clarkcreative.group
                 </p>
               </div>
               <div>
